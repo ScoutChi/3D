@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Detail — 3DPrintSpot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    Are you a 3D printing service? <a href="index.html#add-business">Add Your Business FREE →</a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">3D<span class="logo-accent">Print</span>Spot</span>
+      </a>
+      <div class="nav-links">
+        <a href="directory.html">Browse All</a>
+        <div class="nav-dropdown">
+          <button class="nav-btn">Browse ▾</button>
+          <div class="dropdown-menu">
+            <a href="directory.html?type=fdm">FDM Printing</a>
+            <a href="directory.html?type=sla">SLA / Resin</a>
+            <a href="directory.html?type=sls">SLS / Nylon</a>
+            <a href="directory.html?type=metal">Metal Printing</a>
+          </div>
+        </div>
+        <a href="index.html#cities">Cities</a>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html#add-business" class="btn btn-primary">+ Add Business (FREE)</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="directory.html">Browse All Services</a>
+    <a href="directory.html?type=fdm">FDM Printing</a>
+    <a href="index.html#add-business" style="color: var(--primary); font-weight: 700;">+ Add Your Business (FREE)</a>
+  </div>
+
+  <!-- Business Detail -->
+  <div class="biz-layout">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <div class="biz-breadcrumb">
+        <a href="index.html">Home</a>
+        &rsaquo;
+        <a href="directory.html">Directory</a>
+        &rsaquo;
+        <span id="bizBreadcrumbName">Loading…</span>
+      </div>
+
+      <div class="biz-inner">
+
+        <!-- Main Content -->
+        <main class="biz-main">
+
+          <!-- Hero Image Placeholder -->
+          <div class="biz-hero">
+            <span id="bizEmoji" style="font-size:80px;line-height:1;">🖨️</span>
+          </div>
+
+          <!-- Header Info -->
+          <div class="biz-header-info">
+            <div class="biz-title-row">
+              <h1 id="bizName">Loading…</h1>
+              <span class="listing-badge badge-open" id="bizStatus">Now Open</span>
+            </div>
+            <div class="biz-meta">
+              <span id="bizCity">📍 City, ST</span>
+              <span class="biz-meta-sep">·</span>
+              <span id="bizRating">⭐ 0.0 (0 reviews)</span>
+              <span class="biz-meta-sep">·</span>
+              <span>Price: <strong id="bizPrice">$$</strong></span>
+            </div>
+            <p class="biz-desc" id="bizDesc">Loading business details…</p>
+            <div id="bizTypeTags" class="listing-tags"></div>
+          </div>
+
+          <!-- Detail Sections -->
+          <div class="biz-sections">
+            <div class="biz-section">
+              <h2>Technologies Offered</h2>
+              <div id="bizTech" class="tag-list"></div>
+            </div>
+            <div class="biz-section">
+              <h2>Materials Available</h2>
+              <div id="bizMaterials" class="tag-list"></div>
+            </div>
+            <div class="biz-section">
+              <h2>Services</h2>
+              <div id="bizServices" class="tag-list"></div>
+            </div>
+            <div class="biz-section">
+              <h2>Industries Served</h2>
+              <div id="bizIndustries" class="tag-list"></div>
+            </div>
+          </div>
+
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="biz-sidebar">
+          <div class="biz-contact-card">
+            <h3>Contact & Info</h3>
+            <div class="biz-contact-item" id="bizPhone">
+              <span class="biz-contact-icon">📞</span>
+              <span>Loading…</span>
+            </div>
+            <div class="biz-contact-item" id="bizWebsite">
+              <span class="biz-contact-icon">🌐</span>
+              <span>Loading…</span>
+            </div>
+            <div class="biz-contact-item" id="bizAddress">
+              <span class="biz-contact-icon">📍</span>
+              <span>Loading…</span>
+            </div>
+            <div class="biz-contact-item" id="bizHours">
+              <span class="biz-contact-icon">🕐</span>
+              <span>Loading…</span>
+            </div>
+            <a href="#" id="bizWebsiteBtn" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" target="_blank" rel="noopener">
+              Visit Website →
+            </a>
+          </div>
+
+          <a href="directory.html" class="btn btn-ghost" style="width:100%;justify-content:center;">
+            ← Back to Directory
+          </a>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">◈</span>
+            <span class="logo-text">3D<span class="logo-accent">Print</span>Spot</span>
+          </a>
+          <p>The most comprehensive directory of 3D printing services across the United States.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Browse</h4>
+          <a href="directory.html">All Services</a>
+          <a href="directory.html?type=fdm">FDM Printing</a>
+          <a href="directory.html?type=sla">SLA / Resin</a>
+          <a href="directory.html?type=metal">Metal Printing</a>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <a href="index.html#add-business">Add Your Business</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 3DPrintSpot. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/business.js"></script>
+</body>
+</html>
