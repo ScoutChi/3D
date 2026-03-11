@@ -1,5 +1,5 @@
 // ================================================================
-// 3DPrintSpot - Directory Page JavaScript
+// 3DPrintMap - Directory Page JavaScript
 // ================================================================
 
 let currentPage = 1;

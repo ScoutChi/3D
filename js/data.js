@@ -1,5 +1,5 @@
 // ================================================================
-// 3DPrintSpot - Business Data
+// 3DPrintMap - Business Data
 // Replace this sample data by running: node convert-csv.js your-file.csv
 // ================================================================
 

@@ -1,5 +1,5 @@
 // ================================================================
-// 3DPrintSpot - Business Detail Page JavaScript
+// 3DPrintMap - Business Detail Page JavaScript
 // ================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Page title
-  document.title = `${business.name} — 3DPrintSpot`;
+  document.title = `${business.name} — 3DPrintMap`;
 
   // Breadcrumb
   const bc = document.getElementById('bizBreadcrumbName');

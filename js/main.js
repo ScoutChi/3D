@@ -1,5 +1,5 @@
 // ================================================================
-// 3DPrintSpot - Homepage JavaScript
+// 3DPrintMap - Homepage JavaScript
 // ================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
