@@ -233,7 +233,7 @@ function createListingCard(business) {
 }
 `;
 
-const outputPath = path.join(__dirname, 'js', 'data.js');
+const outputPath = path.join(__dirname, 'public', 'js', 'data.js');
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, output, 'utf-8');
 

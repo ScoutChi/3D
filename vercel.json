@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "cleanUrls": true,
+  "outputDirectory": "public",
   "trailingSlash": false,
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/sitemap.xml",
