@@ -33,9 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const bc = document.getElementById('bizBreadcrumbName');
   if (bc) bc.textContent = business.name;
 
-  // Hero emoji
-  const emojiEl = document.getElementById('bizEmoji');
-  if (emojiEl) emojiEl.textContent = business.emoji;
+  // Hero — show real image if available, otherwise emoji
+  const heroEl = document.getElementById('bizHero');
+  if (heroEl && business.imageUrl) {
+    heroEl.innerHTML = `<img src="${business.imageUrl}" alt="${business.name}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">`;
+  } else {
+    const emojiEl = document.getElementById('bizEmoji');
+    if (emojiEl) emojiEl.textContent = business.emoji;
+  }
 
   // Name
   const nameEl = document.getElementById('bizName');
@@ -82,6 +87,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const hoursEl = document.getElementById('bizHours');
   if (hoursEl) hoursEl.innerHTML = `<span class="biz-contact-icon">🕐</span><span>${business.hours}</span>`;
+
+  // Social links
+  const socialEl = document.getElementById('bizSocial');
+  if (socialEl) {
+    const links = [];
+    if (business.facebook)  links.push(`<a href="${business.facebook}" target="_blank" rel="noopener" class="social-btn">Facebook</a>`);
+    if (business.instagram) links.push(`<a href="${business.instagram}" target="_blank" rel="noopener" class="social-btn">Instagram</a>`);
+    if (business.twitter)   links.push(`<a href="${business.twitter}" target="_blank" rel="noopener" class="social-btn">Twitter / X</a>`);
+    socialEl.innerHTML = links.length ? links.join('') : '';
+    if (!links.length) socialEl.closest('.biz-section').style.display = 'none';
+  }
 
   // Website button
   const wsBtn = document.getElementById('bizWebsiteBtn');

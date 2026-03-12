@@ -48,16 +48,20 @@ for (let i = 1; i < lines.length; i++) {
   const name       = row['name'] || row['business_name'] || row['title'] || row['company_name'] || '';
   const address    = row['address'] || row['full_address'] || row['street_address'] || '';
   const city       = row['city'] || extractCity(address);
-  const state      = row['state'] || row['state_code'] || extractState(address);
-  const zip        = row['zip'] || row['postal_code'] || row['zip_code'] || '';
+  const state      = row['region'] || row['state'] || row['state_code'] || extractState(address);
+  const zip        = row['zip_code'] || row['zip'] || row['postal_code'] || '';
   const phone      = row['phone'] || row['phone_number'] || row['telephone'] || '';
   const website    = row['website'] || row['url'] || row['web'] || '';
-  const ratingRaw  = row['rating'] || row['stars'] || row['average_rating'] || row['google_rating'] || '0';
-  const reviewsRaw = row['reviews'] || row['number_of_reviews'] || row['review_count'] || row['reviews_count'] || '0';
+  const ratingRaw  = row['score'] || row['rating'] || row['stars'] || row['average_rating'] || '0';
+  const reviewsRaw = row['ratings'] || row['reviews'] || row['number_of_reviews'] || row['review_count'] || '0';
   const category   = row['category'] || row['categories'] || row['type'] || '';
   const description= row['description'] || row['about'] || row['summary'] || '';
-  const hours      = row['hours'] || row['opening_hours'] || row['business_hours'] || 'Mon–Fri: 9am–5pm';
+  const hours      = row['opening_hours'] || row['hours'] || row['business_hours'] || 'Mon–Fri: 9am–5pm';
   const email      = row['email'] || '';
+  const facebook   = row['facebook'] || '';
+  const instagram  = row['instagram'] || '';
+  const twitter    = row['twitter'] || '';
+  const imageUrl   = row['main_image_url'] || row['image_url'] || row['photo'] || '';
   const lat        = row['latitude'] || row['lat'] || '';
   const lng        = row['longitude'] || row['lng'] || row['lon'] || '';
 
@@ -123,6 +127,10 @@ for (let i = 1; i < lines.length; i++) {
     isOpen: true,
     isNew: true,
     emoji: getEmoji(types[0]),
+    imageUrl: imageUrl || '',
+    facebook: facebook || '',
+    instagram: instagram || '',
+    twitter: twitter || '',
     lat: lat || null,
     lng: lng || null
   });

@@ -795,6 +795,19 @@ ul { list-style: none; }
 .biz-contact-item a { color: var(--primary); }
 .biz-contact-icon { flex-shrink: 0; font-size: 16px; }
 
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+.social-btn:hover { border-color: var(--primary); color: var(--primary); }
+
 /* ========================================
    RESPONSIVE
    ======================================== */
