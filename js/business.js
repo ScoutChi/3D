@@ -27,7 +27,58 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Page title
-  document.title = `${business.name} — 3DPrintMap`;
+  document.title = `${business.name} — 3D Printing Service in ${business.city}, ${business.state} | 3DPrintMap`;
+
+  // SEO meta tags (set dynamically so each business page is unique)
+  const techList = business.types.join(', ');
+  const shortDesc = business.description.length > 140
+    ? business.description.slice(0, 140).replace(/\s\S*$/, '') + '…'
+    : business.description;
+  const metaDesc = `${business.name} in ${business.city}, ${business.state}. ${techList} 3D printing services. ${shortDesc}`;
+
+  setMeta('name', 'description', metaDesc);
+  setMeta('property', 'og:title', `${business.name} | 3DPrintMap`);
+  setMeta('property', 'og:description', metaDesc);
+  setMeta('property', 'og:type', 'business.business');
+  if (business.imageUrl) setMeta('property', 'og:image', business.imageUrl);
+
+  // Canonical URL
+  const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = `https://3dprintmap.com/business?id=${business.id}`;
+  document.head.appendChild(canonical);
+
+  // Structured data (JSON-LD) — helps Google show rich results
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    'name': business.name,
+    'description': business.description,
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': business.address,
+      'addressLocality': business.city,
+      'addressRegion': business.state,
+      'addressCountry': 'US'
+    },
+    'telephone': business.phone,
+    'url': business.website || `https://3dprintmap.com/business?id=${business.id}`,
+    'aggregateRating': business.reviews > 0 ? {
+      '@type': 'AggregateRating',
+      'ratingValue': business.rating,
+      'reviewCount': business.reviews
+    } : undefined,
+    'openingHours': business.hours,
+    'image': business.imageUrl || undefined
+  };
+  // Remove undefined keys
+  Object.keys(jsonLd).forEach(k => jsonLd[k] === undefined && delete jsonLd[k]);
+  if (jsonLd.aggregateRating && !jsonLd.aggregateRating.reviewCount) delete jsonLd.aggregateRating;
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(jsonLd);
+  document.head.appendChild(script);
 
   // Breadcrumb
   const bc = document.getElementById('bizBreadcrumbName');
@@ -119,4 +170,9 @@ function setText(id, text) {
 function setHTML(id, html) {
   const el = document.getElementById(id);
   if (el) el.innerHTML = html;
+}
+function setMeta(attr, name, content) {
+  let el = document.querySelector(`meta[${attr}="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+  el.setAttribute('content', content);
 }
