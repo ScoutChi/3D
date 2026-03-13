@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#080810"/>
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,107,43,0.06)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="35%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="rgba(255,107,43,0.18)"/>
+      <stop offset="100%" stop-color="rgba(8,8,16,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Logo mark -->
+  <text x="140" y="290" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#F0F0F5" letter-spacing="-2">3D</text>
+  <text x="225" y="290" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#FF6B2B" letter-spacing="-2">Print</text>
+  <text x="390" y="290" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#F0F0F5" letter-spacing="-2">Map</text>
+  <!-- Tagline -->
+  <text x="140" y="350" font-family="Arial, sans-serif" font-size="26" fill="#808094" letter-spacing="0">Find 3D Printing Services Near You</text>
+  <!-- Orange accent line -->
+  <rect x="140" y="375" width="80" height="4" rx="2" fill="#FF6B2B"/>
+</svg>

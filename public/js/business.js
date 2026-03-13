@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', function () {
   setMeta('property', 'og:description', metaDesc);
   setMeta('property', 'og:url',         `https://3dprintmap.com/business?id=${business.id}`);
   setMeta('property', 'og:type',        'business.business');
-  if (business.imageUrl) setMeta('property', 'og:image', business.imageUrl);
+  setMeta('property', 'og:image', business.imageUrl || 'https://3dprintmap.com/og-image.svg');
 
   // ── Twitter Card ───────────────────────────────────────────────
   setMeta('name', 'twitter:card',        'summary_large_image');
   setMeta('name', 'twitter:title',       ogTitle);
   setMeta('name', 'twitter:description', metaDesc);
-  if (business.imageUrl) setMeta('name', 'twitter:image', business.imageUrl);
+  setMeta('name', 'twitter:image', business.imageUrl || 'https://3dprintmap.com/og-image.svg');
 
   // ── Canonical URL ──────────────────────────────────────────────
   let canonical = document.querySelector('link[rel="canonical"]');
@@ -62,6 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
   canonical.href = `https://3dprintmap.com/business?id=${business.id}`;
 
   // ── JSON-LD: LocalBusiness ─────────────────────────────────────
+  const DEFAULT_IMAGE = 'https://3dprintmap.com/og-image.svg';
+  const sameAs = [business.facebook, business.instagram, business.twitter].filter(Boolean);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -77,12 +80,20 @@ document.addEventListener('DOMContentLoaded', function () {
       'addressCountry': 'US'
     },
     'openingHours': business.hours,
-    'priceRange': business.priceRange,
-    'image': business.imageUrl || undefined,
+    'priceRange': business.priceRange || '$$',
+    'image': business.imageUrl || DEFAULT_IMAGE,
+    'logo': {
+      '@type': 'ImageObject',
+      'url': DEFAULT_IMAGE,
+      'width': 1200,
+      'height': 630
+    },
+    'sameAs': sameAs.length ? sameAs : undefined,
     'aggregateRating': business.reviews > 0 ? {
       '@type': 'AggregateRating',
       'ratingValue': business.rating,
-      'bestRating': 5,
+      'bestRating': '5',
+      'worstRating': '1',
       'reviewCount': business.reviews
     } : undefined
   };
