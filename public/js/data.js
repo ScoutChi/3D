@@ -11659,6 +11659,17 @@ const SERVICES = [
 ];
 
 // ── Helper functions ──────────────────────────────────────────
+function getTypeIcon(type) {
+  const map = {
+    'FDM':        '<i class="fa-solid fa-print"></i>',
+    'SLA':        '<i class="fa-solid fa-gem"></i>',
+    'SLS':        '<i class="fa-solid fa-bolt"></i>',
+    'Metal':      '<i class="fa-solid fa-gear"></i>',
+    'Multicolor': '<i class="fa-solid fa-palette"></i>',
+  };
+  return map[type] || '<i class="fa-solid fa-print"></i>';
+}
+
 function getStars(rating) {
   const full = Math.floor(rating);
   const half = rating % 1 >= 0.5 ? 1 : 0;
@@ -11698,7 +11709,7 @@ function createListingCard(business) {
           ? `<img src="${business.imageUrl}" alt="${business.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.img-fallback').style.display='flex'">`
           : ''}
         <span class="img-fallback" style="${business.imageUrl ? 'display:none' : 'display:flex'}">
-          <span class="fallback-emoji">${business.emoji}</span>
+          <span class="fallback-icon">${getTypeIcon(business.types[0])}</span>
           <span class="fallback-type">${business.types[0]}</span>
         </span>
         <span class="listing-badge ${statusClass}">${statusText}</span>
