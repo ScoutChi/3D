@@ -123,14 +123,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Contact info
   const phoneEl = document.getElementById('bizPhone');
-  if (phoneEl) phoneEl.innerHTML = `
-    <span class="biz-contact-icon">📞</span>
-    <a href="tel:${business.phone}">${business.phone || 'Not listed'}</a>`;
+  if (phoneEl) {
+    const formatted = formatPhone(business.phone);
+    if (formatted) {
+      phoneEl.innerHTML = `<span class="biz-contact-icon">📞</span><a href="tel:${business.phone}">${formatted}</a>`;
+    } else {
+      phoneEl.style.display = 'none';
+    }
+  }
 
   const webEl = document.getElementById('bizWebsite');
-  if (webEl && business.website) {
-    const display = business.website.replace(/^https?:\/\//, '').replace(/\/$/, '');
-    webEl.innerHTML = `<span class="biz-contact-icon">🌐</span><a href="${business.website}" target="_blank" rel="noopener">${display}</a>`;
+  if (webEl) {
+    if (business.website) {
+      const display = business.website.replace(/^https?:\/\//, '').replace(/\/$/, '');
+      webEl.innerHTML = `<span class="biz-contact-icon">🌐</span><a href="${business.website}" target="_blank" rel="noopener">${display}</a>`;
+    } else {
+      webEl.style.display = 'none';
+    }
   }
 
   const addrEl = document.getElementById('bizAddress');
@@ -162,6 +171,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
+
+function formatPhone(raw) {
+  if (!raw) return '';
+  // Remove trailing .0 (CSV stores numbers as floats) then strip non-digits
+  const digits = String(raw).replace(/\.0+$/, '').replace(/\D/g, '');
+  // Strip leading country code 1 if 11 digits
+  const local = digits.length === 11 && digits[0] === '1' ? digits.slice(1) : digits;
+  if (local.length === 10) {
+    return `(${local.slice(0, 3)}) ${local.slice(3, 6)}-${local.slice(6)}`;
+  }
+  return digits.length ? digits : ''; // return raw digits or empty
+}
 
 function setText(id, text) {
   const el = document.getElementById(id);
