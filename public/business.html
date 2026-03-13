@@ -3,7 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Detail — 3DPrintMap</title>
+
+  <!-- Dynamic — overwritten by business.js -->
+  <title>3D Printing Service — 3DPrintMap</title>
+  <meta name="description" content="Find top-rated 3D printing services on 3DPrintMap.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="business.business">
+  <meta property="og:site_name" content="3DPrintMap">
+  <meta property="og:title" content="3D Printing Service — 3DPrintMap">
+  <meta property="og:description" content="Find top-rated 3D printing services on 3DPrintMap.">
+  <meta property="og:url" content="https://3dprintmap.com/business">
+  <meta property="og:image" content="https://3dprintmap.com/og-default.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="3D Printing Service — 3DPrintMap">
+  <meta name="twitter:description" content="Find top-rated 3D printing services on 3DPrintMap.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -17,16 +35,16 @@
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
     <div class="container">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">◈</span>
+      <a href="index.html" class="logo" aria-label="3DPrintMap Home">
+        <span class="logo-icon" aria-hidden="true">◈</span>
         <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
       </a>
       <div class="nav-links">
         <a href="directory.html">Browse All</a>
         <div class="nav-dropdown">
-          <button class="nav-btn">Browse ▾</button>
+          <button class="nav-btn" aria-haspopup="true">Browse ▾</button>
           <div class="dropdown-menu">
             <a href="directory.html?type=fdm">FDM Printing</a>
             <a href="directory.html?type=sla">SLA / Resin</a>
@@ -39,12 +57,12 @@
       <div class="nav-actions">
         <a href="index.html#add-business" class="btn btn-primary">+ Add Business (FREE)</a>
       </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
     <a href="directory.html">Browse All Services</a>
     <a href="directory.html?type=fdm">FDM Printing</a>
     <a href="index.html#add-business" style="color: var(--primary); font-weight: 700;">+ Add Your Business (FREE)</a>
@@ -54,26 +72,30 @@
   <div class="biz-layout">
     <div class="container">
 
-      <!-- Breadcrumb -->
-      <div class="biz-breadcrumb">
-        <a href="index.html">Home</a>
-        &rsaquo;
-        <a href="directory.html">Directory</a>
-        &rsaquo;
-        <span id="bizBreadcrumbName">Loading…</span>
-      </div>
+      <!-- Breadcrumb — expanded to Home > State > City > Business Name -->
+      <nav class="biz-breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+          <li><a href="directory.html" id="bizBreadcrumbState">Directory</a></li>
+          <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+          <li><a href="directory.html" id="bizBreadcrumbCity">City</a></li>
+          <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+          <li><span id="bizBreadcrumbName" aria-current="page">Loading…</span></li>
+        </ol>
+      </nav>
 
       <div class="biz-inner">
 
         <!-- Main Content -->
         <main class="biz-main">
 
-          <!-- Hero Image Placeholder -->
-          <div class="biz-hero">
-            <span id="bizEmoji" style="font-size:80px;line-height:1;">🖨️</span>
+          <!-- Hero Image / Icon -->
+          <div class="biz-hero" id="bizHero" role="img" aria-label="Business hero image">
+            <span id="bizHeroIcon" class="biz-hero-icon-wrap" aria-hidden="true"></span>
           </div>
 
-          <!-- Header Info -->
+          <!-- Header Info — business.name is the only H1 -->
           <div class="biz-header-info">
             <div class="biz-title-row">
               <h1 id="bizName">Loading…</h1>
@@ -90,26 +112,26 @@
             <div id="bizTypeTags" class="listing-tags"></div>
           </div>
 
-          <!-- Detail Sections -->
+          <!-- Detail Sections — H3 so H1 is the only top-level heading -->
           <div class="biz-sections">
             <div class="biz-section">
-              <h2>Technologies Offered</h2>
+              <h3>Technologies Offered</h3>
               <div id="bizTech" class="tag-list"></div>
             </div>
             <div class="biz-section">
-              <h2>Materials Available</h2>
+              <h3>Materials Available</h3>
               <div id="bizMaterials" class="tag-list"></div>
             </div>
             <div class="biz-section">
-              <h2>Services</h2>
+              <h3>Services</h3>
               <div id="bizServices" class="tag-list"></div>
             </div>
             <div class="biz-section">
-              <h2>Industries Served</h2>
+              <h3>Industries Served</h3>
               <div id="bizIndustries" class="tag-list"></div>
             </div>
             <div class="biz-section" id="bizSocialSection">
-              <h2>Social Media</h2>
+              <h3>Social Media</h3>
               <div id="bizSocial" class="tag-list"></div>
             </div>
           </div>
@@ -117,23 +139,23 @@
         </main>
 
         <!-- Sidebar -->
-        <aside class="biz-sidebar">
+        <aside class="biz-sidebar" aria-label="Contact information">
           <div class="biz-contact-card">
-            <h3>Contact & Info</h3>
+            <h2 class="biz-contact-heading">Contact &amp; Info</h2>
             <div class="biz-contact-item" id="bizPhone">
-              <span class="biz-contact-icon">📞</span>
+              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
               <span>Loading…</span>
             </div>
             <div class="biz-contact-item" id="bizWebsite">
-              <span class="biz-contact-icon">🌐</span>
+              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
               <span>Loading…</span>
             </div>
             <div class="biz-contact-item" id="bizAddress">
-              <span class="biz-contact-icon">📍</span>
+              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
               <span>Loading…</span>
             </div>
             <div class="biz-contact-item" id="bizHours">
-              <span class="biz-contact-icon">🕐</span>
+              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
               <span>Loading…</span>
             </div>
             <a href="#" id="bizWebsiteBtn" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" target="_blank" rel="noopener">
@@ -151,12 +173,12 @@
   </div>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" aria-label="Site footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <span class="logo-icon">◈</span>
+          <a href="index.html" class="logo" aria-label="3DPrintMap Home">
+            <span class="logo-icon" aria-hidden="true">◈</span>
             <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
           </a>
           <p>The most comprehensive directory of 3D printing services across the United States.</p>

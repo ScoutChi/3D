@@ -868,8 +868,19 @@ ul { list-style: none; }
   color: var(--text-muted);
   margin-bottom: 24px;
 }
-.biz-breadcrumb a { color: var(--primary); }
-.biz-breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.breadcrumb-sep { color: var(--text-dim); }
+.biz-breadcrumb a { color: var(--primary); transition: opacity 0.2s; }
+.biz-breadcrumb a:hover { opacity: 0.8; text-decoration: underline; }
+.biz-breadcrumb [aria-current="page"] { color: var(--text-muted); }
 
 .biz-inner {
   display: grid;
@@ -879,13 +890,40 @@ ul { list-style: none; }
 }
 .biz-hero {
   height: 240px;
-  background: linear-gradient(135deg, #1A1A25 0%, #252535 100%);
+  background: linear-gradient(160deg, #0C0C18 0%, #14142A 50%, #0C0C18 100%);
   border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
   border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.biz-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,107,43,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.biz-hero-icon-wrap {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 107, 43, 0.12);
+  border: 1px solid rgba(255, 107, 43, 0.25);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(255, 107, 43, 0.2);
+}
+.biz-hero-icon-wrap i {
+  font-size: 34px;
+  color: var(--primary);
 }
 .biz-header-info { margin-bottom: 32px; }
 .biz-title-row {
@@ -924,13 +962,19 @@ ul { list-style: none; }
   border-radius: var(--radius);
   padding: 20px;
 }
-.biz-section h2 {
+.biz-section h3 {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   margin-bottom: 14px;
+}
+.biz-contact-heading {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
 }
 .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag-pill {
@@ -952,7 +996,7 @@ ul { list-style: none; }
   position: sticky;
   top: 80px;
 }
-.biz-contact-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+.biz-contact-card .biz-contact-heading { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
 .biz-contact-item {
   display: flex;
   align-items: flex-start;

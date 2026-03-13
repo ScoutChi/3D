@@ -26,34 +26,44 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-  // Page title
+  // ── Page Title ─────────────────────────────────────────────────
   document.title = `${business.name} — 3D Printing Service in ${business.city}, ${business.state} | 3DPrintMap`;
 
-  // SEO meta tags (set dynamically so each business page is unique)
-  const techList = business.types.join(', ');
-  const shortDesc = business.description.length > 140
-    ? business.description.slice(0, 140).replace(/\s\S*$/, '') + '…'
-    : business.description;
-  const metaDesc = `${business.name} in ${business.city}, ${business.state}. ${techList} 3D printing services. ${shortDesc}`;
+  // ── Meta Description ───────────────────────────────────────────
+  const techList  = business.types.join(', ');
+  const indList   = business.industries.slice(0, 2).join(' & ');
+  const metaDesc  = `Looking for 3D printing in ${business.city}? ${business.name} offers ${techList} printing for ${indList}. View reviews, contact info, and pricing on 3DPrintMap.`;
 
-  setMeta('name', 'description', metaDesc);
-  setMeta('property', 'og:title', `${business.name} | 3DPrintMap`);
+  setMeta('name',     'description',     metaDesc);
+  setMeta('name',     'robots',          'index, follow');
+
+  // ── Open Graph ─────────────────────────────────────────────────
+  const ogTitle = `${business.name} — 3D Printing in ${business.city}, ${business.state} | 3DPrintMap`;
+  setMeta('property', 'og:title',       ogTitle);
   setMeta('property', 'og:description', metaDesc);
-  setMeta('property', 'og:type', 'business.business');
+  setMeta('property', 'og:url',         `https://3dprintmap.com/business?id=${business.id}`);
+  setMeta('property', 'og:type',        'business.business');
   if (business.imageUrl) setMeta('property', 'og:image', business.imageUrl);
 
-  // Canonical URL
-  const canonical = document.querySelector('link[rel="canonical"]') || document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = `https://3dprintmap.com/business?id=${business.id}`;
-  document.head.appendChild(canonical);
+  // ── Twitter Card ───────────────────────────────────────────────
+  setMeta('name', 'twitter:card',        'summary_large_image');
+  setMeta('name', 'twitter:title',       ogTitle);
+  setMeta('name', 'twitter:description', metaDesc);
+  if (business.imageUrl) setMeta('name', 'twitter:image', business.imageUrl);
 
-  // Structured data (JSON-LD) — helps Google show rich results
+  // ── Canonical URL ──────────────────────────────────────────────
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+  canonical.href = `https://3dprintmap.com/business?id=${business.id}`;
+
+  // ── JSON-LD: LocalBusiness ─────────────────────────────────────
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     'name': business.name,
     'description': business.description,
+    'url': business.website || `https://3dprintmap.com/business?id=${business.id}`,
+    'telephone': business.phone ? formatPhone(business.phone) : undefined,
     'address': {
       '@type': 'PostalAddress',
       'streetAddress': business.address,
@@ -61,105 +71,136 @@ document.addEventListener('DOMContentLoaded', function () {
       'addressRegion': business.state,
       'addressCountry': 'US'
     },
-    'telephone': business.phone,
-    'url': business.website || `https://3dprintmap.com/business?id=${business.id}`,
+    'openingHours': business.hours,
+    'priceRange': business.priceRange,
+    'image': business.imageUrl || undefined,
     'aggregateRating': business.reviews > 0 ? {
       '@type': 'AggregateRating',
       'ratingValue': business.rating,
+      'bestRating': 5,
       'reviewCount': business.reviews
-    } : undefined,
-    'openingHours': business.hours,
-    'image': business.imageUrl || undefined
+    } : undefined
   };
   // Remove undefined keys
   Object.keys(jsonLd).forEach(k => jsonLd[k] === undefined && delete jsonLd[k]);
-  if (jsonLd.aggregateRating && !jsonLd.aggregateRating.reviewCount) delete jsonLd.aggregateRating;
 
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(jsonLd);
-  document.head.appendChild(script);
+  injectJsonLd(jsonLd);
 
-  // Breadcrumb
-  const bc = document.getElementById('bizBreadcrumbName');
-  if (bc) bc.textContent = business.name;
+  // ── JSON-LD: BreadcrumbList ────────────────────────────────────
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home',        'item': 'https://3dprintmap.com/' },
+      { '@type': 'ListItem', 'position': 2, 'name': business.state, 'item': `https://3dprintmap.com/directory?state=${business.state}` },
+      { '@type': 'ListItem', 'position': 3, 'name': business.city,  'item': `https://3dprintmap.com/directory?city=${encodeURIComponent(business.city)}` },
+      { '@type': 'ListItem', 'position': 4, 'name': business.name }
+    ]
+  };
+  injectJsonLd(breadcrumbLd);
 
-  // Hero — show real image if available, otherwise emoji
-  const heroEl = document.getElementById('bizHero');
-  if (heroEl && business.imageUrl) {
-    heroEl.innerHTML = `<img src="${business.imageUrl}" alt="${business.name}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">`;
-  } else {
-    const emojiEl = document.getElementById('bizEmoji');
-    if (emojiEl) emojiEl.textContent = business.emoji;
+  // ── Breadcrumb nav ─────────────────────────────────────────────
+  const bcName = document.getElementById('bizBreadcrumbName');
+  if (bcName) bcName.textContent = business.name;
+
+  const bcState = document.getElementById('bizBreadcrumbState');
+  if (bcState) {
+    bcState.textContent = business.state;
+    bcState.href = `directory.html?state=${business.state}`;
   }
 
-  // Name
+  const bcCity = document.getElementById('bizBreadcrumbCity');
+  if (bcCity) {
+    bcCity.textContent = business.city;
+    bcCity.href = `directory.html?city=${encodeURIComponent(business.city)}`;
+  }
+
+  // ── Hero — FA icon if no real photo ───────────────────────────
+  const heroEl = document.getElementById('bizHero');
+  if (heroEl) {
+    heroEl.setAttribute('aria-label', `${business.name} — ${business.types[0]} 3D printing service in ${business.city}`);
+  }
+  if (business.imageUrl) {
+    const heroIcon = document.getElementById('bizHeroIcon');
+    if (heroIcon) heroIcon.outerHTML = `<img src="${business.imageUrl}" alt="${business.name} — 3D printing service in ${business.city}, ${business.state}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);" onerror="this.style.display='none'">`;
+  } else {
+    const heroIcon = document.getElementById('bizHeroIcon');
+    if (heroIcon) {
+      heroIcon.innerHTML = getTypeIcon(business.types[0]);
+      heroIcon.setAttribute('aria-label', `${business.types[0]} 3D printing icon`);
+    }
+  }
+
+  // ── Business Name (H1) ─────────────────────────────────────────
   const nameEl = document.getElementById('bizName');
   if (nameEl) nameEl.textContent = business.name;
 
-  // Status badge
+  // ── Status badge ───────────────────────────────────────────────
   const statusEl = document.getElementById('bizStatus');
   if (statusEl) {
     statusEl.textContent = business.isOpen ? 'Now Open' : 'Now Closed';
     statusEl.className = 'listing-badge ' + (business.isOpen ? 'badge-open' : 'badge-closed');
   }
 
-  // Meta info
-  setText('bizCity', `📍 ${business.city}, ${business.state}`);
+  // ── Meta row ───────────────────────────────────────────────────
+  setText('bizCity',   `📍 ${business.city}, ${business.state}`);
   setText('bizRating', `⭐ ${business.rating} (${business.reviews} reviews)`);
-  setText('bizPrice', `${business.priceRange}`);
+  setText('bizPrice',  `${business.priceRange}`);
 
-  // Description
+  // ── Description ────────────────────────────────────────────────
   setText('bizDesc', business.description);
 
-  // Type tags on header
+  // ── Tech tags on header ────────────────────────────────────────
   setHTML('bizTypeTags', business.types.map(t => `<span class="tag">${t}</span>`).join(''));
 
-  // Detail sections
-  setHTML('bizTech', business.types.map(t => `<span class="tag-pill">${t}</span>`).join(''));
-  setHTML('bizMaterials', business.materials.map(m => `<span class="tag-pill">${m}</span>`).join(''));
-  setHTML('bizServices', business.services.map(s => `<span class="tag-pill">${s}</span>`).join(''));
+  // ── Detail sections ────────────────────────────────────────────
+  setHTML('bizTech',       business.types.map(t =>      `<span class="tag-pill">${t}</span>`).join(''));
+  setHTML('bizMaterials',  business.materials.map(m =>  `<span class="tag-pill">${m}</span>`).join(''));
+  setHTML('bizServices',   business.services.map(s =>   `<span class="tag-pill">${s}</span>`).join(''));
   setHTML('bizIndustries', business.industries.map(i => `<span class="tag-pill">${i}</span>`).join(''));
 
-  // Contact info
+  // ── Contact: Phone ─────────────────────────────────────────────
   const phoneEl = document.getElementById('bizPhone');
   if (phoneEl) {
     const formatted = formatPhone(business.phone);
     if (formatted) {
-      phoneEl.innerHTML = `<span class="biz-contact-icon">📞</span><a href="tel:${business.phone}">${formatted}</a>`;
+      phoneEl.innerHTML = `<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span><a href="tel:${business.phone}">${formatted}</a>`;
     } else {
       phoneEl.style.display = 'none';
     }
   }
 
+  // ── Contact: Website ───────────────────────────────────────────
   const webEl = document.getElementById('bizWebsite');
   if (webEl) {
     if (business.website) {
       const display = business.website.replace(/^https?:\/\//, '').replace(/\/$/, '');
-      webEl.innerHTML = `<span class="biz-contact-icon">🌐</span><a href="${business.website}" target="_blank" rel="noopener">${display}</a>`;
+      webEl.innerHTML = `<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></span><a href="${business.website}" target="_blank" rel="noopener">${display}</a>`;
     } else {
       webEl.style.display = 'none';
     }
   }
 
+  // ── Contact: Address ───────────────────────────────────────────
   const addrEl = document.getElementById('bizAddress');
-  if (addrEl) addrEl.innerHTML = `<span class="biz-contact-icon">📍</span><span>${business.address}</span>`;
+  if (addrEl) addrEl.innerHTML = `<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><span>${business.address}</span>`;
 
+  // ── Contact: Hours ─────────────────────────────────────────────
   const hoursEl = document.getElementById('bizHours');
-  if (hoursEl) hoursEl.innerHTML = `<span class="biz-contact-icon">🕐</span><span>${business.hours}</span>`;
+  if (hoursEl) hoursEl.innerHTML = `<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span><span>${business.hours}</span>`;
 
-  // Social links
+  // ── Social links ───────────────────────────────────────────────
   const socialEl = document.getElementById('bizSocial');
   if (socialEl) {
     const links = [];
-    if (business.facebook)  links.push(`<a href="${business.facebook}" target="_blank" rel="noopener" class="social-btn">Facebook</a>`);
-    if (business.instagram) links.push(`<a href="${business.instagram}" target="_blank" rel="noopener" class="social-btn">Instagram</a>`);
-    if (business.twitter)   links.push(`<a href="${business.twitter}" target="_blank" rel="noopener" class="social-btn">Twitter / X</a>`);
+    if (business.facebook)  links.push(`<a href="${business.facebook}"  target="_blank" rel="noopener" class="social-btn"><i class="fa-brands fa-facebook" aria-label="Facebook"></i> Facebook</a>`);
+    if (business.instagram) links.push(`<a href="${business.instagram}" target="_blank" rel="noopener" class="social-btn"><i class="fa-brands fa-instagram" aria-label="Instagram"></i> Instagram</a>`);
+    if (business.twitter)   links.push(`<a href="${business.twitter}"   target="_blank" rel="noopener" class="social-btn"><i class="fa-brands fa-x-twitter" aria-label="X / Twitter"></i> Twitter / X</a>`);
     socialEl.innerHTML = links.length ? links.join('') : '';
     if (!links.length) socialEl.closest('.biz-section').style.display = 'none';
   }
 
-  // Website button
+  // ── Website button ─────────────────────────────────────────────
   const wsBtn = document.getElementById('bizWebsiteBtn');
   if (wsBtn) {
     if (business.website) {
@@ -172,16 +213,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// ── Utility helpers ────────────────────────────────────────────
 function formatPhone(raw) {
   if (!raw) return '';
-  // Remove trailing .0 (CSV stores numbers as floats) then strip non-digits
   const digits = String(raw).replace(/\.0+$/, '').replace(/\D/g, '');
-  // Strip leading country code 1 if 11 digits
   const local = digits.length === 11 && digits[0] === '1' ? digits.slice(1) : digits;
   if (local.length === 10) {
     return `(${local.slice(0, 3)}) ${local.slice(3, 6)}-${local.slice(6)}`;
   }
-  return digits.length ? digits : ''; // return raw digits or empty
+  return digits.length ? digits : '';
 }
 
 function setText(id, text) {
@@ -196,4 +236,10 @@ function setMeta(attr, name, content) {
   let el = document.querySelector(`meta[${attr}="${name}"]`);
   if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
   el.setAttribute('content', content);
+}
+function injectJsonLd(obj) {
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(obj);
+  document.head.appendChild(script);
 }
