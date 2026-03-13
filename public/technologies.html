@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Printing Technologies Guide — FDM, SLA, SLS, Metal | 3DPrintMap</title>
+  <meta name="description" content="Learn the difference between FDM, SLA, SLS, Metal, and Multicolor 3D printing. Find the right technology for your project and locate local services on 3DPrintMap.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="3D Printing Technologies Guide | 3DPrintMap">
+  <meta property="og:description" content="FDM vs SLA vs SLS vs Metal — learn which 3D printing technology is right for your project and find local services.">
+  <meta property="og:url" content="https://3dprintmap.com/technologies">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://3dprintmap.com/technologies">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "3D Printing Technologies Guide — FDM, SLA, SLS, Metal, Multicolor",
+    "description": "A comprehensive guide to 3D printing technologies including FDM, SLA, SLS, Metal, Multicolor, and Design Services.",
+    "publisher": { "@type": "Organization", "name": "3DPrintMap", "url": "https://3dprintmap.com" },
+    "url": "https://3dprintmap.com/technologies"
+  }
+  </script>
+</head>
+<body>
+
+  <div class="top-bar">
+    Are you a 3D printing service? <a href="index.html#add-business">Add Your Business FREE →</a>
+  </div>
+
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="logo" aria-label="3DPrintMap Home">
+        <span class="logo-icon" aria-hidden="true">◈</span>
+        <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
+      </a>
+      <div class="nav-links">
+        <a href="directory.html">Browse All</a>
+        <div class="nav-dropdown">
+          <button class="nav-btn" aria-haspopup="true">Browse ▾</button>
+          <div class="dropdown-menu">
+            <a href="directory.html?type=fdm">FDM Printing</a>
+            <a href="directory.html?type=sla">SLA / Resin</a>
+            <a href="directory.html?type=sls">SLS / Nylon</a>
+            <a href="directory.html?type=metal">Metal Printing</a>
+          </div>
+        </div>
+        <a href="technologies.html" class="active">Technologies</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a href="index.html#add-business" class="btn btn-primary">+ Add Business (FREE)</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="directory.html">Browse All Services</a>
+    <a href="technologies.html">Technology Guide</a>
+    <a href="faq.html">FAQ</a>
+    <a href="index.html#add-business" style="color:var(--primary);font-weight:700;">+ Add Your Business (FREE)</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <span class="page-hero-label"><i class="fa-solid fa-microchip" aria-hidden="true"></i> Technology Guide</span>
+        <h1>3D Printing Technologies Explained</h1>
+        <p>Not sure which 3D printing process is right for your project? This guide breaks down every major technology — what it is, when to use it, and where to find a local service.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Comparison -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <h2>Quick Comparison</h2>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <span class="compare-icon"><i class="fa-solid fa-print" aria-hidden="true"></i></span>
+          <strong>FDM</strong>
+          <span>Most affordable</span>
+        </div>
+        <div class="compare-card">
+          <span class="compare-icon"><i class="fa-solid fa-gem" aria-hidden="true"></i></span>
+          <strong>SLA</strong>
+          <span>Highest detail</span>
+        </div>
+        <div class="compare-card">
+          <span class="compare-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
+          <strong>SLS</strong>
+          <span>Best strength</span>
+        </div>
+        <div class="compare-card">
+          <span class="compare-icon"><i class="fa-solid fa-gear" aria-hidden="true"></i></span>
+          <strong>Metal</strong>
+          <span>Industrial grade</span>
+        </div>
+        <div class="compare-card">
+          <span class="compare-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
+          <strong>Multicolor</strong>
+          <span>Full color prints</span>
+        </div>
+        <div class="compare-card">
+          <span class="compare-icon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i></span>
+          <strong>Design</strong>
+          <span>CAD &amp; modeling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Deep Dives -->
+  <section class="section">
+    <div class="container">
+
+      <!-- FDM -->
+      <div class="tech-guide-card" id="fdm">
+        <div class="tech-guide-header">
+          <div class="tech-guide-icon fdm-icon">
+            <i class="fa-solid fa-print" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>FDM — Fused Deposition Modeling</h2>
+            <p class="tech-guide-subtitle">The most widely available and cost-effective 3D printing technology</p>
+          </div>
+        </div>
+        <div class="tech-guide-body">
+          <div class="tech-guide-desc">
+            <p>FDM printing works by melting a plastic filament and depositing it layer by layer to build up a 3D object. It is the most common form of 3D printing and is found in everything from desktop hobbyist printers to large industrial machines. Because of its low material cost and wide availability, FDM is the go-to choice for rapid prototyping, functional parts, and large-volume prints.</p>
+            <p>FDM parts have visible layer lines and are typically less detailed than SLA or SLS prints, but post-processing like sanding and painting can produce smooth, professional results. Common materials include PLA, ABS, PETG, TPU, and carbon fiber composites.</p>
+          </div>
+          <div class="tech-guide-meta">
+            <div class="tech-meta-block">
+              <h3>Best For</h3>
+              <ul>
+                <li>Rapid prototypes and concept models</li>
+                <li>Functional mechanical parts</li>
+                <li>Large-format prints</li>
+                <li>Budget-conscious projects</li>
+                <li>Educational and hobbyist use</li>
+              </ul>
+            </div>
+            <div class="tech-meta-block">
+              <h3>Common Materials</h3>
+              <div class="tag-list">
+                <span class="tag-pill">PLA</span>
+                <span class="tag-pill">ABS</span>
+                <span class="tag-pill">PETG</span>
+                <span class="tag-pill">TPU</span>
+                <span class="tag-pill">Carbon Fiber</span>
+                <span class="tag-pill">Nylon</span>
+              </div>
+            </div>
+            <a href="directory.html?type=fdm" class="btn btn-primary" style="margin-top:16px;">Find FDM Services →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLA -->
+      <div class="tech-guide-card" id="sla">
+        <div class="tech-guide-header">
+          <div class="tech-guide-icon sla-icon">
+            <i class="fa-solid fa-gem" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>SLA / Resin — Stereolithography</h2>
+            <p class="tech-guide-subtitle">Ultra-high detail and smooth surfaces for precision applications</p>
+          </div>
+        </div>
+        <div class="tech-guide-body">
+          <div class="tech-guide-desc">
+            <p>SLA (Stereolithography) uses a UV laser or LCD screen to cure liquid resin layer by layer, producing parts with exceptional surface quality and fine detail that FDM cannot match. The resulting prints have smooth surfaces straight off the printer, making them ideal for applications where aesthetics and precision are critical.</p>
+            <p>SLA is the preferred technology for jewelry prototyping, dental models, figurines, medical devices, and any application requiring extremely tight tolerances. Parts typically require post-processing in isopropyl alcohol and UV curing. Variants include MSLA and DLP, which use an LCD screen or digital light projector instead of a laser for faster print speeds.</p>
+          </div>
+          <div class="tech-guide-meta">
+            <div class="tech-meta-block">
+              <h3>Best For</h3>
+              <ul>
+                <li>Jewelry and wax casting patterns</li>
+                <li>Dental and medical models</li>
+                <li>Miniatures and figurines</li>
+                <li>High-detail prototypes</li>
+                <li>Consumer product design</li>
+              </ul>
+            </div>
+            <div class="tech-meta-block">
+              <h3>Common Materials</h3>
+              <div class="tag-list">
+                <span class="tag-pill">Standard Resin</span>
+                <span class="tag-pill">Tough Resin</span>
+                <span class="tag-pill">Flexible Resin</span>
+                <span class="tag-pill">Castable Resin</span>
+                <span class="tag-pill">Dental Resin</span>
+              </div>
+            </div>
+            <a href="directory.html?type=sla" class="btn btn-primary" style="margin-top:16px;">Find SLA Services →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLS -->
+      <div class="tech-guide-card" id="sls">
+        <div class="tech-guide-header">
+          <div class="tech-guide-icon sls-icon">
+            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>SLS — Selective Laser Sintering</h2>
+            <p class="tech-guide-subtitle">Strong, functional engineering parts without support structures</p>
+          </div>
+        </div>
+        <div class="tech-guide-body">
+          <div class="tech-guide-desc">
+            <p>SLS uses a high-powered laser to fuse powdered nylon or other thermoplastics together, layer by layer, inside a temperature-controlled build chamber. Unlike FDM and SLA, SLS does not require support structures because the surrounding powder supports the part during printing — this means complex geometries, internal channels, and interlocking assemblies are all possible in a single print.</p>
+            <p>SLS produces parts with excellent mechanical properties, isotropic strength, and good chemical resistance, making it the top choice for functional engineering components, end-use parts, and low-volume production runs. The surface finish is slightly grainy compared to SLA but far stronger and more flexible than resin parts.</p>
+          </div>
+          <div class="tech-guide-meta">
+            <div class="tech-meta-block">
+              <h3>Best For</h3>
+              <ul>
+                <li>Functional engineering parts</li>
+                <li>Complex internal geometries</li>
+                <li>Low-volume production runs</li>
+                <li>Snap-fit and living hinge assemblies</li>
+                <li>Aerospace and automotive components</li>
+              </ul>
+            </div>
+            <div class="tech-meta-block">
+              <h3>Common Materials</h3>
+              <div class="tag-list">
+                <span class="tag-pill">Nylon PA12</span>
+                <span class="tag-pill">Nylon PA11</span>
+                <span class="tag-pill">Glass-filled Nylon</span>
+                <span class="tag-pill">TPU</span>
+              </div>
+            </div>
+            <a href="directory.html?type=sls" class="btn btn-primary" style="margin-top:16px;">Find SLS Services →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metal -->
+      <div class="tech-guide-card" id="metal">
+        <div class="tech-guide-header">
+          <div class="tech-guide-icon metal-icon">
+            <i class="fa-solid fa-gear" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>Metal Printing — DMLS / SLM</h2>
+            <p class="tech-guide-subtitle">Industrial-strength metal parts for aerospace, medical, and engineering</p>
+          </div>
+        </div>
+        <div class="tech-guide-body">
+          <div class="tech-guide-desc">
+            <p>Metal 3D printing uses a high-powered laser to selectively fuse metal powder (DMLS — Direct Metal Laser Sintering) or fully melt it (SLM — Selective Laser Melting) layer by layer inside an inert gas atmosphere. The result is a fully dense metal part with mechanical properties comparable or superior to traditionally machined components.</p>
+            <p>Metal printing is primarily used in aerospace, medical implants, high-performance automotive, and oil &amp; gas industries where complex geometries that are impossible to machine are required. Parts can be printed in stainless steel, titanium, aluminum, Inconel, and cobalt-chrome. The process is significantly more expensive than polymer 3D printing and requires specialized post-processing including heat treatment and support removal.</p>
+          </div>
+          <div class="tech-guide-meta">
+            <div class="tech-meta-block">
+              <h3>Best For</h3>
+              <ul>
+                <li>Aerospace structural components</li>
+                <li>Medical implants and surgical tools</li>
+                <li>High-performance automotive parts</li>
+                <li>Turbine blades and heat exchangers</li>
+                <li>Complex tooling and fixtures</li>
+              </ul>
+            </div>
+            <div class="tech-meta-block">
+              <h3>Common Materials</h3>
+              <div class="tag-list">
+                <span class="tag-pill">Stainless Steel</span>
+                <span class="tag-pill">Titanium</span>
+                <span class="tag-pill">Aluminum</span>
+                <span class="tag-pill">Inconel</span>
+                <span class="tag-pill">Cobalt Chrome</span>
+              </div>
+            </div>
+            <a href="directory.html?type=metal" class="btn btn-primary" style="margin-top:16px;">Find Metal Printing Services →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multicolor -->
+      <div class="tech-guide-card" id="multicolor">
+        <div class="tech-guide-header">
+          <div class="tech-guide-icon multi-icon">
+            <i class="fa-solid fa-palette" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>Multicolor &amp; Full-Color Printing</h2>
+            <p class="tech-guide-subtitle">Vibrant, full-color prints for display models, marketing, and education</p>
+          </div>
+        </div>
+        <div class="tech-guide-body">
+          <div class="tech-guide-desc">
+            <p>Multicolor 3D printing covers several technologies — including PolyJet, binder jetting, and multi-filament FDM — that produce parts in multiple colors or full CMYK color directly from the printer. This eliminates the need for painting and is ideal for display models, product visualizations, architectural models, and educational anatomical replicas.</p>
+            <p>PolyJet technology (from Stratasys) jets photopolymer resins of different colors simultaneously to produce smooth, full-color parts with rubber-like or rigid material properties in a single print. Binder jetting systems (like those from 3D Systems) apply colored binder to a powder bed and can produce millions of colors but yield more fragile parts. Multi-material FDM machines like the Bambu Lab X1 or Prusa MMU produce colorful parts with distinct color zones.</p>
+          </div>
+          <div class="tech-guide-meta">
+            <div class="tech-meta-block">
+              <h3>Best For</h3>
+              <ul>
+                <li>Product visualization models</li>
+                <li>Architectural scale models</li>
+                <li>Medical and anatomical models</li>
+                <li>Marketing and display pieces</li>
+                <li>Figurines and collectibles</li>
+              </ul>
+            </div>
+            <div class="tech-meta-block">
+              <h3>Common Technologies</h3>
+              <div class="tag-list">
+                <span class="tag-pill">PolyJet</span>
+                <span class="tag-pill">Binder Jetting</span>
+                <span class="tag-pill">Multi-FDM</span>
+                <span class="tag-pill">ColorJet</span>
+              </div>
+            </div>
+            <a href="directory.html?type=multicolor" class="btn btn-primary" style="margin-top:16px;">Find Multicolor Services →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design Services -->
+      <div class="tech-guide-card" id="design">
+        <div class="tech-guide-header">
+          <div class="tech-guide-icon design-icon">
+            <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2>3D Design &amp; CAD Services</h2>
+            <p class="tech-guide-subtitle">Don't have a 3D file? A designer can build it for you</p>
+          </div>
+        </div>
+        <div class="tech-guide-body">
+          <div class="tech-guide-desc">
+            <p>3D printing requires a digital 3D model (usually in STL, OBJ, or STEP format) before anything can be printed. If you have an idea but no 3D file, many 3D printing services on 3DPrintMap offer in-house CAD and 3D modeling services. A designer can take your sketch, photo, or verbal description and produce a print-ready 3D model.</p>
+            <p>Design services range from simple part modeling and reverse engineering to full product design for manufacturing. Some services specialize in specific industries like jewelry, medical devices, or consumer products. Prices vary widely depending on complexity — simple parts may take a few hours while complex assemblies can take days.</p>
+          </div>
+          <div class="tech-guide-meta">
+            <div class="tech-meta-block">
+              <h3>Best For</h3>
+              <ul>
+                <li>Turning sketches or ideas into 3D files</li>
+                <li>Reverse engineering existing parts</li>
+                <li>Optimizing designs for printability</li>
+                <li>Product design for manufacturing</li>
+                <li>Custom parts with no existing file</li>
+              </ul>
+            </div>
+            <div class="tech-meta-block">
+              <h3>Common Tools Used</h3>
+              <div class="tag-list">
+                <span class="tag-pill">SolidWorks</span>
+                <span class="tag-pill">Fusion 360</span>
+                <span class="tag-pill">Rhino</span>
+                <span class="tag-pill">Blender</span>
+                <span class="tag-pill">AutoCAD</span>
+              </div>
+            </div>
+            <a href="directory.html?service=design" class="btn btn-primary" style="margin-top:16px;">Find Design Services →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-content">
+          <h2>Ready to find a 3D printing service?</h2>
+          <p>Browse 300+ verified 3D printing services across the US. Filter by technology, material, city, or price range.</p>
+          <a href="directory.html" class="btn btn-primary btn-lg">Browse the Directory →</a>
+        </div>
+        <div class="cta-divider"></div>
+        <div class="cta-stats">
+          <div class="cta-stat"><strong>300+</strong><span>Services Listed</span></div>
+          <div class="cta-stat"><strong>5</strong><span>Technologies</span></div>
+          <div class="cta-stat"><strong>Free</strong><span>To Search</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" aria-label="3DPrintMap Home">
+            <span class="logo-icon" aria-hidden="true">◈</span>
+            <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
+          </a>
+          <p>The most comprehensive directory of 3D printing services across the United States.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Browse</h4>
+          <a href="directory.html">All Services</a>
+          <a href="directory.html?type=fdm">FDM Printing</a>
+          <a href="directory.html?type=sla">SLA / Resin</a>
+          <a href="directory.html?type=metal">Metal Printing</a>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <a href="technologies.html">Technology Guide</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <a href="index.html#add-business">Add Your Business</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 3DPrintMap. All rights reserved.</span>
+        <span>Built for the maker community.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
