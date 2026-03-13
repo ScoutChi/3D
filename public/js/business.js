@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── JSON-LD: LocalBusiness ─────────────────────────────────────
   const DEFAULT_IMAGE = 'https://3dprintmap.com/og-image.svg';
   const sameAs = [business.facebook, business.instagram, business.twitter].filter(Boolean);
+  const mapsQuery = encodeURIComponent(`${business.name} ${business.address} ${business.city} ${business.state}`);
+  const hasMap = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -88,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'width': 1200,
       'height': 630
     },
+    'hasMap': hasMap,
     'sameAs': sameAs.length ? sameAs : undefined,
     'aggregateRating': business.reviews > 0 ? {
       '@type': 'AggregateRating',
@@ -101,6 +104,21 @@ document.addEventListener('DOMContentLoaded', function () {
   Object.keys(jsonLd).forEach(k => jsonLd[k] === undefined && delete jsonLd[k]);
 
   injectJsonLd(jsonLd);
+
+  // ── JSON-LD: Organization (site-level, satisfies logo warning) ─
+  injectJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    'name': '3DPrintMap',
+    'url': 'https://3dprintmap.com',
+    'logo': {
+      '@type': 'ImageObject',
+      'url': DEFAULT_IMAGE,
+      'width': 1200,
+      'height': 630
+    },
+    'sameAs': ['https://3dprintmap.com']
+  });
 
   // ── JSON-LD: BreadcrumbList ────────────────────────────────────
   const breadcrumbLd = {
