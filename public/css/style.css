@@ -433,7 +433,7 @@ ul { list-style: none; }
 }
 .listing-img {
   height: 165px;
-  background: linear-gradient(135deg, #161622 0%, #1E1E30 50%, #161622 100%);
+  background: linear-gradient(160deg, #0C0C18 0%, #14142A 50%, #0C0C18 100%);
   position: relative;
   display: flex;
   align-items: center;
@@ -441,13 +441,30 @@ ul { list-style: none; }
   font-size: 56px;
   overflow: hidden;
 }
+/* Dot grid pattern — visible on fallback, hidden under real photos */
+.listing-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,107,43,0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: 0;
+}
+.listing-img img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
 .listing-img::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.45) 100%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 .listing-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 .img-fallback { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
@@ -461,8 +478,37 @@ ul { list-style: none; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  z-index: 2;
+  z-index: 3;
   backdrop-filter: blur(4px);
+}
+
+/* Emoji fallback styling */
+.img-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+.fallback-emoji {
+  font-size: 46px;
+  line-height: 1;
+  filter: drop-shadow(0 0 18px rgba(255, 107, 43, 0.55));
+}
+.fallback-type {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 107, 43, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: rgba(255, 107, 43, 0.1);
+  border: 1px solid rgba(255, 107, 43, 0.2);
+  padding: 3px 10px;
+  border-radius: 100px;
 }
 .badge-open { background: rgba(34,197,94,0.2); color: var(--success); border: 1px solid rgba(34,197,94,0.3); }
 .badge-closed { background: rgba(239,68,68,0.2); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
