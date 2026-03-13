@@ -67,19 +67,19 @@ ${urls.map(u => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
-fs.mkdirSync('./public', { recursive: true });
-fs.writeFileSync('./public/sitemap.xml', sitemap, 'utf-8');
+fs.mkdirSync('./public/sitemaps', { recursive: true });
+fs.writeFileSync('./public/sitemaps/sitemap.xml', sitemap, 'utf-8');
 
 // ── Generate robots.txt ────────────────────────────────────────
 const robots = `User-agent: *
 Allow: /
 
-Sitemap: ${BASE_URL}/sitemap.xml
+Sitemap: ${BASE_URL}/sitemaps/sitemap.xml
 `;
 
 fs.writeFileSync('./public/robots.txt', robots, 'utf-8');
 
-console.log(`✅ public/sitemap.xml generated with ${urls.length} URLs`);
+console.log(`✅ public/sitemaps/sitemap.xml generated with ${urls.length} URLs`);
 console.log(`   - ${businesses.length} business pages`);
 console.log(`   - ${cities.length} city pages`);
 console.log(`✅ robots.txt generated`);
