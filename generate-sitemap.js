@@ -30,6 +30,8 @@ const urls = [
   { loc: `${BASE_URL}/directory`,     priority: '0.9', changefreq: 'daily' },
   { loc: `${BASE_URL}/technologies`,  priority: '0.8', changefreq: 'monthly' },
   { loc: `${BASE_URL}/faq`,           priority: '0.7', changefreq: 'monthly' },
+  { loc: `${BASE_URL}/privacy`,       priority: '0.4', changefreq: 'yearly' },
+  { loc: `${BASE_URL}/terms`,         priority: '0.4', changefreq: 'yearly' },
 
   // Technology filter pages (high-value keyword pages)
   { loc: `${BASE_URL}/directory?type=fdm`,        priority: '0.8', changefreq: 'weekly' },
