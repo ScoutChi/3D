@@ -212,7 +212,10 @@ function createListingCard(business) {
   return \`
     <div class="listing-card" onclick="window.location='business.html?id=\${business.id}'">
       <div class="listing-img">
-        <span>\${business.emoji}</span>
+        \${business.imageUrl
+          ? \`<img src="\${business.imageUrl}" alt="\${business.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.img-fallback').style.display='flex'">\`
+          : ''}
+        <span class="img-fallback" style="\${business.imageUrl ? 'display:none' : 'display:flex'}">\${business.emoji}</span>
         <span class="listing-badge \${statusClass}">\${statusText}</span>
       </div>
       <div class="listing-body">
