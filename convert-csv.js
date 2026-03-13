@@ -61,7 +61,9 @@ for (let i = 1; i < lines.length; i++) {
   const facebook   = row['facebook'] || '';
   const instagram  = row['instagram'] || '';
   const twitter    = row['twitter'] || '';
-  const imageUrl   = row['main_image_url'] || row['image_url'] || row['photo'] || '';
+  const rawImageUrl = row['main_image_url'] || row['image_url'] || row['photo'] || '';
+  // Strip broken/truncated Google Street View URLs (missing panoid value)
+  const imageUrl = rawImageUrl.includes('streetviewpixels') ? '' : rawImageUrl;
   const lat        = row['latitude'] || row['lat'] || '';
   const lng        = row['longitude'] || row['lng'] || row['lon'] || '';
 
