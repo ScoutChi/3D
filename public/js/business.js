@@ -26,8 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  // ── Noindex thin pages (missing name or address) ──────────────
+  if (!business.name || !business.address || business.address === business.city) {
+    setMeta('name', 'robots', 'noindex, nofollow');
+  }
+
   // ── Page Title ─────────────────────────────────────────────────
-  document.title = `${business.name} — 3D Printing Service in ${business.city}, ${business.state} | 3DPrintMap`;
+  document.title = `${business.name} — 3D Printing in ${business.city}, ${business.state} | 3DPrintMap`;
 
   // ── Meta Description ───────────────────────────────────────────
   const techList  = business.types.join(', ');
