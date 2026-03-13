@@ -11,7 +11,7 @@ const BASE_URL = 'https://3dprintmap.com';
 const today = new Date().toISOString().split('T')[0];
 
 // Parse BUSINESSES from js/data.js
-const dataJs = fs.readFileSync('./js/data.js', 'utf-8');
+const dataJs = fs.readFileSync('./public/js/data.js', 'utf-8');
 const bizMatch = dataJs.match(/const BUSINESSES = (\[[\s\S]*?\n\]);/);
 const cityMatch = dataJs.match(/const CITIES = (\[[\s\S]*?\n\]);/);
 
@@ -26,8 +26,10 @@ const cities = cityMatch ? JSON.parse(cityMatch[1]) : [];
 // ── Build URL list ─────────────────────────────────────────────
 const urls = [
   // Core pages
-  { loc: `${BASE_URL}/`,          priority: '1.0', changefreq: 'daily' },
-  { loc: `${BASE_URL}/directory`, priority: '0.9', changefreq: 'daily' },
+  { loc: `${BASE_URL}/`,              priority: '1.0', changefreq: 'daily' },
+  { loc: `${BASE_URL}/directory`,     priority: '0.9', changefreq: 'daily' },
+  { loc: `${BASE_URL}/technologies`,  priority: '0.8', changefreq: 'monthly' },
+  { loc: `${BASE_URL}/faq`,           priority: '0.7', changefreq: 'monthly' },
 
   // Technology filter pages (high-value keyword pages)
   { loc: `${BASE_URL}/directory?type=fdm`,        priority: '0.8', changefreq: 'weekly' },
