@@ -34,6 +34,8 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--navy); background: var(--bg); line-height: 1.6; }
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
+a[href^="mailto:"]:not(.btn) { color: var(--orange); }
+a[href^="mailto:"]:not(.btn):hover { text-decoration: underline; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 input, select, textarea { font-family: inherit; }
@@ -455,7 +457,10 @@ p  { color: var(--slate); line-height: 1.75; }
 .legal-card p:last-child { margin-bottom: 0; }
 .legal-card ul { margin: .5rem 0 .75rem 1.25rem; list-style: disc; }
 .legal-card ul li { font-size: 14.5px; color: var(--slate); margin-bottom: .35rem; line-height: 1.7; }
-.legal-card a { color: var(--orange); }
+.legal-card a:not(.btn) { color: var(--orange); }
+.legal-card a:not(.btn):hover { text-decoration: underline; }
+.legal-card .btn-primary { color: var(--white); }
+.legal-card .btn-primary:hover { color: var(--white); }
 
 /* ── Page Hero (for technologies, faq, privacy, terms) ───── */
 .page-hero {
