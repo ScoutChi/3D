@@ -849,8 +849,10 @@ p  { color: var(--slate); line-height: 1.75; }
 .article p { font-size: 15.5px; color: var(--slate); line-height: 1.85; margin-bottom: 1rem; }
 .article ul, .article ol { margin: .75rem 0 1rem 1.5rem; }
 .article li { font-size: 15.5px; color: var(--slate); line-height: 1.8; margin-bottom: .35rem; }
-.article a { color: var(--orange); font-weight: 600; }
-.article a:hover { text-decoration: underline; }
+.article a:not(.btn) { color: var(--orange); font-weight: 600; }
+.article a:not(.btn):hover { text-decoration: underline; }
+.article .btn-primary { color: var(--white); font-weight: 600; padding: 12px 24px; }
+.article .btn-primary:hover { background: var(--orange-dk); border-color: var(--orange-dk); color: var(--white); }
 
 /* Comparison table */
 .cmp-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 14px; }
@@ -966,7 +968,7 @@ p  { color: var(--slate); line-height: 1.75; }
 }
 .tech-main h2:first-child { margin-top: 0; }
 .tech-main p { font-size: 15px; line-height: 1.8; color: var(--slate); margin-bottom: .85rem; }
-.tech-main a { color: var(--orange); font-weight: 600; }
+.tech-main a:not(.btn) { color: var(--orange); font-weight: 600; }
 .tech-main ul { list-style: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
 .tech-main ul li { font-size: 15px; color: var(--slate); margin-bottom: .3rem; line-height: 1.75; }
 
