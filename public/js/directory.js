@@ -106,6 +106,7 @@ function applyFilters() {
   }
 
   currentPage = 1;
+  renderChips({ query, city, selectedTypes, selectedServices, selectedMaterials, selectedPrices, openOnly });
   renderResults();
 }
 
@@ -124,11 +125,18 @@ function renderResults() {
 
   if (pageResults.length === 0) {
     container.innerHTML = `
-      <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
-        <div style="font-size:48px;margin-bottom:16px;">🔍</div>
-        <h3 style="margin-bottom:8px;">No services found</h3>
-        <p style="color:var(--text-muted);">Try different keywords or clear your filters.</p>
-        <button class="btn btn-primary" style="margin-top:16px;" onclick="clearFilters()">Clear All Filters</button>
+      <div class="empty-state">
+        <h3>No services found</h3>
+        <p>No 3D printing services match your current filters. Try broadening your search.</p>
+        <ul class="empty-suggestions">
+          <li>Remove one or more filters</li>
+          <li>Try a different city or state</li>
+          <li>Search by technology type instead</li>
+        </ul>
+        <div class="empty-actions">
+          <button class="btn btn-primary" onclick="clearFilters()">Clear All Filters</button>
+          <a href="/add-listing.html" class="btn btn-outline">Add Your Business →</a>
+        </div>
       </div>`;
   } else {
     container.innerHTML = pageResults.map(b => createListingCard(b)).join('');
@@ -152,6 +160,34 @@ function renderResults() {
       pagination.innerHTML = '';
     }
   }
+}
+
+const TYPE_LABELS    = { fdm:'FDM Printing', sla:'SLA / Resin', sls:'SLS / Nylon', metal:'Metal Printing', multicolor:'Multicolor' };
+const SERVICE_LABELS = { prototyping:'Rapid Prototyping', production:'Production Runs', design:'Design Services', finishing:'Post-Processing', assembly:'Assembly' };
+const MATERIAL_LABELS= { pla:'PLA', abs:'ABS', petg:'PETG', resin:'Resin', nylon:'Nylon', metal:'Metal', tpu:'TPU / Flexible', carbon:'Carbon Fiber' };
+const PRICE_LABELS   = { '$':'$ Budget', '$$':'$$ Mid-range', '$$$':'$$$ Premium' };
+
+function renderChips({ query, city, selectedTypes, selectedServices, selectedMaterials, selectedPrices, openOnly }) {
+  const container = document.getElementById('activeChips');
+  if (!container) return;
+  const chips = [];
+
+  if (query) chips.push({ label: `"${query}"`, action: `document.getElementById('dirSearchQuery').value='';applyFilters();` });
+  if (city)  chips.push({ label: city,          action: `document.getElementById('dirSearchCity').value='';applyFilters();` });
+  selectedTypes.forEach(v    => chips.push({ label: TYPE_LABELS[v]    || v, action: `removeCheck('type','${v}')` }));
+  selectedServices.forEach(v => chips.push({ label: SERVICE_LABELS[v] || v, action: `removeCheck('service','${v}')` }));
+  selectedMaterials.forEach(v=> chips.push({ label: MATERIAL_LABELS[v]|| v, action: `removeCheck('material','${v}')` }));
+  selectedPrices.forEach(v   => chips.push({ label: PRICE_LABELS[v]   || v, action: `removeCheck('price','${v}')` }));
+  if (openOnly) chips.push({ label: 'Open Now', action: `removeCheck('status','open')` });
+
+  container.innerHTML = chips.map(c =>
+    `<span class="chip">${c.label}<button class="chip-x" onclick="${c.action}" aria-label="Remove filter">×</button></span>`
+  ).join('');
+}
+
+function removeCheck(name, value) {
+  const cb = document.querySelector(`input[name="${name}"][value="${value}"]`);
+  if (cb) { cb.checked = false; applyFilters(); }
 }
 
 function goToPage(page) {

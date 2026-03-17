@@ -201,6 +201,76 @@ p  { color: var(--slate); line-height: 1.75; }
 .mob-menu a:last-child { border-bottom: none; }
 .mob-menu a:hover { background: var(--bg); }
 .mob-menu .mob-cta { color: var(--orange); font-weight: 700; }
+.mob-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  padding: 14px 12px 4px;
+  border-bottom: none;
+  pointer-events: none;
+}
+
+/* ── Active filter chips ─────────────────────────────────── */
+.active-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .75rem;
+  min-height: 0;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  background: var(--orange);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.chip-x {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  opacity: .75;
+  transition: opacity .1s;
+}
+.chip-x:hover { opacity: 1; }
+
+/* ── Directory empty state ───────────────────────────────── */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.empty-state h3 { margin-bottom: .5rem; font-size: 1.25rem; }
+.empty-state p { color: var(--slate); margin-bottom: 1rem; }
+.empty-suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+.empty-suggestions li {
+  font-size: 13.5px;
+  color: var(--slate);
+  padding: 6px 12px;
+  background: var(--bg);
+  border-radius: var(--r-sm);
+}
+.empty-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 
 /* ── Buttons ─────────────────────────────────────────────── */
 .btn {
