@@ -52,14 +52,23 @@ function renderNewestListings() {
   container.innerHTML = BUSINESSES.slice(0, 6).map(b => createListingCard(b)).join('');
 }
 
+const CITY_PAGES = {
+  'Chicago': 'chicago', 'New York': 'new-york', 'Indianapolis': 'indianapolis',
+  'Wichita': 'wichita', 'Boise': 'boise', 'Anchorage': 'anchorage',
+  'Sioux Falls': 'sioux-falls', 'New Orleans': 'new-orleans', 'Kansas City': 'kansas-city',
+  'Honolulu': 'honolulu', 'Boston': 'boston', 'Milwaukee': 'milwaukee'
+};
+
 function renderCities() {
   const container = document.getElementById('cityGrid');
   if (!container) return;
   container.innerHTML = CITIES.map(city => {
     const count = getBusinessesByCity(city.name).length;
     const countText = count > 0 ? count + ' service' + (count !== 1 ? 's' : '') : 'Coming soon';
+    const slug = CITY_PAGES[city.name];
+    const href = slug ? `/3d-printing-${slug}.html` : `directory.html?city=${encodeURIComponent(city.name)}`;
     return `
-      <a href="directory.html?city=${encodeURIComponent(city.name)}" class="city-card">
+      <a href="${href}" class="city-card">
         <div class="city-name">${city.name}, ${city.state} <span class="city-count">(${countText})</span></div>
       </a>
     `;
