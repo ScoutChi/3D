@@ -174,4 +174,16 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-chicago.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-new-york.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-indianapolis.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-wichita.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-boise.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-anchorage.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-sioux-falls.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-new-orleans.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-kansas-city.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-honolulu.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-boston.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.3dprintmap.com/3d-printing-milwaukee.html</loc><lastmod>2026-03-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
