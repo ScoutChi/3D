@@ -56,7 +56,10 @@ const CITY_PAGES = {
   'Chicago': 'chicago', 'New York': 'new-york', 'Indianapolis': 'indianapolis',
   'Wichita': 'wichita', 'Boise': 'boise', 'Anchorage': 'anchorage',
   'Sioux Falls': 'sioux-falls', 'New Orleans': 'new-orleans', 'Kansas City': 'kansas-city',
-  'Honolulu': 'honolulu', 'Boston': 'boston', 'Milwaukee': 'milwaukee'
+  'Honolulu': 'honolulu', 'Boston': 'boston', 'Milwaukee': 'milwaukee',
+  'Seattle': 'seattle', 'Los Angeles': 'los-angeles', 'Virginia Beach': 'virginia-beach',
+  'Salt Lake City': 'salt-lake-city', 'Baltimore': 'baltimore',
+  'Albuquerque': 'albuquerque', 'Portland': 'portland'
 };
 
 function renderCities() {
