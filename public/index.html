@@ -4,307 +4,347 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3DPrintMap — Find 3D Printing Services Near You</title>
-  <meta name="description" content="Find 3D printing services near you. Browse 300+ FDM, SLA, SLS, and metal 3D printing services across the US. Free to search, free to list your business.">
+  <meta name="description" content="Find 3D printing services near you. Browse 1,200+ FDM, SLA, SLS, and metal printing shops, makerspaces, and print farms by city, technology, and material.">
+  <meta name="robots" content="index, follow">
   <meta property="og:title" content="3DPrintMap — Find 3D Printing Services Near You">
-  <meta property="og:description" content="Find 3D printing services near you. Browse 300+ FDM, SLA, SLS, and metal 3D printing services across the US.">
-  <meta property="og:url" content="https://3dprintmap.com/">
+  <meta property="og:description" content="Find 3D printing services near you. Browse 1,200+ FDM, SLA, SLS, and metal 3D printing services across the US.">
+  <meta property="og:url" content="https://www.3dprintmap.com/">
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://3dprintmap.com/">
+  <link rel="canonical" href="https://www.3dprintmap.com/">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.3dprintmap.com/#website",
+        "url": "https://www.3dprintmap.com/",
+        "name": "3DPrintMap",
+        "description": "The most comprehensive directory of 3D printing services across the United States.",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://www.3dprintmap.com/directory.html?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.3dprintmap.com/#organization",
+        "name": "3DPrintMap",
+        "url": "https://www.3dprintmap.com/",
+        "description": "Online directory of 3D printing services, makerspaces, and print farms across the United States.",
+        "contactPoint": { "@type": "ContactPoint", "email": "hello@3dprintmap.com", "contactType": "customer service" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    Are you a 3D printing service? <a href="#add-business">Add Your Business FREE →</a>
-  </div>
+<div class="topbar">
+  Are you a 3D printing service? <a href="/add-listing.html">Add Your Business FREE →</a>
+</div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">◈</span>
-        <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-sym">◈</span>
+      <span class="logo-tx"><span class="c-navy">3D</span><span class="c-orange">Print</span><span class="c-navy">Map</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-has-drop">
+        <button class="nav-link">Browse ▾</button>
+        <ul class="nav-drop">
+          <li><a href="/fdm-printing.html">FDM Printing</a></li>
+          <li><a href="/sla-resin.html">SLA / Resin</a></li>
+          <li><a href="/sls-nylon.html">SLS / Nylon</a></li>
+          <li><a href="/metal-printing.html">Metal Printing</a></li>
+          <li><a href="/directory.html">All Services</a></li>
+        </ul>
+      </li>
+      <li><a href="/blog/index.html" class="nav-link">Blog</a></li>
+      <li><a href="/technologies.html" class="nav-link">Technologies</a></li>
+      <li><a href="/about.html" class="nav-link">About</a></li>
+      <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/add-listing.html" class="btn-cta">+ Add Business (FREE)</a>
+      <button class="ham" id="ham" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="/fdm-printing.html">FDM Printing</a>
+  <a href="/sla-resin.html">SLA / Resin</a>
+  <a href="/sls-nylon.html">SLS / Nylon</a>
+  <a href="/metal-printing.html">Metal Printing</a>
+  <a href="/directory.html">All Services</a>
+  <a href="/blog/index.html">Blog</a>
+  <a href="/technologies.html">Technologies</a>
+  <a href="/about.html">About</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
+</div>
+
+<!-- Hero -->
+<section class="homepage-hero">
+  <div class="wrap">
+    <h1>Find 3D Printing Services<br><span>Near You</span></h1>
+    <p>The most comprehensive directory of 3D printing services. FDM, SLA, SLS, metal printing, and more — all in one place.</p>
+
+    <div class="search-box">
+      <div class="search-field">
+        <label>What</label>
+        <input type="text" id="searchQuery" placeholder="FDM, SLA, Prototyping, Resin...">
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label>Where</label>
+        <input type="text" id="searchLocation" placeholder="City, State, or ZIP Code">
+      </div>
+      <button class="search-btn" onclick="handleSearch()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><strong id="totalCount">1,200+</strong><span>Services Listed</span></div>
+      <div class="hero-stat"><strong>50+</strong><span>Cities Covered</span></div>
+      <div class="hero-stat"><strong>Free</strong><span>To List Your Business</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Browse by Technology -->
+<section class="section" style="background:var(--white);">
+  <div class="wrap">
+    <div class="section-hd">
+      <h2>Browse by Technology</h2>
+      <a href="/directory.html">See All →</a>
+    </div>
+    <div class="tech-grid" id="techGrid">
+      <a href="/fdm-printing.html" class="tech-card">
+        <span class="tech-card-emoji">🖨️</span>
+        <h3>FDM Printing</h3>
+        <p>Fast, affordable plastic printing</p>
+        <span class="tech-card-count" id="fdm-count">800+ services</span>
       </a>
-      <div class="nav-links">
-        <a href="directory.html">Browse All</a>
-        <div class="nav-dropdown">
-          <button class="nav-btn">Browse ▾</button>
-          <div class="dropdown-menu">
-            <a href="directory.html?type=fdm">FDM Printing</a>
-            <a href="directory.html?type=sla">SLA / Resin</a>
-            <a href="directory.html?type=sls">SLS / Nylon</a>
-            <a href="directory.html?type=metal">Metal Printing</a>
-            <a href="directory.html?type=multicolor">Multicolor</a>
-            <a href="directory.html?service=prototyping">Prototyping</a>
-            <a href="directory.html?service=production">Production Runs</a>
-          </div>
-        </div>
-        <a href="#cities">Cities</a>
-        <a href="technologies.html">Technologies</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-      <div class="nav-actions">
-        <a href="#add-business" class="btn btn-primary">+ Add Business (FREE)</a>
-      </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <a href="/sla-resin.html" class="tech-card">
+        <span class="tech-card-emoji">💧</span>
+        <h3>SLA / Resin</h3>
+        <p>Ultra-high detail resin printing</p>
+        <span class="tech-card-count" id="sla-count">300+ services</span>
+      </a>
+      <a href="/sls-nylon.html" class="tech-card">
+        <span class="tech-card-emoji">⚙️</span>
+        <h3>SLS / Nylon</h3>
+        <p>Strong engineering-grade nylon parts</p>
+        <span class="tech-card-count" id="sls-count">120+ services</span>
+      </a>
+      <a href="/metal-printing.html" class="tech-card">
+        <span class="tech-card-emoji">🔩</span>
+        <h3>Metal Printing</h3>
+        <p>Industrial steel, titanium, aluminum</p>
+        <span class="tech-card-count" id="metal-count">60+ services</span>
+      </a>
+      <a href="/directory.html?type=multicolor" class="tech-card">
+        <span class="tech-card-emoji">🎨</span>
+        <h3>Multicolor</h3>
+        <p>Full-color and multi-material prints</p>
+        <span class="tech-card-count" id="multi-count">40+ services</span>
+      </a>
+      <a href="/directory.html?service=design" class="tech-card">
+        <span class="tech-card-emoji">📐</span>
+        <h3>Design Services</h3>
+        <p>CAD and 3D modeling services</p>
+        <span class="tech-card-count" id="design-count">200+ services</span>
+      </a>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="directory.html">Browse All Services</a>
-    <a href="directory.html?type=fdm">FDM Printing</a>
-    <a href="directory.html?type=sla">SLA / Resin</a>
-    <a href="directory.html?type=sls">SLS / Nylon</a>
-    <a href="directory.html?type=metal">Metal Printing</a>
-    <a href="#add-business" style="color: var(--primary); font-weight: 700;">+ Add Your Business (FREE)</a>
   </div>
+</section>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <div class="hero-content">
-        <h1>Find 3D Printing Services<br><span class="text-accent">Near You</span></h1>
-        <p>The most comprehensive directory of 3D printing services. FDM, SLA, SLS, metal printing, and more — all in one place.</p>
-
-        <div class="search-box">
-          <div class="search-inner">
-            <div class="search-field">
-              <label>What</label>
-              <input type="text" id="searchQuery" placeholder="FDM, SLA, Prototyping, Resin...">
-            </div>
-            <div class="search-divider"></div>
-            <div class="search-field">
-              <label>Where</label>
-              <input type="text" id="searchLocation" placeholder="City, State, or ZIP Code">
-            </div>
-            <button class="search-btn" onclick="handleSearch()">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              Search
-            </button>
-          </div>
+<!-- Newest Listings -->
+<section class="section" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="section-hd">
+      <h2>Newest Listings</h2>
+      <a href="/directory.html">Browse All →</a>
+    </div>
+    <div class="listings-grid" id="newestListings">
+      <div class="listing-card">
+        <div class="listing-card-top">
+          <span class="listing-badge">FDM Printing</span>
         </div>
-
-        <div class="hero-stats">
-          <div class="stat">
-            <strong id="totalCount">1,200+</strong>
-            <span>Services Listed</span>
-          </div>
-          <div class="stat">
-            <strong>50+</strong>
-            <span>Cities Covered</span>
-          </div>
-          <div class="stat">
-            <strong>Free</strong>
-            <span>To List Your Business</span>
-          </div>
+        <h3>Austin 3D Labs</h3>
+        <div class="listing-loc">Austin, TX</div>
+        <div class="listing-rating">★★★★★ 4.9 (48 reviews)</div>
+        <p class="listing-desc">Professional FDM printing with same-day turnaround on small parts. PLA, PETG, ABS, and engineering materials available.</p>
+        <a href="/directory.html" class="listing-view">View →</a>
+      </div>
+      <div class="listing-card">
+        <div class="listing-card-top">
+          <span class="listing-badge">Makerspace</span>
         </div>
+        <h3>LA Maker Hub</h3>
+        <div class="listing-loc">Los Angeles, CA</div>
+        <div class="listing-rating">★★★★★ 4.7 (31 reviews)</div>
+        <p class="listing-desc">Community makerspace with FDM, resin, and laser cutting. Membership and day passes available. Open 7 days.</p>
+        <a href="/directory.html" class="listing-view">View →</a>
+      </div>
+      <div class="listing-card">
+        <div class="listing-card-top">
+          <span class="listing-badge">FDM + SLA</span>
+        </div>
+        <h3>Precision Prints NYC</h3>
+        <div class="listing-loc">Brooklyn, NY</div>
+        <div class="listing-rating">★★★★★ 4.8 (62 reviews)</div>
+        <p class="listing-desc">Full-service shop offering FDM and SLA printing with rapid quotes and next-day shipping across the tri-state area.</p>
+        <a href="/directory.html" class="listing-view">View →</a>
+      </div>
+      <div class="listing-card">
+        <div class="listing-card-top">
+          <span class="listing-badge">SLS + Design</span>
+        </div>
+        <h3>Chicago FabLab</h3>
+        <div class="listing-loc">Chicago, IL</div>
+        <div class="listing-rating">★★★★½ 4.5 (19 reviews)</div>
+        <p class="listing-desc">SLS nylon printing and in-house design services. Ideal for functional engineering parts and small production runs.</p>
+        <a href="/directory.html" class="listing-view">View →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== BROWSE BY TECHNOLOGY ===== -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Browse by Technology</h2>
-        <a href="directory.html" class="see-all">See All →</a>
+<!-- Browse by City -->
+<section class="section" id="cities" style="background:var(--white);">
+  <div class="wrap">
+    <div class="section-hd">
+      <h2>Browse by City</h2>
+      <a href="/directory.html">All Cities →</a>
+    </div>
+    <div class="city-grid" id="cityGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Browse by Service -->
+<section class="section" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="section-hd">
+      <h2>Browse by Service</h2>
+    </div>
+    <div class="service-tags" id="serviceTags">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Browse by Material -->
+<section class="section" id="materials" style="background:var(--white);">
+  <div class="wrap">
+    <div class="section-hd">
+      <h2>Browse by Material</h2>
+    </div>
+    <div class="material-grid" id="materialGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Add Business CTA -->
+<section class="cta-section" id="add-business">
+  <div class="wrap">
+    <div class="cta-box-inner">
+      <h2>List Your 3D Printing Service — FREE</h2>
+      <p>Join hundreds of 3D printing services already on 3DPrintMap. Get discovered by customers actively searching for your services.</p>
+      <ul class="cta-features">
+        <li>✓ Free basic listing with contact info &amp; location</li>
+        <li>✓ Showcase your technologies, materials &amp; services</li>
+        <li>✓ Get found in local and technology-specific searches</li>
+        <li>✓ Easy to update — manage your own profile</li>
+      </ul>
+      <a href="/add-listing.html" class="btn btn-primary btn-lg">Add Your Business For Free →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand-col">
+        <a href="/" class="logo">
+          <span class="logo-sym">◈</span>
+          <span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span>
+        </a>
+        <p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p>
       </div>
-      <div class="tech-grid">
-        <a href="directory.html?type=fdm" class="tech-card">
-          <span class="tech-icon"><i class="fa-solid fa-print"></i></span>
-          <div class="tech-info"><h3>FDM Printing</h3><span id="fdm-count">Loading…</span></div>
-        </a>
-        <a href="directory.html?type=sla" class="tech-card">
-          <span class="tech-icon"><i class="fa-solid fa-gem"></i></span>
-          <div class="tech-info"><h3>SLA / Resin</h3><span id="sla-count">Loading…</span></div>
-        </a>
-        <a href="directory.html?type=sls" class="tech-card">
-          <span class="tech-icon"><i class="fa-solid fa-bolt"></i></span>
-          <div class="tech-info"><h3>SLS / Nylon</h3><span id="sls-count">Loading…</span></div>
-        </a>
-        <a href="directory.html?type=metal" class="tech-card">
-          <span class="tech-icon"><i class="fa-solid fa-gear"></i></span>
-          <div class="tech-info"><h3>Metal Printing</h3><span id="metal-count">Loading…</span></div>
-        </a>
-        <a href="directory.html?type=multicolor" class="tech-card">
-          <span class="tech-icon"><i class="fa-solid fa-palette"></i></span>
-          <div class="tech-info"><h3>Multicolor</h3><span id="multi-count">Loading…</span></div>
-        </a>
-        <a href="directory.html?service=design" class="tech-card">
-          <span class="tech-icon"><i class="fa-solid fa-pen-ruler"></i></span>
-          <div class="tech-info"><h3>Design Services</h3><span id="design-count">Loading…</span></div>
-        </a>
+      <div class="footer-col">
+        <h4>Browse</h4>
+        <a href="/directory.html">All Services</a>
+        <a href="/fdm-printing.html">FDM Printing</a>
+        <a href="/sla-resin.html">SLA / Resin</a>
+        <a href="/sls-nylon.html">SLS / Nylon</a>
+        <a href="/metal-printing.html">Metal Printing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="/blog/index.html">Blog</a>
+        <a href="/technologies.html">Technologies</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/add-listing.html">Add Your Business</a>
+        <a href="/featured-listing.html">Get Featured</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
       </div>
     </div>
-  </section>
-
-  <!-- ===== NEWEST LISTINGS ===== -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <h2>Newest Listings</h2>
-        <a href="directory.html" class="see-all">Browse All →</a>
-      </div>
-      <div class="listings-grid" id="newestListings">
-        <!-- Populated by JS -->
-      </div>
+    <div class="footer-bottom">
+      <span>© 2026 3DPrintMap. All rights reserved.</span>
+      <a href="/sitemap.xml">Sitemap</a>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ===== BROWSE BY CITY ===== -->
-  <section class="section" id="cities">
-    <div class="container">
-      <div class="section-header">
-        <h2>Browse by City</h2>
-        <a href="directory.html" class="see-all">All Cities →</a>
-      </div>
-      <div class="city-grid" id="cityGrid">
-        <!-- Populated by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== BROWSE BY SERVICE ===== -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <h2>Browse by Service</h2>
-      </div>
-      <div class="service-tags" id="serviceTags">
-        <!-- Populated by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== BROWSE BY MATERIAL ===== -->
-  <section class="section" id="materials">
-    <div class="container">
-      <div class="section-header">
-        <h2>Browse by Material</h2>
-      </div>
-      <div class="material-grid">
-        <a href="directory.html?material=pla" class="material-card">
-          <h3>PLA</h3>
-          <p>Most popular, biodegradable, ideal for prototypes and consumer products</p>
-        </a>
-        <a href="directory.html?material=abs" class="material-card">
-          <h3>ABS</h3>
-          <p>Durable, heat-resistant — common for automotive and industrial parts</p>
-        </a>
-        <a href="directory.html?material=petg" class="material-card">
-          <h3>PETG</h3>
-          <p>Strong, flexible, chemical-resistant with food-safe options available</p>
-        </a>
-        <a href="directory.html?material=resin" class="material-card">
-          <h3>Resin (SLA)</h3>
-          <p>Ultra-high detail for jewelry, dental, medical, and figurines</p>
-        </a>
-        <a href="directory.html?material=nylon" class="material-card">
-          <h3>Nylon / PA12</h3>
-          <p>Engineering-grade, functional parts — ideal for SLS printing</p>
-        </a>
-        <a href="directory.html?material=metal" class="material-card">
-          <h3>Metal / Steel</h3>
-          <p>Stainless steel, titanium, aluminum — for industrial and aerospace parts</p>
-        </a>
-        <a href="directory.html?material=tpu" class="material-card">
-          <h3>TPU / Flexible</h3>
-          <p>Rubber-like properties for gaskets, wearables, and custom grips</p>
-        </a>
-        <a href="directory.html?material=carbon" class="material-card">
-          <h3>Carbon Fiber</h3>
-          <p>Lightweight, high-strength composite for demanding applications</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ADD BUSINESS CTA ===== -->
-  <section class="section cta-section" id="add-business">
-    <div class="container">
-      <div class="cta-box">
-        <div class="cta-content">
-          <h2>List Your 3D Printing Service — FREE</h2>
-          <p>Join hundreds of 3D printing services already on 3DPrintMap. Get discovered by customers actively searching for your services.</p>
-          <ul class="cta-features">
-            <li>✓ Free basic listing with contact info & location</li>
-            <li>✓ Showcase your technologies, materials & services</li>
-            <li>✓ Get found in local and technology-specific searches</li>
-            <li>✓ Easy to update — manage your own profile</li>
-          </ul>
-          <a href="mailto:hello@3dprintmap.com?subject=Add%20My%20Business%20to%203DPrintMap" class="btn btn-primary btn-lg">Add Your Business For Free →</a>
-        </div>
-        <div class="cta-divider"></div>
-        <div class="cta-stats">
-          <div class="cta-stat">
-            <strong id="ctaCount">1,200+</strong>
-            <span>Services Listed</span>
-          </div>
-          <div class="cta-stat">
-            <strong>50k+</strong>
-            <span>Monthly Visitors</span>
-          </div>
-          <div class="cta-stat">
-            <strong>100%</strong>
-            <span>Free to List</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <span class="logo-icon">◈</span>
-            <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
-          </a>
-          <p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Browse</h4>
-          <a href="directory.html">All Services</a>
-          <a href="directory.html?type=fdm">FDM Printing</a>
-          <a href="directory.html?type=sla">SLA / Resin</a>
-          <a href="directory.html?type=sls">SLS / Nylon</a>
-          <a href="directory.html?type=metal">Metal Printing</a>
-        </div>
-        <div class="footer-links">
-          <h4>Services</h4>
-          <a href="directory.html?service=prototyping">Prototyping</a>
-          <a href="directory.html?service=production">Production Runs</a>
-          <a href="directory.html?service=design">Design Services</a>
-          <a href="directory.html?service=finishing">Post Processing</a>
-        </div>
-        <div class="footer-links">
-          <h4>Resources</h4>
-          <a href="technologies.html">Technology Guide</a>
-          <a href="faq.html">FAQ</a>
-        </div>
-        <div class="footer-links">
-          <h4>Company</h4>
-          <a href="#add-business">Add Your Business</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 3DPrintMap. All rights reserved.</span>
-        <span>Built for the maker community.</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+(function(){
+  var ham = document.getElementById('ham');
+  var mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', function(){
+    mob.classList.toggle('open');
+    ham.textContent = mob.classList.contains('open') ? '✕' : '☰';
+  });
+  document.addEventListener('click', function(e){
+    if(!ham.contains(e.target) && !mob.contains(e.target)){
+      mob.classList.remove('open');
+      ham.textContent = '☰';
+    }
+  });
+  function handleSearch(){
+    var q = document.getElementById('searchQuery').value;
+    var loc = document.getElementById('searchLocation').value;
+    var url = '/directory.html?';
+    if(q) url += 'q='+encodeURIComponent(q)+'&';
+    if(loc) url += 'city='+encodeURIComponent(loc);
+    window.location.href = url;
+  }
+  window.handleSearch = handleSearch;
+  document.getElementById('searchLocation').addEventListener('keydown', function(e){ if(e.key==='Enter') handleSearch(); });
+  document.getElementById('searchQuery').addEventListener('keydown', function(e){ if(e.key==='Enter') handleSearch(); });
+})();
+</script>
 </body>
 </html>

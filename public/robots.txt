@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://3dprintmap.com/sitemaps/sitemap.xml
+Sitemap: https://www.3dprintmap.com/sitemap.xml
