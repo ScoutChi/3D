@@ -135,7 +135,8 @@ p  { color: var(--slate); line-height: 1.75; }
 
 /* Browse dropdown */
 .nav-has-drop { position: relative; }
-.nav-has-drop:hover .nav-drop { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.nav-has-drop:hover .nav-drop,
+.nav-has-drop.open .nav-drop { opacity: 1; pointer-events: auto; transform: translateY(0); }
 .nav-drop {
   position: absolute;
   top: calc(100% + 8px);
