@@ -1010,6 +1010,62 @@ ul { list-style: none; }
 .biz-contact-item a { color: var(--primary); }
 .biz-contact-icon { flex-shrink: 0; font-size: 16px; }
 
+/* Hours of Operation block */
+.biz-hours-block-wrap {
+  display: block;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.biz-hours-block-wrap:last-of-type { border-bottom: none; }
+.biz-hours-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.hours-row td {
+  padding: 5px 2px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.hours-row:last-child td { border-bottom: none; }
+.hours-day {
+  font-weight: 700;
+  color: var(--text);
+  width: 50%;
+}
+.hours-time {
+  color: var(--text-muted);
+  text-align: right;
+  font-size: 12.5px;
+}
+.hours-today .hours-day { color: #16a34a; }
+.hours-today .hours-time { color: #16a34a; }
+.hours-open-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #16a34a;
+  border-radius: 50%;
+  margin-left: 5px;
+  vertical-align: middle;
+  animation: hours-pulse 2s ease-in-out infinite;
+}
+@keyframes hours-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .35; }
+}
+
 .social-btn {
   display: inline-flex;
   align-items: center;

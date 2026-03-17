@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ── Contact: Hours ─────────────────────────────────────────────
   const hoursEl = document.getElementById('bizHours');
-  if (hoursEl) hoursEl.innerHTML = `<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span><span>${business.hours}</span>`;
+  if (hoursEl) renderHoursBlock(hoursEl, business.hours, business.isOpen);
 
   // ── Social links ───────────────────────────────────────────────
   const socialEl = document.getElementById('bizSocial');
@@ -276,4 +276,99 @@ function injectJsonLd(obj) {
   script.type = 'application/ld+json';
   script.textContent = JSON.stringify(obj);
   document.head.appendChild(script);
+}
+
+function renderHoursBlock(container, hoursStr, isOpen) {
+  var DAY_ORDER = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  var DAY_MAP = {
+    'monday':'Monday','mon':'Monday',
+    'tuesday':'Tuesday','tue':'Tuesday','tues':'Tuesday',
+    'wednesday':'Wednesday','wed':'Wednesday',
+    'thursday':'Thursday','thu':'Thursday','thur':'Thursday','thurs':'Thursday',
+    'friday':'Friday','fri':'Friday',
+    'saturday':'Saturday','sat':'Saturday',
+    'sunday':'Sunday','sun':'Sunday'
+  };
+
+  function normDay(s) { return DAY_MAP[s.trim().toLowerCase()] || null; }
+
+  function expandRange(from, to) {
+    var a = DAY_ORDER.indexOf(normDay(from));
+    var b = DAY_ORDER.indexOf(normDay(to));
+    if (a === -1 || b === -1) return null;
+    var days = [];
+    for (var i = a; i <= b; i++) days.push(DAY_ORDER[i]);
+    return days;
+  }
+
+  if (!hoursStr) {
+    container.innerHTML = '<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span><span>Hours not available</span>';
+    return;
+  }
+
+  var parts = hoursStr.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+  var entries = [];
+
+  for (var i = 0; i < parts.length; i++) {
+    var part = parts[i];
+    var ci = part.indexOf(':');
+    if (ci === -1) continue;
+    var dayPart = part.slice(0, ci).trim();
+    var timePart = part.slice(ci + 1).trim();
+    var rm = dayPart.match(/^(.+?)[\u2013\u2014\-](.+)$/);
+    if (rm) {
+      var days = expandRange(rm[1].trim(), rm[2].trim());
+      if (days) {
+        days.forEach(function(d){ entries.push({day: d, time: timePart}); });
+        continue;
+      }
+    }
+    var d = normDay(dayPart);
+    if (d) entries.push({day: d, time: timePart});
+  }
+
+  entries.sort(function(a, b){ return DAY_ORDER.indexOf(a.day) - DAY_ORDER.indexOf(b.day); });
+
+  if (!entries.length) {
+    container.innerHTML = '<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span><span>' + hoursStr + '</span>';
+    return;
+  }
+
+  // Group consecutive days with same hours
+  var groups = [];
+  var cur = {days: [entries[0].day], time: entries[0].time};
+  for (var j = 1; j < entries.length; j++) {
+    if (entries[j].time.toLowerCase() === cur.time.toLowerCase()) {
+      cur.days.push(entries[j].day);
+    } else {
+      groups.push(cur);
+      cur = {days: [entries[j].day], time: entries[j].time};
+    }
+  }
+  groups.push(cur);
+
+  var todayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][new Date().getDay()];
+
+  var rows = groups.map(function(g) {
+    var label;
+    if (g.days.length === 1) {
+      label = g.days[0].slice(0, 3);
+    } else {
+      var idx = g.days.map(function(d){ return DAY_ORDER.indexOf(d); });
+      var consec = idx.every(function(v, k){ return k === 0 || v === idx[k-1] + 1; });
+      label = consec
+        ? g.days[0].slice(0, 3) + '\u2013' + g.days[g.days.length - 1].slice(0, 3)
+        : g.days.map(function(d){ return d.slice(0, 3); }).join(', ');
+    }
+    var isToday = g.days.indexOf(todayName) !== -1;
+    var dot = (isToday && isOpen) ? '<span class="hours-open-dot" aria-label="Open now"></span>' : '';
+    return '<tr class="hours-row' + (isToday ? ' hours-today' : '') + '">'
+      + '<td class="hours-day">' + label + dot + '</td>'
+      + '<td class="hours-time">' + g.time + '</td>'
+      + '</tr>';
+  }).join('');
+
+  container.className = 'biz-hours-block-wrap';
+  container.innerHTML = '<div class="biz-hours-label"><i class="fa-solid fa-clock" aria-hidden="true"></i> Hours of Operation</div>'
+    + '<table class="hours-table"><tbody>' + rows + '</tbody></table>';
 }
