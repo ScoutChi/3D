@@ -21,10 +21,23 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "3D Printing Services in Albuquerque, New Mexico",
-    "description": "Directory of 3D printing services in Albuquerque, New Mexico.",
-    "url": "https://www.3dprintmap.com/3d-printing-albuquerque.html"
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "name": "3D Printing Services in Albuquerque, New Mexico",
+        "description": "Find local 3D printing services in Albuquerque, New Mexico — FDM, SLA, SLS, and metal printing.",
+        "url": "https://www.3dprintmap.com/3d-printing-albuquerque.html",
+        "areaServed": { "@type": "City", "name": "Albuquerque", "containedInPlace": { "@type": "State", "name": "New Mexico" } }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Directory", "item": "https://www.3dprintmap.com/directory.html" },
+          { "@type": "ListItem", "position": 3, "name": "3D Printing in Albuquerque", "item": "https://www.3dprintmap.com/3d-printing-albuquerque.html" }
+        ]
+      }
+    ]
   }
   </script>
 </head>
