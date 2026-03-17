@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission Received | 3DPrintMap</title>
+  <meta name="description" content="Thank you for submitting your 3D printing business to 3DPrintMap. We'll have your listing live within 48 hours.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div class="topbar">
+  Are you a 3D printing service? <a href="/add-listing.html">Add Your Business FREE →</a>
+</div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-sym">◈</span>
+      <span class="logo-tx"><span class="c-navy">3D</span><span class="c-orange">Print</span><span class="c-navy">Map</span></span>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-has-drop">
+        <button class="nav-link">Browse ▾</button>
+        <ul class="nav-drop">
+          <li><a href="/fdm-printing.html">FDM Printing</a></li>
+          <li><a href="/sla-resin.html">SLA / Resin</a></li>
+          <li><a href="/sls-nylon.html">SLS / Nylon</a></li>
+          <li><a href="/metal-printing.html">Metal Printing</a></li>
+          <li><a href="/directory.html">All Services</a></li>
+        </ul>
+      </li>
+      <li><a href="/blog/index.html" class="nav-link">Blog</a></li>
+      <li><a href="/technologies.html" class="nav-link">Technologies</a></li>
+      <li><a href="/about.html" class="nav-link">About</a></li>
+      <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/add-listing.html" class="btn-cta">+ Add Business (FREE)</a>
+      <button class="ham" id="ham" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="/fdm-printing.html">FDM Printing</a>
+  <a href="/sla-resin.html">SLA / Resin</a>
+  <a href="/sls-nylon.html">SLS / Nylon</a>
+  <a href="/metal-printing.html">Metal Printing</a>
+  <a href="/directory.html">All Services</a>
+  <a href="/blog/index.html">Blog</a>
+  <a href="/technologies.html">Technologies</a>
+  <a href="/about.html">About</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
+</div>
+
+<section class="section" style="min-height:60vh;display:flex;align-items:center;">
+  <div class="wrap" style="text-align:center;">
+    <div style="font-size:3.5rem;margin-bottom:1.5rem;color:var(--green);">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <h1 style="font-size:clamp(2rem,5vw,3rem);margin-bottom:.75rem;">Submission Received!</h1>
+    <p style="font-size:1.1rem;color:var(--slate);max-width:520px;margin:0 auto 2rem;">
+      Thanks for submitting your business to 3DPrintMap. We'll review your listing and have it live within <strong>48 hours</strong>.
+    </p>
+    <p style="font-size:.95rem;color:var(--slate-lt);max-width:480px;margin:0 auto 2.5rem;">
+      Need to make a change or add more details? Email us at <a href="mailto:hello@3dprintmap.com" style="color:var(--orange);font-weight:600;">hello@3dprintmap.com</a>.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/directory.html" class="btn btn-primary">Browse the Directory →</a>
+      <a href="/" class="btn btn-ghost">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand-col">
+        <a href="/" class="logo"><span class="logo-sym">◈</span><span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span></a>
+        <p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p>
+      </div>
+      <div class="footer-col"><h4>Browse</h4><a href="/directory.html">All Services</a><a href="/fdm-printing.html">FDM Printing</a><a href="/sla-resin.html">SLA / Resin</a><a href="/sls-nylon.html">SLS / Nylon</a><a href="/metal-printing.html">Metal Printing</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="/blog/index.html">Blog</a><a href="/technologies.html">Technologies</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/add-listing.html">Add Your Business</a><a href="/featured-listing.html">Get Featured</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 3DPrintMap. All rights reserved.</span><a href="/sitemap.xml">Sitemap</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ham = document.getElementById('ham');
+  var mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', function(){ mob.classList.toggle('open'); ham.textContent = mob.classList.contains('open') ? '✕' : '☰'; });
+  document.addEventListener('click', function(e){ if(!ham.contains(e.target) && !mob.contains(e.target)){ mob.classList.remove('open'); ham.textContent = '☰'; } });
+})();
+</script>
+</body>
+</html>
