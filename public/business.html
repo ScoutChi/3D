@@ -14,198 +14,198 @@
   <meta property="og:site_name" content="3DPrintMap">
   <meta property="og:title" content="3D Printing Service — 3DPrintMap">
   <meta property="og:description" content="Find top-rated 3D printing services on 3DPrintMap.">
-  <meta property="og:url" content="https://3dprintmap.com/business">
-  <meta property="og:image" content="https://3dprintmap.com/og-default.png">
+  <meta property="og:url" content="https://www.3dprintmap.com/business.html">
+  <meta property="og:image" content="https://www.3dprintmap.com/og-default.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="3D Printing Service — 3DPrintMap">
   <meta name="twitter:description" content="Find top-rated 3D printing services on 3DPrintMap.">
 
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    Are you a 3D printing service? <a href="index.html#add-business">Add Your Business FREE →</a>
-  </div>
+<div class="topbar">
+  Are you a 3D printing service? <a href="/add-listing.html">Add Your Business FREE →</a>
+</div>
 
-  <!-- Navbar -->
-  <nav class="navbar" aria-label="Main navigation">
-    <div class="container">
-      <a href="index.html" class="logo" aria-label="3DPrintMap Home">
-        <span class="logo-icon" aria-hidden="true">◈</span>
-        <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
-      </a>
-      <div class="nav-links">
-        <a href="directory.html">Browse All</a>
-        <div class="nav-dropdown">
-          <button class="nav-btn" aria-haspopup="true">Browse ▾</button>
-          <div class="dropdown-menu">
-            <a href="directory.html?type=fdm">FDM Printing</a>
-            <a href="directory.html?type=sla">SLA / Resin</a>
-            <a href="directory.html?type=sls">SLS / Nylon</a>
-            <a href="directory.html?type=metal">Metal Printing</a>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-sym">◈</span>
+      <span class="logo-tx"><span class="c-navy">3D</span><span class="c-orange">Print</span><span class="c-navy">Map</span></span>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-has-drop">
+        <button class="nav-link">Browse ▾</button>
+        <ul class="nav-drop">
+          <li><a href="/fdm-printing.html">FDM Printing</a></li>
+          <li><a href="/sla-resin.html">SLA / Resin</a></li>
+          <li><a href="/sls-nylon.html">SLS / Nylon</a></li>
+          <li><a href="/metal-printing.html">Metal Printing</a></li>
+          <li><a href="/directory.html">All Services</a></li>
+        </ul>
+      </li>
+      <li><a href="/blog/index.html" class="nav-link">Blog</a></li>
+      <li><a href="/technologies.html" class="nav-link">Technologies</a></li>
+      <li><a href="/about.html" class="nav-link">About</a></li>
+      <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/add-listing.html" class="btn-cta">+ Add Business (FREE)</a>
+      <button class="ham" id="ham" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="/fdm-printing.html">FDM Printing</a>
+  <a href="/sla-resin.html">SLA / Resin</a>
+  <a href="/sls-nylon.html">SLS / Nylon</a>
+  <a href="/metal-printing.html">Metal Printing</a>
+  <a href="/directory.html">All Services</a>
+  <a href="/blog/index.html">Blog</a>
+  <a href="/technologies.html">Technologies</a>
+  <a href="/about.html">About</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
+</div>
+
+<!-- Business Detail -->
+<div class="biz-layout">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="biz-breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+        <li><a href="/directory.html" id="bizBreadcrumbState">Directory</a></li>
+        <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+        <li><a href="/directory.html" id="bizBreadcrumbCity">City</a></li>
+        <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+        <li><span id="bizBreadcrumbName" aria-current="page">Loading…</span></li>
+      </ol>
+    </nav>
+
+    <div class="biz-inner">
+
+      <!-- Main Content -->
+      <main class="biz-main">
+
+        <!-- Hero Icon -->
+        <div class="biz-hero" id="bizHero" role="img" aria-label="Business hero image">
+          <span id="bizHeroIcon" class="biz-hero-icon-wrap" aria-hidden="true"></span>
+        </div>
+
+        <!-- Header Info -->
+        <div class="biz-header-info">
+          <div class="biz-title-row">
+            <h1 id="bizName">Loading…</h1>
+            <span class="listing-badge badge-open" id="bizStatus">Now Open</span>
+          </div>
+          <div class="biz-meta">
+            <span id="bizCity">📍 City, ST</span>
+            <span class="biz-meta-sep">·</span>
+            <span id="bizRating">⭐ 0.0 (0 reviews)</span>
+            <span class="biz-meta-sep">·</span>
+            <span>Price: <strong id="bizPrice">$$</strong></span>
+          </div>
+          <p class="biz-desc" id="bizDesc">Loading business details…</p>
+          <div id="bizTypeTags" class="listing-tags"></div>
+        </div>
+
+        <!-- Detail Sections -->
+        <div class="biz-sections">
+          <div class="biz-section">
+            <h3>Technologies Offered</h3>
+            <div id="bizTech" class="tag-list"></div>
+          </div>
+          <div class="biz-section">
+            <h3>Materials Available</h3>
+            <div id="bizMaterials" class="tag-list"></div>
+          </div>
+          <div class="biz-section">
+            <h3>Services</h3>
+            <div id="bizServices" class="tag-list"></div>
+          </div>
+          <div class="biz-section">
+            <h3>Industries Served</h3>
+            <div id="bizIndustries" class="tag-list"></div>
+          </div>
+          <div class="biz-section" id="bizSocialSection">
+            <h3>Social Media</h3>
+            <div id="bizSocial" class="tag-list"></div>
           </div>
         </div>
-        <a href="index.html#cities">Cities</a>
-        <a href="technologies.html">Technologies</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-      <div class="nav-actions">
-        <a href="index.html#add-business" class="btn btn-primary">+ Add Business (FREE)</a>
-      </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
-    </div>
-  </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-    <a href="directory.html">Browse All Services</a>
-    <a href="directory.html?type=fdm">FDM Printing</a>
-    <a href="index.html#add-business" style="color: var(--primary); font-weight: 700;">+ Add Your Business (FREE)</a>
-  </div>
+      </main>
 
-  <!-- Business Detail -->
-  <div class="biz-layout">
-    <div class="container">
-
-      <!-- Breadcrumb — expanded to Home > State > City > Business Name -->
-      <nav class="biz-breadcrumb" aria-label="Breadcrumb">
-        <ol class="breadcrumb-list">
-          <li><a href="index.html">Home</a></li>
-          <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
-          <li><a href="directory.html" id="bizBreadcrumbState">Directory</a></li>
-          <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
-          <li><a href="directory.html" id="bizBreadcrumbCity">City</a></li>
-          <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
-          <li><span id="bizBreadcrumbName" aria-current="page">Loading…</span></li>
-        </ol>
-      </nav>
-
-      <div class="biz-inner">
-
-        <!-- Main Content -->
-        <main class="biz-main">
-
-          <!-- Hero Image / Icon -->
-          <div class="biz-hero" id="bizHero" role="img" aria-label="Business hero image">
-            <span id="bizHeroIcon" class="biz-hero-icon-wrap" aria-hidden="true"></span>
+      <!-- Sidebar -->
+      <aside class="biz-sidebar" aria-label="Contact information">
+        <div class="biz-contact-card">
+          <h2 class="biz-contact-heading">Contact &amp; Info</h2>
+          <div class="biz-contact-item" id="bizPhone">
+            <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+            <span>Loading…</span>
           </div>
-
-          <!-- Header Info — business.name is the only H1 -->
-          <div class="biz-header-info">
-            <div class="biz-title-row">
-              <h1 id="bizName">Loading…</h1>
-              <span class="listing-badge badge-open" id="bizStatus">Now Open</span>
-            </div>
-            <div class="biz-meta">
-              <span id="bizCity">📍 City, ST</span>
-              <span class="biz-meta-sep">·</span>
-              <span id="bizRating">⭐ 0.0 (0 reviews)</span>
-              <span class="biz-meta-sep">·</span>
-              <span>Price: <strong id="bizPrice">$$</strong></span>
-            </div>
-            <p class="biz-desc" id="bizDesc">Loading business details…</p>
-            <div id="bizTypeTags" class="listing-tags"></div>
+          <div class="biz-contact-item" id="bizWebsite">
+            <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
+            <span>Loading…</span>
           </div>
-
-          <!-- Detail Sections — H3 so H1 is the only top-level heading -->
-          <div class="biz-sections">
-            <div class="biz-section">
-              <h3>Technologies Offered</h3>
-              <div id="bizTech" class="tag-list"></div>
-            </div>
-            <div class="biz-section">
-              <h3>Materials Available</h3>
-              <div id="bizMaterials" class="tag-list"></div>
-            </div>
-            <div class="biz-section">
-              <h3>Services</h3>
-              <div id="bizServices" class="tag-list"></div>
-            </div>
-            <div class="biz-section">
-              <h3>Industries Served</h3>
-              <div id="bizIndustries" class="tag-list"></div>
-            </div>
-            <div class="biz-section" id="bizSocialSection">
-              <h3>Social Media</h3>
-              <div id="bizSocial" class="tag-list"></div>
-            </div>
+          <div class="biz-contact-item" id="bizAddress">
+            <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+            <span>Loading…</span>
           </div>
-
-        </main>
-
-        <!-- Sidebar -->
-        <aside class="biz-sidebar" aria-label="Contact information">
-          <div class="biz-contact-card">
-            <h2 class="biz-contact-heading">Contact &amp; Info</h2>
-            <div class="biz-contact-item" id="bizPhone">
-              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
-              <span>Loading…</span>
-            </div>
-            <div class="biz-contact-item" id="bizWebsite">
-              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
-              <span>Loading…</span>
-            </div>
-            <div class="biz-contact-item" id="bizAddress">
-              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
-              <span>Loading…</span>
-            </div>
-            <div class="biz-contact-item" id="bizHours">
-              <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
-              <span>Loading…</span>
-            </div>
-            <a href="#" id="bizWebsiteBtn" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" target="_blank" rel="noopener">
-              Visit Website →
-            </a>
+          <div class="biz-contact-item" id="bizHours">
+            <span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
+            <span>Loading…</span>
           </div>
-
-          <a href="directory.html" class="btn btn-ghost" style="width:100%;justify-content:center;">
-            ← Back to Directory
+          <a href="#" id="bizWebsiteBtn" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" target="_blank" rel="noopener">
+            Visit Website →
           </a>
-        </aside>
+        </div>
 
-      </div>
+        <a href="/directory.html" class="btn btn-ghost" style="width:100%;justify-content:center;">
+          ← Back to Directory
+        </a>
+      </aside>
+
     </div>
   </div>
+</div>
 
-  <!-- Footer -->
-  <footer class="footer" aria-label="Site footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo" aria-label="3DPrintMap Home">
-            <span class="logo-icon" aria-hidden="true">◈</span>
-            <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
-          </a>
-          <p>The most comprehensive directory of 3D printing services across the United States.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Browse</h4>
-          <a href="directory.html">All Services</a>
-          <a href="directory.html?type=fdm">FDM Printing</a>
-          <a href="directory.html?type=sla">SLA / Resin</a>
-          <a href="directory.html?type=metal">Metal Printing</a>
-        </div>
-        <div class="footer-links">
-          <h4>Company</h4>
-          <a href="index.html#add-business">Add Your Business</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand-col">
+        <a href="/" class="logo"><span class="logo-sym">◈</span><span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span></a>
+        <p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p>
       </div>
-      <div class="footer-bottom">
-        <span>© 2026 3DPrintMap. All rights reserved.</span>
-      </div>
+      <div class="footer-col"><h4>Browse</h4><a href="/directory.html">All Services</a><a href="/fdm-printing.html">FDM Printing</a><a href="/sla-resin.html">SLA / Resin</a><a href="/sls-nylon.html">SLS / Nylon</a><a href="/metal-printing.html">Metal Printing</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="/blog/index.html">Blog</a><a href="/technologies.html">Technologies</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/add-listing.html">Add Your Business</a><a href="/featured-listing.html">Get Featured</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
     </div>
-  </footer>
+    <div class="footer-bottom"><span>© 2026 3DPrintMap. All rights reserved.</span><a href="/sitemap.xml">Sitemap</a></div>
+  </div>
+</footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/business.js"></script>
+<script src="js/data.js"></script>
+<script src="js/business.js"></script>
+<script>
+(function(){
+  var ham = document.getElementById('ham');
+  var mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', function(){ mob.classList.toggle('open'); ham.textContent = mob.classList.contains('open') ? '✕' : '☰'; });
+  document.addEventListener('click', function(e){ if(!ham.contains(e.target) && !mob.contains(e.target)){ mob.classList.remove('open'); ham.textContent = '☰'; } });
+})();
+</script>
 </body>
 </html>

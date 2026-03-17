@@ -4,198 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Browse 3D Printing Services — 3DPrintMap</title>
-  <meta name="description" content="Browse and filter 300+ 3D printing services by technology (FDM, SLA, SLS, metal), material, service type, and location across the United States.">
+  <meta name="description" content="Browse and filter 1,200+ 3D printing services by technology (FDM, SLA, SLS, metal), material, service type, and location across the United States.">
+  <meta name="robots" content="index, follow">
   <meta property="og:title" content="Browse 3D Printing Services — 3DPrintMap">
-  <meta property="og:description" content="Browse and filter 300+ 3D printing services by technology, material, service type, and location.">
-  <meta property="og:url" content="https://3dprintmap.com/directory">
-  <link rel="canonical" href="https://3dprintmap.com/directory">
+  <meta property="og:description" content="Browse and filter 1,200+ 3D printing services by technology, material, service type, and location.">
+  <meta property="og:url" content="https://www.3dprintmap.com/directory.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.3dprintmap.com/directory.html">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    Are you a 3D printing service? <a href="index.html#add-business">Add Your Business FREE →</a>
-  </div>
+<div class="topbar">
+  Are you a 3D printing service? <a href="/add-listing.html">Add Your Business FREE →</a>
+</div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">◈</span>
-        <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
-      </a>
-      <div class="nav-links">
-        <a href="directory.html" class="active">Browse All</a>
-        <div class="nav-dropdown">
-          <button class="nav-btn">Browse ▾</button>
-          <div class="dropdown-menu">
-            <a href="directory.html?type=fdm">FDM Printing</a>
-            <a href="directory.html?type=sla">SLA / Resin</a>
-            <a href="directory.html?type=sls">SLS / Nylon</a>
-            <a href="directory.html?type=metal">Metal Printing</a>
-            <a href="directory.html?type=multicolor">Multicolor</a>
-            <a href="directory.html?service=prototyping">Prototyping</a>
-            <a href="directory.html?service=production">Production Runs</a>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-sym">◈</span>
+      <span class="logo-tx"><span class="c-navy">3D</span><span class="c-orange">Print</span><span class="c-navy">Map</span></span>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-has-drop">
+        <button class="nav-link active">Browse ▾</button>
+        <ul class="nav-drop">
+          <li><a href="/fdm-printing.html">FDM Printing</a></li>
+          <li><a href="/sla-resin.html">SLA / Resin</a></li>
+          <li><a href="/sls-nylon.html">SLS / Nylon</a></li>
+          <li><a href="/metal-printing.html">Metal Printing</a></li>
+          <li><a href="/directory.html">All Services</a></li>
+        </ul>
+      </li>
+      <li><a href="/blog/index.html" class="nav-link">Blog</a></li>
+      <li><a href="/technologies.html" class="nav-link">Technologies</a></li>
+      <li><a href="/about.html" class="nav-link">About</a></li>
+      <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/add-listing.html" class="btn-cta">+ Add Business (FREE)</a>
+      <button class="ham" id="ham" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="/fdm-printing.html">FDM Printing</a>
+  <a href="/sla-resin.html">SLA / Resin</a>
+  <a href="/sls-nylon.html">SLS / Nylon</a>
+  <a href="/metal-printing.html">Metal Printing</a>
+  <a href="/directory.html">All Services</a>
+  <a href="/blog/index.html">Blog</a>
+  <a href="/technologies.html">Technologies</a>
+  <a href="/about.html">About</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
+</div>
+
+<!-- Search Bar -->
+<div class="dir-header">
+  <div class="container">
+    <div class="dir-search">
+      <input type="text" id="dirSearchQuery" placeholder="Search by name, technology, material...">
+      <input type="text" id="dirSearchCity" placeholder="City or State...">
+      <button class="search-btn" onclick="applyFilters()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Directory Layout -->
+<div class="dir-layout">
+  <div class="container">
+    <div class="dir-inner">
+
+      <!-- Sidebar Filters -->
+      <aside class="dir-sidebar">
+
+        <div class="filter-section">
+          <h3>Technology</h3>
+          <div class="filter-options">
+            <label class="filter-option"><input type="checkbox" name="type" value="fdm"> FDM Printing</label>
+            <label class="filter-option"><input type="checkbox" name="type" value="sla"> SLA / Resin</label>
+            <label class="filter-option"><input type="checkbox" name="type" value="sls"> SLS / Nylon</label>
+            <label class="filter-option"><input type="checkbox" name="type" value="metal"> Metal Printing</label>
+            <label class="filter-option"><input type="checkbox" name="type" value="multicolor"> Multicolor</label>
           </div>
         </div>
-        <a href="index.html#cities">Cities</a>
-        <a href="technologies.html">Technologies</a>
-        <a href="faq.html">FAQ</a>
-        <a href="index.html#materials">Materials</a>
-      </div>
-      <div class="nav-actions">
-        <a href="index.html#add-business" class="btn btn-primary">+ Add Business (FREE)</a>
-      </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-    </div>
-  </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="directory.html">Browse All Services</a>
-    <a href="directory.html?type=fdm">FDM Printing</a>
-    <a href="directory.html?type=sla">SLA / Resin</a>
-    <a href="directory.html?type=sls">SLS / Nylon</a>
-    <a href="directory.html?type=metal">Metal Printing</a>
-    <a href="index.html#add-business" style="color: var(--primary); font-weight: 700;">+ Add Your Business (FREE)</a>
-  </div>
+        <div class="filter-section">
+          <h3>Service Type</h3>
+          <div class="filter-options">
+            <label class="filter-option"><input type="checkbox" name="service" value="prototyping"> Rapid Prototyping</label>
+            <label class="filter-option"><input type="checkbox" name="service" value="production"> Production Runs</label>
+            <label class="filter-option"><input type="checkbox" name="service" value="design"> Design Services</label>
+            <label class="filter-option"><input type="checkbox" name="service" value="finishing"> Post-Processing</label>
+            <label class="filter-option"><input type="checkbox" name="service" value="assembly"> Assembly</label>
+          </div>
+        </div>
 
-  <!-- Search Bar -->
-  <div class="dir-header">
-    <div class="container">
-      <div class="dir-search">
-        <input type="text" id="dirSearchQuery" placeholder="Search by name, technology, material...">
-        <input type="text" id="dirSearchCity" placeholder="City or State...">
-        <button class="search-btn" onclick="applyFilters()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          Search
+        <div class="filter-section">
+          <h3>Material</h3>
+          <div class="filter-options">
+            <label class="filter-option"><input type="checkbox" name="material" value="pla"> PLA</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="abs"> ABS</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="petg"> PETG</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="resin"> Resin</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="nylon"> Nylon</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="metal"> Metal</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="tpu"> TPU / Flexible</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="carbon"> Carbon Fiber</label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Price Range</h3>
+          <div class="filter-options">
+            <label class="filter-option"><input type="checkbox" name="price" value="$"> $ Budget</label>
+            <label class="filter-option"><input type="checkbox" name="price" value="$$"> $$ Mid-range</label>
+            <label class="filter-option"><input type="checkbox" name="price" value="$$$"> $$$ Premium</label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Status</h3>
+          <div class="filter-options">
+            <label class="filter-option"><input type="checkbox" name="status" value="open"> Open Now</label>
+          </div>
+        </div>
+
+        <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:8px;" onclick="clearFilters()">
+          Clear All Filters
         </button>
-      </div>
+      </aside>
+
+      <!-- Results -->
+      <main class="dir-results">
+        <div class="dir-results-header">
+          <span id="resultsCount">Loading…</span>
+          <select id="sortBy" onchange="applyFilters()">
+            <option value="newest">Newest First</option>
+            <option value="rating">Highest Rated</option>
+            <option value="reviews">Most Reviewed</option>
+            <option value="name">A – Z</option>
+          </select>
+        </div>
+        <div class="listings-grid" id="dirListings">
+          <!-- Populated by JS -->
+        </div>
+        <div class="pagination" id="pagination"></div>
+      </main>
+
     </div>
   </div>
+</div>
 
-  <!-- Directory Layout -->
-  <div class="dir-layout">
-    <div class="container">
-      <div class="dir-inner">
-
-        <!-- Sidebar Filters -->
-        <aside class="dir-sidebar">
-
-          <div class="filter-section">
-            <h3>Technology</h3>
-            <div class="filter-options">
-              <label class="filter-option"><input type="checkbox" name="type" value="fdm"> FDM Printing</label>
-              <label class="filter-option"><input type="checkbox" name="type" value="sla"> SLA / Resin</label>
-              <label class="filter-option"><input type="checkbox" name="type" value="sls"> SLS / Nylon</label>
-              <label class="filter-option"><input type="checkbox" name="type" value="metal"> Metal Printing</label>
-              <label class="filter-option"><input type="checkbox" name="type" value="multicolor"> Multicolor</label>
-            </div>
-          </div>
-
-          <div class="filter-section">
-            <h3>Service Type</h3>
-            <div class="filter-options">
-              <label class="filter-option"><input type="checkbox" name="service" value="prototyping"> Rapid Prototyping</label>
-              <label class="filter-option"><input type="checkbox" name="service" value="production"> Production Runs</label>
-              <label class="filter-option"><input type="checkbox" name="service" value="design"> Design Services</label>
-              <label class="filter-option"><input type="checkbox" name="service" value="finishing"> Post-Processing</label>
-              <label class="filter-option"><input type="checkbox" name="service" value="assembly"> Assembly</label>
-            </div>
-          </div>
-
-          <div class="filter-section">
-            <h3>Material</h3>
-            <div class="filter-options">
-              <label class="filter-option"><input type="checkbox" name="material" value="pla"> PLA</label>
-              <label class="filter-option"><input type="checkbox" name="material" value="abs"> ABS</label>
-              <label class="filter-option"><input type="checkbox" name="material" value="petg"> PETG</label>
-              <label class="filter-option"><input type="checkbox" name="material" value="resin"> Resin</label>
-              <label class="filter-option"><input type="checkbox" name="material" value="nylon"> Nylon</label>
-              <label class="filter-option"><input type="checkbox" name="material" value="metal"> Metal</label>
-              <label class="filter-option"><input type="checkbox" name="material" value="tpu"> TPU / Flexible</label>
-              <label class="filter-option"><input type="checkbox" name="material" value="carbon"> Carbon Fiber</label>
-            </div>
-          </div>
-
-          <div class="filter-section">
-            <h3>Price Range</h3>
-            <div class="filter-options">
-              <label class="filter-option"><input type="checkbox" name="price" value="$"> $ Budget</label>
-              <label class="filter-option"><input type="checkbox" name="price" value="$$"> $$ Mid-range</label>
-              <label class="filter-option"><input type="checkbox" name="price" value="$$$"> $$$ Premium</label>
-            </div>
-          </div>
-
-          <div class="filter-section">
-            <h3>Status</h3>
-            <div class="filter-options">
-              <label class="filter-option"><input type="checkbox" name="status" value="open"> Open Now</label>
-            </div>
-          </div>
-
-          <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:8px;" onclick="clearFilters()">
-            Clear All Filters
-          </button>
-        </aside>
-
-        <!-- Results -->
-        <main class="dir-results">
-          <div class="dir-results-header">
-            <span id="resultsCount">Loading…</span>
-            <select id="sortBy" onchange="applyFilters()">
-              <option value="newest">Newest First</option>
-              <option value="rating">Highest Rated</option>
-              <option value="reviews">Most Reviewed</option>
-              <option value="name">A – Z</option>
-            </select>
-          </div>
-          <div class="listings-grid" id="dirListings">
-            <!-- Populated by JS -->
-          </div>
-          <div class="pagination" id="pagination"></div>
-        </main>
-
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand-col">
+        <a href="/" class="logo"><span class="logo-sym">◈</span><span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span></a>
+        <p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p>
       </div>
+      <div class="footer-col"><h4>Browse</h4><a href="/directory.html">All Services</a><a href="/fdm-printing.html">FDM Printing</a><a href="/sla-resin.html">SLA / Resin</a><a href="/sls-nylon.html">SLS / Nylon</a><a href="/metal-printing.html">Metal Printing</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="/blog/index.html">Blog</a><a href="/technologies.html">Technologies</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/add-listing.html">Add Your Business</a><a href="/featured-listing.html">Get Featured</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
     </div>
+    <div class="footer-bottom"><span>© 2026 3DPrintMap. All rights reserved.</span><a href="/sitemap.xml">Sitemap</a></div>
   </div>
+</footer>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <span class="logo-icon">◈</span>
-            <span class="logo-text">3D<span class="logo-accent">Print</span>Map</span>
-          </a>
-          <p>The most comprehensive directory of 3D printing services across the United States.</p>
-        </div>
-        <div class="footer-links">
-          <h4>Browse</h4>
-          <a href="directory.html">All Services</a>
-          <a href="directory.html?type=fdm">FDM Printing</a>
-          <a href="directory.html?type=sla">SLA / Resin</a>
-          <a href="directory.html?type=metal">Metal Printing</a>
-        </div>
-        <div class="footer-links">
-          <h4>Company</h4>
-          <a href="index.html#add-business">Add Your Business</a>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 3DPrintMap. All rights reserved.</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/data.js"></script>
-  <script src="js/directory.js"></script>
+<script src="js/data.js"></script>
+<script src="js/directory.js"></script>
+<script>
+(function(){
+  var ham = document.getElementById('ham');
+  var mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', function(){ mob.classList.toggle('open'); ham.textContent = mob.classList.contains('open') ? '✕' : '☰'; });
+  document.addEventListener('click', function(e){ if(!ham.contains(e.target) && !mob.contains(e.target)){ mob.classList.remove('open'); ham.textContent = '☰'; } });
+})();
+</script>
 </body>
 </html>
