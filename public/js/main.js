@@ -57,11 +57,10 @@ function renderCities() {
   if (!container) return;
   container.innerHTML = CITIES.map(city => {
     const count = getBusinessesByCity(city.name).length;
+    const countText = count > 0 ? count + ' service' + (count !== 1 ? 's' : '') : 'Coming soon';
     return `
       <a href="directory.html?city=${encodeURIComponent(city.name)}" class="city-card">
-        <div class="city-name">${city.name}, ${city.state}</div>
-        <div class="city-count">${count > 0 ? count + ' service' + (count !== 1 ? 's' : '') : 'Coming soon'}</div>
-        <span class="city-link">Find 3D Printers →</span>
+        <div class="city-name">${city.name}, ${city.state} <span class="city-count">(${countText})</span></div>
       </a>
     `;
   }).join('');
