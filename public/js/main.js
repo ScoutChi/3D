@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
   renderNewestListings();
   renderCities();
   renderServiceTags();
+  renderMaterials();
 
   // Total count
   const totalEl = document.getElementById('totalCount');
@@ -87,6 +88,32 @@ function renderServiceTags() {
       <span class="count">${s.count}</span>
     </a>
   `).join('');
+}
+
+function renderMaterials() {
+  const container = document.getElementById('materialGrid');
+  if (!container) return;
+  const MATERIAL_LIST = [
+    { name: 'PLA',           desc: 'The most popular filament — easy to print, great detail, wide color range.' },
+    { name: 'PETG',          desc: 'Stronger and more flexible than PLA. Great for functional parts.' },
+    { name: 'ABS',           desc: 'Heat-resistant and tough. Widely used for enclosures and automotive parts.' },
+    { name: 'TPU / Flexible',desc: 'Rubber-like flexibility. Perfect for gaskets, grips, and wearable parts.' },
+    { name: 'Nylon',         desc: 'High strength and wear resistance. Ideal for engineering and SLS printing.' },
+    { name: 'Carbon Fiber',  desc: 'Lightweight and stiff. Used in aerospace, automotive, and performance parts.' },
+  ];
+  container.innerHTML = MATERIAL_LIST.map(m => {
+    const count = BUSINESSES.filter(b => b.materials && b.materials.some(mat => mat.toLowerCase().includes(m.name.toLowerCase().split(' ')[0]))).length;
+    if (count > 0) {
+      return `<a href="directory.html?q=${encodeURIComponent(m.name.split(' ')[0])}" class="material-card">
+        <h3>${m.name} <span style="font-size:12px;font-weight:600;color:var(--slate);margin-left:6px;">${count}</span></h3>
+        <p>${m.desc}</p>
+      </a>`;
+    }
+    return `<div class="material-card" style="opacity:.55;cursor:default;">
+      <h3>${m.name} <span style="font-size:11px;font-weight:500;color:var(--slate);margin-left:6px;">Coming soon</span></h3>
+      <p>${m.desc}</p>
+    </div>`;
+  }).join('');
 }
 
 function handleSearch() {
