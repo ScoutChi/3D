@@ -1438,17 +1438,115 @@ p  { color: var(--slate); line-height: 1.75; }
   text-align: center;
 }
 
-/* ── ELEGOO Partner Banner ───────────────────────────────── */
-.elegoo-banner-section {
-  background: #0a0f1e;
-  padding: 3rem 0;
+/* ── ELEGOO Brand Hub ────────────────────────────────────── */
+.elegoo-hub-section {
+  background: #080d1a;
+  border-top: 1px solid rgba(249,115,22,.18);
+  border-bottom: 1px solid rgba(249,115,22,.18);
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
 }
-.elegoo-banner {
+.elegoo-hub-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,91,170,.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.elegoo-hub-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.elegoo-hub-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: var(--white);
+  margin: .6rem 0 .5rem;
+  line-height: 1.1;
+}
+.elegoo-hub-intro {
+  color: rgba(255,255,255,.6);
+  font-size: 15px;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+.elegoo-hub-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+  gap: 1.5rem;
+  position: relative;
 }
+.elegoo-hub-card {
+  background: #111827;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r-lg);
+  padding: 28px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.elegoo-hub-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange) 0%, #1a8fe3 100%);
+}
+.elegoo-hub-card:hover { border-color: rgba(249,115,22,.3); }
+.elegoo-hub-card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.elegoo-hub-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(249,115,22,.12);
+  border: 1px solid rgba(249,115,22,.2);
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.elegoo-hub-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--orange);
+  stroke-width: 2;
+  fill: none;
+}
+.elegoo-hub-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  margin: 0 0 2px;
+}
+.elegoo-hub-tagline {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.elegoo-hub-desc {
+  color: rgba(255,255,255,.6);
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+.elegoo-hub-card .elegoo-spec-list { margin-bottom: 24px; flex-grow: 1; }
+.elegoo-hub-card .btn-elegoo { width: 100%; justify-content: center; margin-top: auto; }
 .elegoo-eyebrow {
   display: inline-block;
   font-size: 11px;
@@ -1461,20 +1559,6 @@ p  { color: var(--slate); line-height: 1.75; }
   padding: 3px 10px;
   border-radius: 100px;
   margin-bottom: .75rem;
-}
-.elegoo-banner-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1.15;
-  margin-bottom: .6rem;
-}
-.elegoo-banner-sub {
-  color: rgba(255,255,255,.6);
-  font-size: 14.5px;
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
 }
 .btn-elegoo {
   display: inline-flex;
@@ -1497,43 +1581,6 @@ p  { color: var(--slate); line-height: 1.75; }
   box-shadow: 0 6px 18px rgba(0,91,170,.38);
 }
 
-.elegoo-spotlight-card {
-  background: #141929;
-  border: 1px solid rgba(249,115,22,.2);
-  border-radius: var(--r-lg);
-  padding: 28px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  position: relative;
-  overflow: hidden;
-}
-.elegoo-spotlight-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--orange);
-}
-.elegoo-spotlight-top { margin-bottom: 14px; }
-.elegoo-spotlight-icon {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-  line-height: 1;
-}
-.elegoo-spotlight-card h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.elegoo-spotlight-tagline {
-  color: rgba(255,255,255,.6);
-  font-size: 13.5px;
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
 .elegoo-spec-list {
   list-style: none;
   padding: 0;
@@ -1554,40 +1601,8 @@ p  { color: var(--slate); line-height: 1.75; }
   font-size: 11px;
   flex-shrink: 0;
 }
-.elegoo-spotlight-card .btn-elegoo { width: 100%; justify-content: center; }
-
-.elegoo-supplies-card {
-  background: linear-gradient(135deg, #0a0f1e 0%, #141929 100%);
-  border: 1px solid rgba(249,115,22,.2);
-  border-radius: var(--r-lg);
-  padding: 28px 32px;
-}
-.elegoo-supplies-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-.elegoo-supplies-text h3 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--white);
-  margin: .4rem 0 .5rem;
-}
-.elegoo-supplies-text p {
-  color: rgba(255,255,255,.6);
-  font-size: 14px;
-  line-height: 1.65;
-  max-width: 520px;
-  margin: 0;
-}
-.elegoo-supplies-inner .btn-elegoo { flex-shrink: 0; }
-
 @media (max-width: 768px) {
-  .elegoo-banner { grid-template-columns: 1fr; gap: 2rem; }
-  .elegoo-supplies-inner { flex-direction: column; align-items: flex-start; }
-  .elegoo-supplies-inner .btn-elegoo { width: 100%; justify-content: center; }
+  .elegoo-hub-grid { grid-template-columns: 1fr; }
 }
 
 /* ── Recommended Gear Page ───────────────────────────────── */
