@@ -3,6 +3,7 @@
 // ================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
+  try {
 
   // Mobile menu
   const mobileBtn = document.getElementById('mobileMenuBtn');
@@ -245,7 +246,30 @@ document.addEventListener('DOMContentLoaded', function () {
       wsBtn.style.display = 'none';
     }
   }
+
+  } catch (err) {
+    console.error('Business page error:', err);
+    const layout = document.querySelector('.biz-layout');
+    if (layout) {
+      layout.innerHTML = `
+        <div class="container" style="text-align:center;padding:80px 20px;">
+          <div style="font-size:64px;margin-bottom:16px;">⚠️</div>
+          <h2 style="margin-bottom:8px;">Data Unavailable</h2>
+          <p style="color:var(--text-muted);margin-bottom:24px;">We couldn't load this listing. Please try again or browse the directory.</p>
+          <a href="directory.html" class="btn btn-primary">← Back to Directory</a>
+        </div>`;
+    }
+  }
 });
+
+// ── Type icon ──────────────────────────────────────────────────
+function getTypeIcon(type) {
+  const t = (type || '').toLowerCase();
+  if (t.includes('metal'))      return '<i class="fa-solid fa-gear" style="font-size:56px;color:var(--orange);"></i>';
+  if (t.includes('sls') || t.includes('nylon')) return '<i class="fa-solid fa-layer-group" style="font-size:56px;color:var(--orange);"></i>';
+  if (t.includes('sla') || t.includes('resin')) return '<i class="fa-solid fa-droplet" style="font-size:56px;color:var(--orange);"></i>';
+  return '<i class="fa-solid fa-cube" style="font-size:56px;color:var(--orange);"></i>';
+}
 
 // ── Utility helpers ────────────────────────────────────────────
 function formatPhone(raw) {
