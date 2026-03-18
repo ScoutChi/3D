@@ -67,9 +67,9 @@ function applyFilters() {
       const haystack = [b.name, b.city, b.state, b.description, ...b.types, ...b.services, ...b.materials].join(' ').toLowerCase();
       if (!haystack.includes(query)) return false;
     }
-    // City/state filter
+    // City/state/zip filter
     if (city) {
-      const loc = (b.city + ' ' + b.state + ' ' + b.address).toLowerCase();
+      const loc = (b.city + ' ' + b.state + ' ' + b.address + ' ' + (b.zip || '')).toLowerCase();
       if (!loc.includes(city)) return false;
     }
     // Type filter

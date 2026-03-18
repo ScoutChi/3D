@@ -114,6 +114,7 @@ for (let i = 1; i < lines.length; i++) {
     city: city || 'Unknown',
     state: state || 'US',
     address: address || [city, state, zip].filter(Boolean).join(', '),
+    zip: zip || '',
     phone,
     website: normalizeUrl(website),
     email,

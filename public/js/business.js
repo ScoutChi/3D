@@ -218,7 +218,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ── Contact: Address ───────────────────────────────────────────
   const addrEl = document.getElementById('bizAddress');
-  if (addrEl) addrEl.innerHTML = `<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><span>${business.address}</span>`;
+  if (addrEl) {
+    const fullAddr = [business.address, business.city, business.state, business.zip].filter(Boolean).join(', ');
+    addrEl.innerHTML = `<span class="biz-contact-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><span>${fullAddr}</span>`;
+  }
 
   // ── Contact: Hours ─────────────────────────────────────────────
   const hoursEl = document.getElementById('bizHours');
