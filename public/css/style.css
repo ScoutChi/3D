@@ -1007,7 +1007,8 @@ ul { list-style: none; }
   border-bottom: 1px solid var(--border);
   font-size: 14px;
   color: var(--text-muted);
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 .biz-contact-item:last-of-type { border-bottom: none; }
 .biz-contact-item a { color: var(--primary); }
