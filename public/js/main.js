@@ -66,9 +66,14 @@ const CITY_PAGES = {
 function renderCities() {
   const container = document.getElementById('cityGrid');
   if (!container) return;
-  container.innerHTML = CITIES.map(city => {
-    const count = getBusinessesByCity(city.name).length;
-    const countText = count > 0 ? count + ' service' + (count !== 1 ? 's' : '') : 'Coming soon';
+  const citiesWithCounts = CITIES.map(city => ({
+    ...city,
+    count: getBusinessesByCity(city.name).length
+  })).filter(c => c.count > 0)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 18);
+  container.innerHTML = citiesWithCounts.map(city => {
+    const countText = city.count + ' service' + (city.count !== 1 ? 's' : '');
     const slug = CITY_PAGES[city.name];
     const href = slug ? `/3d-printing-${slug}.html` : `directory.html?city=${encodeURIComponent(city.name)}`;
     return `
