@@ -54,7 +54,7 @@ const urls = [
 
   // Individual business pages
   ...businesses.map(b => ({
-    loc: `${BASE_URL}/business?id=${b.id}`,
+    loc: `${BASE_URL}/listing/${b.id}.html`,
     priority: '0.6',
     changefreq: 'monthly'
   }))
