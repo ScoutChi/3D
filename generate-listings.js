@@ -68,7 +68,7 @@ function renderPage(b) {
   const addrParts = [b.address, b.city, abbr, b.zip].filter(Boolean);
   const fullAddr  = addrParts.join(', ');
   const mapsQuery = encodeURIComponent(`${b.name} ${b.address} ${b.city} ${b.state}`);
-  const canonical = `https://www.3dprintmap.com/listing/${b.id}.html`;
+  const canonical = `https://www.3dprintmap.com/listing/${b.id}`;
 
   const metaTitle = `${esc(b.name)} — 3D Printing in ${esc(b.city)}, ${abbr} | 3DPrintMap`;
   const metaDesc  = `Looking for 3D printing in ${esc(b.city)}? ${esc(b.name)} offers ${esc(techList)} services for ${esc(indList)}. View address, hours, and contact info on 3DPrintMap.`;

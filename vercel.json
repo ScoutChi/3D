@@ -2,8 +2,7 @@
   "version": 2,
   "outputDirectory": "public",
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
-    { "source": "/robots.txt", "destination": "/api/robots" }
+  "redirects": [
+    { "source": "/sitemap.xml", "destination": "/sitemaps/sitemap.xml", "permanent": false }
   ]
 }

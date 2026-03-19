@@ -220,6 +220,13 @@
   </div>
 </footer>
 
+<script>
+// Redirect old ?id= URLs to pre-rendered listing pages
+(function(){
+  var id = new URLSearchParams(window.location.search).get('id');
+  if (id) window.location.replace('/listing/' + id);
+})();
+</script>
 <script src="js/data.js"></script>
 <script src="js/business.js"></script>
 <script>
