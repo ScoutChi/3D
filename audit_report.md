@@ -12,13 +12,13 @@
 |---|---|---|
 | robots.txt | ✅ Pass | — |
 | noindex tags | ✅ Pass | — |
-| Canonical vs. served URL mismatch | ❌ Fail — 51 pages | Critical |
-| Duplicate title tags | ⚠ Warning — 23 listing pages | High |
-| Missing H1 on directory page | ⚠ Warning | Medium |
-| JSON-LD missing on 6 pages | ⚠ Warning | Medium |
-| Title tag length violations | ⚠ Warning — 2 pages | Low |
-| Twitter card image missing | ⚠ Warning — 6 pages | Low |
-| AI citation readiness | ⚠ Partial | Medium |
+| Canonical vs. served URL mismatch | ✅ Fixed — 51 pages updated | Critical |
+| Duplicate title tags | ✅ Fixed — 20 listing pages updated | High |
+| Missing H1 on directory page | ✅ Fixed | Medium |
+| JSON-LD missing on 6 pages | ✅ Fixed | Medium |
+| Title tag length violations | ✅ Fixed — 2 pages shortened | Low |
+| Twitter card image missing | ✅ Fixed — 6 pages updated | Low |
+| AI citation readiness | ⚠ Partial — 1 item pending | Medium |
 
 ---
 
@@ -78,24 +78,36 @@ Google treats this as a hint conflict and may choose its own canonical — under
 
 ---
 
-## 4. Duplicate Title Tags — HIGH ⚠
+## 4. Duplicate Title Tags — RESOLVED ✅
 
-**23 duplicate title tags** found in the listing pages. These are caused by the same chain store (Staples, UPS Store, FedEx Office, etc.) appearing multiple times in the source CSV data with the same name and city — so the pre-generated pages end up with identical titles.
+~~**23 duplicate title tags**~~ All 20 affected listing pages updated with unique titles. Each duplicate chain location now includes its street address in the title to differentiate it from sibling locations in the same city.
 
-**Examples of duplicated titles:**
-| Title | Duplicate IDs |
-|---|---|
-| Staples — 3D Printing in New York, NY | 624, 633, 650, 665, 736 |
-| The UPS Store — 3D Printing in San Diego, CA | 474, 498, 513, 549, 550 |
-| The UPS Store — 3D Printing in New York, NY | 649, 655, 667 |
-| Staples — 3D Printing in Los Angeles, CA | 224, 252, 296 |
-| FedEx Office Print & Ship Center — 3D Printing in New York, NY | 642, 666 |
-| ARC Document Solutions — 3D Printing in San Diego, CA | 469, 555 |
+**Format applied:** `Business Name - Street Address, City, ST | 3DPrintMap` (50–60 chars)
 
-**Fix options (in order of preference):**
-1. **Deduplicate the source CSV** — remove duplicate business entries before regenerating data.
-2. **Add address to title** — for listings that share a name+city, include the street address in the title to differentiate: `Staples (123 Broadway) — 3D Printing in New York, NY`.
-3. **Apply noindex to duplicate IDs** — identify the lower-ID canonical entry per business name+city and noindex the duplicates.
+| ID | Updated Title | Chars |
+|---|---|---|
+| 624 | Staples - 500 8th Ave, New York, NY \| 3DPrintMap | 48 |
+| 633 | Staples - 5 Union Square W, New York, NY \| 3DPrintMap | 53 |
+| 650 | Staples - 800 3rd Ave, New York, NY \| 3DPrintMap | 48 |
+| 665 | Staples - 2248 Broadway, New York, NY \| 3DPrintMap | 51 |
+| 736 | Staples - 767 Broadway, New York, NY \| 3DPrintMap | 50 |
+| 474 | The UPS Store - 2020 Columbia St, San Diego, CA \| 3DPrintMap | 60 |
+| 498 | The UPS Store - 4075 Park Blvd, San Diego, CA \| 3DPrintMap | 58 |
+| 513 | The UPS Store - 5821 University Ave, San Diego \| 3DPrintMap | 59 |
+| 549 | The UPS Store - 1804 Garnet Ave, San Diego, CA \| 3DPrintMap | 59 |
+| 550 | The UPS Store - 9187 Clairemont Mesa, San Diego \| 3DPrintMap | 60 |
+| 649 | The UPS Store - 33 Park Pl, New York, NY \| 3DPrintMap | 53 |
+| 655 | The UPS Store - 541 3rd Ave, New York, NY \| 3DPrintMap | 54 |
+| 667 | The UPS Store - 82 Nassau St, New York, NY \| 3DPrintMap | 55 |
+| 224 | Staples - 1701 S Figueroa St, Los Angeles, CA \| 3DPrintMap | 58 |
+| 252 | Staples - 3223 W 6th St, Los Angeles, CA \| 3DPrintMap | 53 |
+| 296 | Staples - 3701 Santa Rosalia, Los Angeles, CA \| 3DPrintMap | 58 |
+| 642 | FedEx Office - 200 Varick St, New York, NY \| 3DPrintMap | 55 |
+| 666 | FedEx Office - 1602 2nd Ave, New York, NY \| 3DPrintMap | 54 |
+| 469 | ARC Document Solutions - 555 W Beech, San Diego \| 3DPrintMap | 60 |
+| 555 | ARC Document Solutions - Mira Mesa, San Diego \| 3DPrintMap | 58 |
+
+**Notes:** FedEx Office Print & Ship Center abbreviated to "FedEx Office" (full name exceeds 60-char limit). State omitted on 3 titles where necessary to stay within limit. `<title>`, `og:title`, and `twitter:title` all updated. Fix applied via `fix-duplicate-titles.js`.
 
 ---
 
@@ -215,12 +227,12 @@ AI engines (Perplexity, ChatGPT, Gemini) prioritize pages with:
 
 ## Priority Fix List
 
-| Priority | Issue | Effort |
+| Priority | Issue | Status |
 |---|---|---|
-| 🔴 1 | Canonical URLs — strip `.html` from 51 pages | Low (bulk script) |
-| 🔴 2 | Duplicate listing titles — deduplicate CSV or add address to title | Medium |
-| 🟡 3 | Add H1 to directory.html | Trivial |
-| 🟡 4 | Add JSON-LD to sla-resin, sls-nylon, metal-printing, about, blog/index | Low |
-| 🟡 5 | Add `twitter:image` to 6 pages | Trivial |
-| 🟢 6 | Shorten titles on technologies.html and recommended-gear.html | Trivial |
-| 🟢 7 | Verify new blog posts (San Diego, SF, Atlanta) have Article JSON-LD | Low |
+| 🔴 1 | Canonical URLs — strip `.html` from 51 pages | ✅ Fixed (2026-03-20) |
+| 🔴 2 | Duplicate listing titles — add address to title | ✅ Fixed (2026-03-20) |
+| 🟡 3 | Add H1 to directory.html | ✅ Fixed (2026-03-20) |
+| 🟡 4 | Add JSON-LD to sla-resin, sls-nylon, metal-printing, about, blog/index | ✅ Fixed (2026-03-20) |
+| 🟡 5 | Add `twitter:image` to 6 pages | ✅ Fixed (2026-03-20) |
+| 🟢 6 | Shorten titles on technologies.html and recommended-gear.html | ✅ Fixed (2026-03-20) |
+| 🟢 7 | Verify new blog posts (San Diego, SF, Atlanta) have Article JSON-LD | Pending |
