@@ -18,7 +18,7 @@
 | JSON-LD missing on 6 pages | ✅ Fixed | Medium |
 | Title tag length violations | ✅ Fixed — 2 pages shortened | Low |
 | Twitter card image missing | ✅ Fixed — 6 pages updated | Low |
-| AI citation readiness | ⚠ Partial — 1 item pending | Medium |
+| AI citation readiness | ✅ Resolved | Medium |
 
 ---
 
@@ -212,16 +212,14 @@ Twitter card image (`twitter:image`) is missing on 6 pages. AI link-preview scra
 
 AI engines (Perplexity, ChatGPT, Gemini) prioritize pages with:
 - Unique, factual, first-party content ✅
-- Structured data (JSON-LD) ⚠ — missing on 6 pages
-- Clear author/publisher attribution (Organization schema) ⚠
+- Structured data (JSON-LD) ✅ — added to all previously missing pages
+- Clear author/publisher attribution (Organization schema) ✅
 - FAQ schema for Q&A content ✅ (faq.html has it)
-- Canonical URLs that match served URLs ❌ — currently broken on 51 pages
+- Canonical URLs that match served URLs ✅ — fixed across 51 pages
 
-**Recommendations for AI visibility:**
-1. Fix the canonical mismatch (issue #3) — this is the highest priority
-2. Add `Organization` JSON-LD with `sameAs` links to all pages (currently only on the homepage)
-3. Consider adding an `ItemList` schema to the directory page listing top businesses
-4. The blog city guides are strong candidates for AI citation — ensure each has `Article` schema (NYC, LA, Denver, Seattle posts already do; San Diego, SF, Atlanta posts need verification)
+**Status:** All critical items resolved. Remaining opportunities:
+1. Add `Organization` JSON-LD with `sameAs` links to all pages (currently only on the homepage and about.html)
+2. Consider adding an `ItemList` schema to the directory page listing top businesses
 
 ---
 
@@ -235,4 +233,4 @@ AI engines (Perplexity, ChatGPT, Gemini) prioritize pages with:
 | 🟡 4 | Add JSON-LD to sla-resin, sls-nylon, metal-printing, about, blog/index | ✅ Fixed (2026-03-20) |
 | 🟡 5 | Add `twitter:image` to 6 pages | ✅ Fixed (2026-03-20) |
 | 🟢 6 | Shorten titles on technologies.html and recommended-gear.html | ✅ Fixed (2026-03-20) |
-| 🟢 7 | Verify new blog posts (San Diego, SF, Atlanta) have Article JSON-LD | Pending |
+| 🟢 7 | Verify new blog posts (San Diego, SF, Atlanta) have Article JSON-LD | ✅ Fixed (2026-03-20) |
