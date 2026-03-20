@@ -1456,3 +1456,5 @@ ul { list-style: none; }
 .legal-card a { color: var(--primary); }
 .legal-card a:hover { text-decoration: underline; }
 .legal-card strong { color: var(--text); font-weight: 600; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
