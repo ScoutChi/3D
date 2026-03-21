@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Printing Tolerances and Dimensional Accuracy Explained | 3DPrintMap</title>
+  <meta name="description" content="What dimensional tolerances can you expect from FDM, SLA, SLS, and metal 3D printing? A practical guide with tolerance tables, design tips, and technology comparison.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="3D Printing Tolerances and Dimensional Accuracy Explained">
+  <meta property="og:description" content="What dimensional tolerances can you expect from FDM, SLA, SLS, and metal 3D printing? A practical guide with tolerance tables, design tips, and technology comparison.">
+  <meta property="og:url" content="https://www.3dprintmap.com/blog/3d-printing-tolerances-accuracy">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.3dprintmap.com/og-default.png">
+  <link rel="canonical" href="https://www.3dprintmap.com/blog/3d-printing-tolerances-accuracy">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "3D Printing Tolerances and Dimensional Accuracy Explained",
+        "description": "What dimensional tolerances can you expect from FDM, SLA, SLS, and metal 3D printing? A practical guide with tolerance tables, design tips, and technology comparison.",
+        "url": "https://www.3dprintmap.com/blog/3d-printing-tolerances-accuracy",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.3dprintmap.com/blog/3d-printing-tolerances-accuracy" },
+        "image": "https://www.3dprintmap.com/og-default.png",
+        "datePublished": "2026-03-20",
+        "dateModified": "2026-03-20",
+        "author": { "@type": "Organization", "name": "3DPrintMap", "url": "https://www.3dprintmap.com" },
+        "publisher": { "@type": "Organization", "name": "3DPrintMap", "url": "https://www.3dprintmap.com" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.3dprintmap.com/blog" },
+          { "@type": "ListItem", "position": 3, "name": "3D Printing Tolerances and Dimensional Accuracy Explained", "item": "https://www.3dprintmap.com/blog/3d-printing-tolerances-accuracy" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<div class="topbar">
+  Are you a 3D printing service? <a href="/add-listing.html">Add Your Business FREE →</a>
+</div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <span class="logo-sym">◈</span>
+      <span class="logo-tx"><span class="c-navy">3D</span><span class="c-orange">Print</span><span class="c-navy">Map</span></span>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-has-drop">
+        <button class="nav-link">Browse ▾</button>
+        <ul class="nav-drop">
+          <li><a href="/fdm-printing.html">FDM Printing</a></li>
+          <li><a href="/sla-resin.html">SLA / Resin</a></li>
+          <li><a href="/sls-nylon.html">SLS / Nylon</a></li>
+          <li><a href="/metal-printing.html">Metal Printing</a></li>
+          <li><a href="/directory.html">All Services</a></li>
+        </ul>
+      </li>
+      <li><a href="/blog/index.html" class="nav-link active">Blog</a></li>
+      <li><a href="/technologies.html" class="nav-link">Technologies</a></li>
+      <li><a href="/about.html" class="nav-link">About</a></li>
+      <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+      <li><a href="/recommended-gear.html" class="nav-link">Gear Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/add-listing.html" class="btn-cta">+ Add Business (FREE)</a>
+      <button class="ham" id="ham" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-label">Browse by Technology</div>
+  <a href="/fdm-printing.html">FDM Printing</a>
+  <a href="/sla-resin.html">SLA / Resin</a>
+  <a href="/sls-nylon.html">SLS / Nylon</a>
+  <a href="/metal-printing.html">Metal Printing</a>
+  <a href="/directory.html">All Services</a>
+  <div class="mob-label">Resources</div>
+  <a href="/blog/index.html">Blog</a>
+  <a href="/technologies.html">Technologies</a>
+  <a href="/about.html">About</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/recommended-gear.html">Gear Guide</a>
+  <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
+</div>
+
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> › <a href="/blog/index.html">Blog</a> › <span>3D Printing Tolerances and Accuracy</span>
+    </nav>
+    <div class="blog-cat">Technical Guide</div>
+    <h1>3D Printing Tolerances and Dimensional Accuracy Explained</h1>
+    <div class="blog-meta">
+      <span><i class="fa-solid fa-calendar"></i> March 2026</span>
+      <span><i class="fa-solid fa-clock"></i> 10 min read</span>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="post-wrap">
+      <article class="article">
+
+        <p>One of the most common frustrations engineers encounter when ordering 3D printed parts for the first time is dimensional surprise. A hole that was modeled at 10.000mm comes back at 9.75mm. A shaft designed for a press fit slides through loosely. A housing that should snap together refuses to close. These outcomes are not random — they follow predictable patterns tied to how each printing technology works and what tolerances it can realistically achieve.</p>
+
+        <p>This guide demystifies 3D printing tolerances: what to expect from each technology, what factors push accuracy in either direction, how to design parts that work the first time, and when post-machining is the right call for critical features.</p>
+
+        <h2>Why Tolerances Matter in 3D Printing</h2>
+
+        <p>Dimensional tolerance is the permissible variation in a part's actual size from its nominal designed size. When two parts need to mate — a shaft in a bearing, a lid on an enclosure, a pin in a socket — the tolerances of both parts determine whether the assembly will fit too loosely, too tightly, or correctly.</p>
+
+        <p>In traditional CNC machining, tolerances of ±0.025mm (±0.001 inch) are routine and ±0.005mm is achievable with care. 3D printing, even at its best, operates at a different level. This is not a flaw in the technology — it is a fundamental consequence of how additive processes work, and understanding it allows you to design around it rather than fight it.</p>
+
+        <p>The good news: for many applications, 3D printing tolerances are entirely sufficient. A consumer product enclosure, an aesthetic concept model, a jig or fixture, a fluid reservoir — these can all be designed to work reliably within the tolerance bands each technology provides. Problems arise when engineers apply machined-part tolerances to 3D printed designs without accounting for the difference.</p>
+
+        <h2>How to Read a Tolerance Specification</h2>
+
+        <p>When a service bureau advertises "±0.2mm tolerance," this typically means that for a nominal 50mm feature, the actual delivered dimension will be between 49.8mm and 50.2mm. However, there are several important caveats to understand.</p>
+
+        <p>First, tolerance specifications are usually stated for a specific size range. Many services quote tighter tolerances for small features (under 25mm) and looser tolerances for larger features, because dimensional error often scales with part size due to material shrinkage and thermal effects.</p>
+
+        <p>Second, X/Y tolerances (in the plane of printing) are typically better than Z tolerances (through the build height). In FDM especially, Z accuracy is limited by layer height, and features in the Z direction behave differently than features in X/Y.</p>
+
+        <p>Third, bureau-stated tolerances represent achievable capability on well-calibrated machines with standard process settings — they are not guarantees for every feature on every part. Small holes, thin walls, and overhanging features all tend to perform worse than bulk body dimensions.</p>
+
+        <h2>FDM Tolerances: Accessible but Variable</h2>
+
+        <p><a href="/fdm-printing.html">FDM printing</a> offers the widest range of tolerance outcomes because machine quality, calibration, material choice, and print settings all have a substantial effect. A well-tuned industrial FDM machine running engineering-grade filament can deliver meaningfully better results than a consumer desktop printer using the same material.</p>
+
+        <p>Typical FDM tolerance capability for a well-calibrated machine:</p>
+
+        <div class="quick-boxes">
+          <div class="qbox qbox-orange">
+            <strong>FDM X/Y Plane</strong>
+            <ul>
+              <li>General: ±0.2–0.5mm</li>
+              <li>Industrial FDM: ±0.1–0.2mm</li>
+              <li>Small features (&lt;10mm): ±0.3mm typical</li>
+              <li>Holes: tend to print undersized</li>
+            </ul>
+          </div>
+          <div class="qbox qbox-indigo">
+            <strong>FDM Z Axis</strong>
+            <ul>
+              <li>General: ±0.3–0.5mm</li>
+              <li>Governed by layer height</li>
+              <li>0.1mm layers = tighter Z</li>
+              <li>Step error on angled surfaces</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>The most important FDM quirk to design around is that circular holes tend to print undersized by 0.1 to 0.5mm depending on material and settings. This is because the extruded bead that forms the hole perimeter has some inward deviation at the curve. Design holes 0.2 to 0.4mm larger than the target diameter and verify with your service bureau's specific offset recommendations. Services like <a href="/listing/879">Advanced Prototyping Inc. in Rochester Hills, MI</a> publish material-specific tolerance data sheets that are worth requesting before you finalize a critical design.</p>
+
+        <h2>SLA Tolerances: Best for Fine Detail</h2>
+
+        <p><a href="/sla-resin.html">SLA and MSLA resin printing</a> consistently achieves the tightest tolerances of any polymer printing technology. The photopolymerization process, driven by a precisely controlled light source, can resolve features as small as 0.1mm with modern high-resolution machines.</p>
+
+        <p>Typical SLA tolerance capability:</p>
+        <ul>
+          <li>X/Y: ±0.05–0.15mm for features under 50mm</li>
+          <li>Z: ±0.1–0.15mm (layer height typically 0.025–0.05mm)</li>
+          <li>Minimum feature size: 0.2mm for walls, 0.1mm for raised text</li>
+        </ul>
+
+        <p>SLA's limitation is not accuracy — it is material choice and part brittleness. Standard SLA resins are stiffer and more brittle than engineering thermoplastics, which means that while you can achieve tight dimensions, the parts may not survive the mechanical loads that a functional assembly demands. Engineering resins (tough, flexible, castable, high-temp) expand the material palette but at higher cost.</p>
+
+        <p>One SLA-specific accuracy consideration: resin shrinks slightly during UV curing, both during printing and during post-cure. This shrinkage is predictable and can be compensated by scaling the model slightly (typically 0.5 to 1.5% depending on resin) before printing. Professional service bureaus apply these compensation factors automatically for their standard resins.</p>
+
+        <h2>SLS Tolerances: Isotropic and Consistent</h2>
+
+        <p>SLS (Selective Laser Sintering) nylon parts are the workhorse of functional prototyping for good reason. Unlike FDM, SLS parts are mechanically isotropic — they have equal strength in all directions because there are no layer-line interfaces to delaminate. Tolerance performance is similarly consistent across all axes.</p>
+
+        <p>Typical SLS tolerance capability:</p>
+        <ul>
+          <li>X/Y/Z: ±0.1–0.3mm, with ±0.15mm typical for features under 100mm</li>
+          <li>Minimum wall thickness: 0.7–1.0mm</li>
+          <li>Minimum feature size: approximately 0.5mm for raised features</li>
+          <li>Hole diameter accuracy: within 0.1–0.2mm, tends to slightly undersized</li>
+        </ul>
+
+        <p>SLS nylon also shrinks during sintering — typically 2 to 3% — but this is compensated by scaling the build file before printing. Well-run SLS bureaus characterize their specific powder batches and machines to apply accurate compensation factors. <a href="/listing/564">SPARQ Industrial in New York</a> is an example of a service that operates industrial SLS equipment with process controls appropriate for engineering-grade parts.</p>
+
+        <div class="callout">
+          <strong>Isotropy advantage:</strong> Because SLS parts are equally strong in all directions and have consistent tolerance performance across axes, they are easier to design for than FDM parts, where you must consider build orientation to optimize both strength and accuracy on critical features.
+        </div>
+
+        <h2>Metal DMLS Tolerances: Tight but Expensive</h2>
+
+        <p><a href="/metal-printing.html">Metal 3D printing</a> via DMLS or SLM achieves tolerances that, for a printing process, are remarkably good — but they still fall short of what precision machining delivers, and the economics of metal printing mean that every hour of build time is expensive.</p>
+
+        <p>Typical DMLS tolerance capability for stainless steel and titanium:</p>
+        <ul>
+          <li>X/Y: ±0.05–0.1mm for features under 50mm</li>
+          <li>Z: ±0.05–0.15mm</li>
+          <li>As-built surface roughness: Ra 6–15 µm (rough relative to machined surfaces)</li>
+          <li>With post-machining: ±0.01–0.025mm on specific features</li>
+        </ul>
+
+        <p>The standard approach for precision metal parts is to design with 0.3 to 0.5mm of additional stock material on all critical surfaces, then CNC machine those surfaces to final tolerance after printing. Threaded holes are almost always drilled and tapped after printing rather than printed directly. This hybrid approach leverages the geometric freedom of additive manufacturing for the complex body geometry while using subtractive machining for the dimensional precision where it truly matters.</p>
+
+        <h2>Factors That Affect Accuracy</h2>
+
+        <p>Beyond technology choice, several controllable and uncontrollable factors influence whether a part comes in at the tight or loose end of a technology's tolerance range.</p>
+
+        <p><strong>Machine calibration.</strong> A well-maintained, recently calibrated machine will consistently outperform one that has not been serviced. Professional bureaus calibrate regularly; ask your bureau when their last calibration was performed if tolerance is critical.</p>
+
+        <p><strong>Material shrinkage.</strong> All 3D printing materials undergo some thermal contraction during and after printing. Higher-shrinkage materials (ABS, nylon, PEEK) require more compensation than lower-shrinkage materials (PLA, resin). Compensation factors that are dialed in for one material batch may need adjustment for a new batch from a different supplier.</p>
+
+        <p><strong>Build orientation.</strong> How a part is oriented on the build plate affects which faces are parallel to the build layers (typically more accurate) and which are perpendicular or angled (less accurate in Z). Orienting a critical mating surface parallel to the XY plane almost always improves its dimensional accuracy.</p>
+
+        <p><strong>Feature size and geometry.</strong> Small features — thin walls, small holes, fine text — are systematically less accurate than large features because the absolute size of the printing spot or extruded bead becomes significant relative to the feature size. As a rule, features smaller than 3 to 5 times the layer height or nozzle diameter become increasingly difficult to achieve accurately.</p>
+
+        <p><strong>Thermal environment.</strong> Temperature variations in the build environment during printing cause differential thermal expansion and contraction that translates to dimensional error. Enclosed printers with controlled chamber temperatures produce more consistent results than open-frame printers subject to ambient temperature changes.</p>
+
+        <h2>Design Tips for Tight Tolerances</h2>
+
+        <p>You can dramatically improve your success rate with 3D printed assemblies by applying a few consistent design rules from the start.</p>
+
+        <p>Design clearance fits, not interference fits, as your baseline for 3D printed assemblies. A clearance of 0.2mm per side for sliding fits and 0.3 to 0.4mm for loose clearance fits works well for FDM and SLS. Interference fits for FDM are difficult to achieve reliably — consider designing in a heat-set insert or press-fit metal pin instead.</p>
+
+        <p>Orient critical features parallel to the build plane whenever possible. The X/Y plane of any printing technology is systematically more accurate than the Z axis.</p>
+
+        <p>Print test coupons before committing to a full assembly. A simple coupon with a range of hole diameters, slot widths, and wall thicknesses printed in your intended material will quickly reveal the actual offset your specific bureau's process applies — allowing you to compensate in your production parts.</p>
+
+        <h2>When to Specify Post-Machining</h2>
+
+        <p>Some features simply cannot be reliably achieved by any printing process alone. Bearing seats, precision shaft diameters, threaded connections in metal, and O-ring grooves in high-pressure applications all benefit from post-machining. If your application requires tolerances tighter than ±0.05mm, the honest answer is that 3D printing gets you close and machining gets you there.</p>
+
+        <p>When specifying a hybrid print-and-machine approach, design with sufficient stock material (0.3 to 0.5mm minimum) on all surfaces that will be machined, and clearly identify these surfaces on your drawing. Many service bureaus — including specialist shops like <a href="/listing/879">Advanced Prototyping Inc.</a> — offer integrated printing and machining services so you receive a finished, tolerance-verified part without managing two vendors.</p>
+
+        <p>Find precision-capable 3D printing services across <a href="/sla-resin.html">SLA</a>, <a href="/sls-nylon.html">SLS</a>, <a href="/metal-printing.html">metal</a>, and <a href="/fdm-printing.html">FDM</a> in the <a href="/directory.html">3DPrintMap directory</a>.</p>
+
+        <h2>Technology Tolerance Comparison</h2>
+
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.9rem;margin:1.5rem 0;">
+            <thead>
+              <tr style="background:var(--navy);color:#fff;">
+                <th style="padding:0.6rem 0.8rem;text-align:left;">Technology</th>
+                <th style="padding:0.6rem 0.8rem;text-align:left;">Typical X/Y Tolerance</th>
+                <th style="padding:0.6rem 0.8rem;text-align:left;">Typical Z Tolerance</th>
+                <th style="padding:0.6rem 0.8rem;text-align:left;">Isotropy</th>
+                <th style="padding:0.6rem 0.8rem;text-align:left;">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:var(--surface);">
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">FDM</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">±0.2–0.5mm</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">±0.3–0.5mm</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">Anisotropic</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">Large structural parts, housings</td>
+              </tr>
+              <tr>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">SLA / MSLA</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">±0.05–0.15mm</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">±0.1–0.15mm</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">Slightly anisotropic</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">Fine features, dental, jewelry</td>
+              </tr>
+              <tr style="background:var(--surface);">
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">SLS Nylon</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">±0.1–0.3mm</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">±0.1–0.3mm</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">Isotropic</td>
+                <td style="padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);">Functional prototypes, production</td>
+              </tr>
+              <tr>
+                <td style="padding:0.6rem 0.8rem;">Metal DMLS</td>
+                <td style="padding:0.6rem 0.8rem;">±0.05–0.1mm</td>
+                <td style="padding:0.6rem 0.8rem;">±0.05–0.15mm</td>
+                <td style="padding:0.6rem 0.8rem;">Near-isotropic</td>
+                <td style="padding:0.6rem 0.8rem;">Complex metal parts, aerospace</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="blog-faq">
+          <div class="blog-faq-item">
+            <button class="blog-faq-q" aria-expanded="false">What tolerance should I design for?</button>
+            <div class="blog-faq-a">
+              <p>Design to the broadest tolerance your application can accept, then verify that your chosen technology can reliably meet it. For general FDM assemblies, design mating features with ±0.3mm in mind as a conservative starting point. For SLS functional prototypes, ±0.15 to 0.2mm is achievable and reliable. For SLA detail work, ±0.1mm is reasonable for features under 25mm. The tighter you specify, the more expensive and less certain the outcome — so only tighten tolerance where function genuinely requires it. Print a test coupon first when accuracy is critical.
+              </p>
+            </div>
+          </div>
+          <div class="blog-faq-item">
+            <button class="blog-faq-q" aria-expanded="false">Can I get tighter tolerances with post-machining?</button>
+            <div class="blog-faq-a">
+              <p>Yes, and for critical features this is the recommended approach. 3D printing establishes the complex geometry; CNC machining refines specific surfaces to tight dimensional tolerances. For metal parts, leave 0.3 to 0.5mm of stock on all surfaces to be machined. For polymer parts, post-machining is feasible for harder materials like nylon and PEEK, but softer materials like standard resins or PLA can be difficult to machine cleanly without chipping. Some service bureaus offer integrated print-and-machine workflows that deliver fully finished, tolerance-verified parts from a single source.</p>
+            </div>
+          </div>
+          <div class="blog-faq-item">
+            <button class="blog-faq-q" aria-expanded="false">Why do my parts come out slightly undersized?</button>
+            <div class="blog-faq-a">
+              <p>Material shrinkage is the most common cause. All thermoplastics contract as they cool from melt temperature to room temperature — FDM materials typically shrink 0.2 to 2% depending on the material. Resin photopolymers also shrink during curing. Service bureaus compensate for this by applying a scaling factor to the build file before printing, but the compensation is tuned to typical conditions and may not be perfect for every part geometry. External dimensions often land slightly undersized while hole diameters land slightly undersized too (the opposite of what you might expect), due to how material flows into hole perimeters. Requesting your bureau's published dimensional compensation offsets and adjusting your model accordingly produces the most predictable results.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2.5rem;">
+          <a href="/directory.html" class="btn btn-primary">Browse Services →</a>
+        </div>
+
+      </article>
+
+      <aside class="sidebar">
+        <div class="sidebar-widget sidebar-widget-navy">
+          <h3>Find a High-Accuracy 3D Printing Service</h3>
+          <p>Browse verified 3D printing bureaus offering SLA, SLS, and metal printing with documented tolerance capabilities.</p>
+          <a href="/directory.html" class="btn btn-primary btn-full">Browse Services →</a>
+        </div>
+        <div class="sidebar-widget sidebar-widget-border">
+          <h4>Browse by Technology</h4>
+          <a href="/fdm-printing.html" class="sidebar-link">FDM Printing</a>
+          <a href="/sla-resin.html" class="sidebar-link">SLA / Resin</a>
+          <a href="/sls-nylon.html" class="sidebar-link">SLS / Nylon</a>
+          <a href="/metal-printing.html" class="sidebar-link">Metal Printing</a>
+        </div>
+        <div class="sidebar-widget sidebar-widget-border">
+          <h4>Related Guides</h4>
+          <a href="/blog/how-to-choose-3d-printing-material.html" class="sidebar-link">How to Choose a 3D Printing Material</a>
+          <a href="/blog/3d-printed-parts-design-guidelines.html" class="sidebar-link">Design Guidelines for 3D Printed Parts</a>
+          <a href="/blog/3d-printing-for-prototyping.html" class="sidebar-link">3D Printing for Prototyping: A Complete Guide</a>
+          <a href="/blog/how-to-choose-3d-printing-service.html" class="sidebar-link">How to Choose a 3D Printing Service</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand-col">
+        <a href="/" class="logo"><span class="logo-sym">◈</span><span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span></a>
+        <p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p>
+      </div>
+      <div class="footer-col"><h4>Browse</h4><a href="/directory.html">All Services</a><a href="/fdm-printing.html">FDM Printing</a><a href="/sla-resin.html">SLA / Resin</a><a href="/sls-nylon.html">SLS / Nylon</a><a href="/metal-printing.html">Metal Printing</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="/blog/index.html">Blog</a><a href="/technologies.html">Technologies</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/recommended-gear.html">Recommended Gear</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/add-listing.html">Add Your Business</a><a href="/featured-listing.html">Get Featured</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 3DPrintMap. All rights reserved.</span><a href="/sitemap.xml">Sitemap</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ham = document.getElementById('ham');
+  var mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', function(){ mob.classList.toggle('open'); ham.textContent = mob.classList.contains('open') ? '✕' : '☰'; });
+  document.addEventListener('click', function(e){ if(!ham.contains(e.target) && !mob.contains(e.target)){ mob.classList.remove('open'); ham.textContent = '☰'; } });
+  document.querySelectorAll('.blog-faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.blog-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.blog-faq-item.open').forEach(function(el){ el.classList.remove('open'); el.querySelector('.blog-faq-q').setAttribute('aria-expanded','false'); });
+      if(!isOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+})();
+</script>
+<script src="/js/nav.js"></script>
+</body>
+</html>

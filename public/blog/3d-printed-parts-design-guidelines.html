@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Guidelines for 3D Printed Parts | 3DPrintMap</title>
+  <meta name="description" content="Essential design rules for 3D printing — wall thickness, overhangs, holes, tolerances, and technology-specific DFM guidelines for FDM, SLA, SLS, and metal parts.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Design Guidelines for 3D Printed Parts | 3DPrintMap">
+  <meta property="og:description" content="Essential design rules for 3D printing — wall thickness, overhangs, holes, tolerances, and technology-specific DFM guidelines for FDM, SLA, SLS, and metal parts.">
+  <meta property="og:url" content="https://www.3dprintmap.com/blog/3d-printed-parts-design-guidelines">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.3dprintmap.com/og-default.png">
+  <link rel="canonical" href="https://www.3dprintmap.com/blog/3d-printed-parts-design-guidelines">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Design Guidelines for 3D Printed Parts",
+        "description": "Essential design rules for 3D printing — wall thickness, overhangs, holes, tolerances, and technology-specific DFM guidelines for FDM, SLA, SLS, and metal parts.",
+        "url": "https://www.3dprintmap.com/blog/3d-printed-parts-design-guidelines",
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.3dprintmap.com/blog/3d-printed-parts-design-guidelines" },
+        "image": "https://www.3dprintmap.com/og-default.png",
+        "datePublished": "2026-03-20",
+        "dateModified": "2026-03-20",
+        "author": { "@type": "Organization", "name": "3DPrintMap", "url": "https://www.3dprintmap.com" },
+        "publisher": { "@type": "Organization", "name": "3DPrintMap", "url": "https://www.3dprintmap.com" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.3dprintmap.com/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Design Guidelines for 3D Printed Parts", "item": "https://www.3dprintmap.com/blog/3d-printed-parts-design-guidelines" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<div class="topbar">Are you a 3D printing service? <a href="/add-listing.html">Add Your Business FREE →</a></div>
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-sym">◈</span><span class="logo-tx"><span class="c-navy">3D</span><span class="c-orange">Print</span><span class="c-navy">Map</span></span></a>
+    <ul class="nav-links">
+      <li class="nav-has-drop">
+        <button class="nav-link">Browse ▾</button>
+        <ul class="nav-drop">
+          <li><a href="/fdm-printing.html">FDM Printing</a></li>
+          <li><a href="/sla-resin.html">SLA / Resin</a></li>
+          <li><a href="/sls-nylon.html">SLS / Nylon</a></li>
+          <li><a href="/metal-printing.html">Metal Printing</a></li>
+          <li><a href="/directory.html">All Services</a></li>
+        </ul>
+      </li>
+      <li><a href="/blog/index.html" class="nav-link active">Blog</a></li>
+      <li><a href="/technologies.html" class="nav-link">Technologies</a></li>
+      <li><a href="/about.html" class="nav-link">About</a></li>
+      <li><a href="/faq.html" class="nav-link">FAQ</a></li>
+      <li><a href="/recommended-gear.html" class="nav-link">Gear Guide</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/add-listing.html" class="btn-cta">+ Add Business (FREE)</a>
+      <button class="ham" id="ham" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-label">Browse by Technology</div>
+  <a href="/fdm-printing.html">FDM Printing</a><a href="/sla-resin.html">SLA / Resin</a><a href="/sls-nylon.html">SLS / Nylon</a><a href="/metal-printing.html">Metal Printing</a><a href="/directory.html">All Services</a>
+  <div class="mob-label">Resources</div>
+  <a href="/blog/index.html">Blog</a><a href="/technologies.html">Technologies</a><a href="/about.html">About</a><a href="/faq.html">FAQ</a><a href="/recommended-gear.html">Gear Guide</a>
+  <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
+</div>
+<div class="post-hero">
+  <div class="post-hero-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/blog/index.html">Blog</a> › <span>Design Guidelines for 3D Printed Parts</span></nav>
+    <div class="blog-cat">Design Guide</div>
+    <h1>Design Guidelines for 3D Printed Parts</h1>
+    <div class="blog-meta">
+      <span><i class="fa-solid fa-calendar"></i> March 2026</span>
+      <span><i class="fa-solid fa-clock"></i> 9 min read</span>
+    </div>
+  </div>
+</div>
+<section class="section" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="post-wrap">
+      <article class="article">
+
+        <h2>Why Design for Manufacturing (DFM) Matters in 3D Printing</h2>
+        <p>3D printing is often sold as a technology that can produce any geometry you can imagine. While that claim is closer to true than it is with CNC machining or injection molding, the reality is that every 3D printing process has its own set of physical constraints — and ignoring them leads to failed prints, warped parts, expensive reprints, and missed deadlines.</p>
+        <p>Design for Manufacturing (DFM) in additive manufacturing means adapting your CAD model to work with the process rather than against it. A part that is straightforward to design in SolidWorks may be impossible to print in FDM without supports, or may crack during post-processing in SLA, or collapse during sintering in SLS. Understanding the rules before you send a file to a service bureau can save you hours of back-and-forth and significant money.</p>
+        <p>The good news is that 3D printing DFM rules are learnable and largely consistent within each technology. This guide covers the most important design guidelines across <a href="/fdm-printing.html">FDM</a>, <a href="/sla-resin.html">SLA/resin</a>, <a href="/sls-nylon.html">SLS/nylon</a>, and <a href="/metal-printing.html">metal</a> printing — giving you a practical reference you can apply before your next file upload.</p>
+
+        <h2>Wall Thickness</h2>
+        <p>Wall thickness is perhaps the most fundamental parameter in 3D print DFM. Every technology has a minimum wall thickness below which parts either cannot be printed reliably or will be mechanically fragile upon removal from the build.</p>
+        <p><strong>FDM (Fused Deposition Modeling)</strong> extrudes plastic through a nozzle, typically 0.4mm in diameter. The practical minimum wall thickness is <strong>1.2mm</strong> — equivalent to two nozzle-width perimeter passes — and even that can feel flimsy for structural parts. A 1.6mm or 2mm minimum is more robust. Walls thinner than 1.2mm may simply be skipped by the slicer software, resulting in voids or missing geometry in your final part. For exterior cosmetic walls that carry no load, 1.2mm is acceptable; for functional enclosures, snap-fit housings, or anything that will experience stress, target 2.4mm or more.</p>
+        <p><strong>SLA/Resin</strong> can achieve walls as thin as <strong>0.5mm</strong> in supported areas, and some professional-grade resins can go thinner still. However, thin walls in SLA are prone to warping during post-cure if they are large flat features. Walls under 0.8mm across large spans should be avoided unless the geometry is self-supporting. For freestanding walls or ribs, 0.8–1.2mm is a safer minimum.</p>
+        <p><strong>SLS (Selective Laser Sintering)</strong> sinters nylon powder with a laser, and thin features are at risk of incomplete sintering or breakage during powder removal. The recommended minimum is <strong>0.8mm</strong>, with 1.0mm preferred for exterior walls and 0.8mm acceptable for internal ribs and fine detail features.</p>
+        <p><strong>Metal printing</strong> (DMLS/SLM) has walls constrained by laser spot size and melt pool dynamics. Minimum wall thickness is typically <strong>0.5–1.0mm</strong> depending on the alloy and machine, but metal parts also experience significant thermal stresses during printing — thin walls in metal are at high risk of warping or cracking. A practical minimum for structural metal walls is 1.0mm, and 1.5mm is preferable for tall or unsupported walls.</p>
+
+        <h2>Overhangs and Support Structures</h2>
+        <p>Overhangs — geometry that extends outward over empty space without anything below it — are one of the most impactful design considerations in 3D printing. How you handle overhangs affects print success, surface quality, and post-processing time significantly.</p>
+        <p><strong>In FDM</strong>, layers are built on top of the previous layer. Geometry that overhangs by more than roughly <strong>45 degrees from vertical</strong> has insufficient support from the layer below and will sag, curl, or fail. At exactly 45 degrees, most FDM printers can manage without supports, but surface quality degrades. Beyond 45 degrees, support structures are needed. These are automatically generated by slicers, but supports add print time, material cost, and require removal — which can damage surface finish and leave witness marks.</p>
+        <p>Design strategies to minimize supports in FDM include: chamfering horizontal features (replacing a flat overhang with a 45-degree slope), using teardrop-shaped holes instead of circular holes for features oriented horizontally, and splitting complex parts into print-friendly subcomponents that are assembled after printing.</p>
+        <p><strong>SLA</strong> has similar overhang limitations to FDM, with the added challenge of suction cup forces during layer separation — large flat areas parallel to the build platform create suction that can delaminate parts. Tilting the part 10–15 degrees to the build plate is a common strategy employed by SLA service bureaus to manage both overhangs and suction forces.</p>
+        <p><strong>SLS requires no support structures at all.</strong> The unsintered powder surrounding the part throughout the build acts as a natural support medium, meaning SLS can produce geometry that is completely impossible in FDM or SLA without supports — interior channels, interlocking parts, complex organic shapes. This is one of SLS's most significant advantages for complex functional parts.</p>
+        <p><strong>Metal printing</strong> does require supports, and metal support design is a specialized engineering task. Metal supports need to anchor overhangs, manage heat dissipation during sintering, and be removable via machining or grinding without damaging the part. In metal, it is especially worth redesigning parts to minimize overhang angle rather than relying on supports — every support in metal printing adds machining cost and risk.</p>
+
+        <h2>Holes and Clearances</h2>
+        <p>Holes in 3D printed parts behave differently from holes in machined parts, and understanding those differences is essential for designing parts that assemble correctly.</p>
+        <p><strong>Vertical holes in FDM</strong> — holes whose axis is parallel to the Z (build) axis — consistently print smaller than nominal. The reason is that extruded material bulges slightly inward on the inner surface of a circular feature. The typical undersize is <strong>0.1–0.3mm on the diameter</strong>. The practical fix is to add 0.2mm to the designed hole diameter in your CAD model. For a 5mm bolt clearance hole, design it at 5.2mm. For precision fit, drill or ream to final size after printing. Always test with a calibration coupon before printing a batch of parts with critical hole dimensions.</p>
+        <p><strong>Horizontal holes in FDM</strong> — holes whose axis is perpendicular to Z — have an additional problem: the top of the hole is an overhang, which sags and produces a D-shaped aperture rather than a circular one. The teardrop hole profile solves this elegantly: the top of the hole is replaced by an upward-pointing point (like the top of a teardrop), which always self-supports. Many FDM-savvy designers apply teardrop profiles automatically to all horizontal holes above a certain diameter.</p>
+        <p><strong>SLA holes</strong> are significantly more accurate than FDM holes. Expect undersize of only <strong>0.05–0.1mm on diameter</strong> in SLA, with less dependence on orientation. For fine-pitch threaded inserts or precision shaft fits, SLA is the preferred choice.</p>
+        <p>For threaded features, it is generally better to design FDM parts for heat-set inserts (brass inserts pressed in with a soldering iron) than to print threads directly. Printed FDM threads in PLA or PETG are weak and strip easily. SLA and SLS can produce usable printed threads in M3 and larger, but heat-set inserts remain the more reliable and repeatable solution across all polymer 3D printing technologies.</p>
+
+        <h2>Tolerances for Mating Parts</h2>
+        <p>When two 3D printed parts must fit together — a lid on a box, a shaft in a bearing hole, a snap fit — the clearance between mating surfaces must be designed explicitly. Unlike machined parts where tolerances can be held to microns, 3D printed parts require generous clearance to ensure reliable fit.</p>
+        <p>For <strong>FDM parts</strong>, design a minimum of <strong>0.2mm clearance per side</strong> (0.4mm total gap) between mating surfaces. This means if a pin is 10mm in diameter, the hole it fits into should be 10.4mm. For sliding fits, increase clearance to 0.3mm per side. For friction fits or press fits, you can reduce to 0.1mm per side, but test first — FDM dimensional variation is larger than SLA.</p>
+        <p>For <strong>SLA parts</strong>, tolerances are tighter. A <strong>0.1mm clearance per side</strong> (0.2mm total) is sufficient for a sliding fit. For precision assemblies or optical-quality fixtures, SLA can achieve fits comparable to machined plastic.</p>
+        <p><strong>Snap fits and living hinges</strong> in 3D printed parts need special attention. FDM snap fits work best when oriented so the flexing direction is parallel to layer lines (X-Y plane), not across them (Z axis), because Z-direction strength in FDM is lower due to interlayer bonding. PETG and TPU are better snap-fit materials than PLA, which is too brittle. SLS nylon is excellent for living hinges and snap fits due to its isotropy and impact resistance. SLA standard resins are generally too brittle for snap fits unless a tough resin is specified.</p>
+        <p><strong>Screw bosses</strong> — cylindrical features that accept self-tapping screws — need an outer-to-inner diameter ratio of at least 2:1 in FDM. For an M3 self-tapper, the boss inner diameter should be 2.6mm with an outer diameter of at least 5.2mm. Insufficient boss wall thickness leads to cracking under screw torque.</p>
+
+        <h2>Text and Surface Embossing</h2>
+        <p>Part numbers, logos, and instructional text are often embossed or engraved into 3D printed parts. Getting readable text requires attention to feature size and orientation.</p>
+        <p>For <strong>FDM parts</strong>, embossed text (text raised above the surface) should have a minimum depth of <strong>0.5mm</strong> and a minimum stroke width of 0.8mm. Recessed (engraved) text on FDM is harder to read because the engraved channel walls are rough and tend to be bridged over by subsequent extrusion passes, reducing legibility. Raised text is strongly preferred for FDM. Sans-serif fonts at 12pt or larger (at print scale) are the most reliable; thin serifs below 0.5mm stroke width will simply not reproduce.</p>
+        <p>For <strong>SLA parts</strong>, the precision is dramatically higher. Embossed or recessed text with a depth of <strong>0.3mm</strong> and stroke widths down to 0.4mm will reproduce clearly. SLA is capable of printing very fine text such as part numbers and QR codes that are completely illegible in FDM. If you need fine branding or identification features on a part, SLA is the clear choice regardless of whether it is the best technology for the part's structural requirements.</p>
+        <p>When placing text, also consider orientation during printing. Text on a face that is printed vertically (parallel to Z) will show layer lines across the letterforms. Text on a horizontal upward-facing surface will be smooth and clear. Plan your print orientation with text legibility in mind.</p>
+
+        <h2>Orientation Strategy</h2>
+        <p>The orientation of a part on the print bed is one of the most consequential decisions in 3D print DFM, affecting strength, surface quality, accuracy, support usage, and print time simultaneously.</p>
+        <p>In <strong>FDM</strong>, layer adhesion is the weakest link — interlayer bond strength is roughly 50–70% of the in-layer strength for most materials. Parts loaded in tension across layer lines will fail at significantly lower stress than parts loaded along layer lines. The cardinal rule: <strong>orient FDM parts so that the primary load direction is parallel to the layer lines, not across them</strong>. A bracket that will be pulled in the Z direction should be re-oriented so Z aligns with the pulling direction.</p>
+
+        <div class="quick-boxes">
+          <div class="qbox qbox-orange"><strong>Prioritize strength</strong><p>Orient FDM layers perpendicular to the primary load direction — this maximizes layer adhesion strength along the stress axis and prevents delamination failure.</p></div>
+          <div class="qbox qbox-indigo"><strong>Prioritize surface quality</strong><p>Use SLA or DLP for cosmetic parts that need smooth finish out of the machine. Alternatively, orient FDM parts so critical surfaces face up and post-process with sanding, priming, and painting.</p></div>
+        </div>
+
+        <p>For <strong>SLA</strong>, large flat faces oriented parallel to the build plate create suction forces during layer peel that can delaminate or warp parts. Tilting flat parts 10–20 degrees off parallel reduces this dramatically and also distributes layer lines more favorably across the surface. For ring-shaped or hollow parts, orienting the hollow axis vertically reduces internal suction forces.</p>
+        <p>For <strong>metal printing</strong>, support minimization is the dominant concern — metal supports are expensive to remove. Orient parts to place overhangs on faces that will be machined post-print, use self-supporting angles where possible, and work with your service bureau's engineers if the part is structurally complex. Companies like <a href="/listing/879">Advanced Prototyping Inc in Rochester Hills, MI</a> offer DFM review services as part of their metal printing workflow.</p>
+
+        <h2>Technology-Specific Quick Rules</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>FDM</th>
+              <th>SLA / Resin</th>
+              <th>SLS / Nylon</th>
+              <th>Metal (DMLS)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Min Wall Thickness</td>
+              <td>1.2mm (2.0mm preferred)</td>
+              <td>0.5mm (0.8mm preferred)</td>
+              <td>0.8mm (1.0mm preferred)</td>
+              <td>0.5–1.0mm (1.5mm preferred)</td>
+            </tr>
+            <tr>
+              <td>Min Feature Size</td>
+              <td>~0.8mm</td>
+              <td>~0.2–0.3mm</td>
+              <td>~0.6mm</td>
+              <td>~0.3–0.5mm</td>
+            </tr>
+            <tr>
+              <td>Overhang Limit (no support)</td>
+              <td>45°</td>
+              <td>45° (tilting recommended)</td>
+              <td>No limit (powder supports)</td>
+              <td>45° (lower preferred)</td>
+            </tr>
+            <tr>
+              <td>Typical Tolerance</td>
+              <td>±0.2–0.5mm</td>
+              <td>±0.05–0.15mm</td>
+              <td>±0.15–0.3mm</td>
+              <td>±0.05–0.2mm (post-machined: ±0.02mm)</td>
+            </tr>
+            <tr>
+              <td>Supports Required</td>
+              <td>Yes (for overhangs)</td>
+              <td>Yes (for overhangs)</td>
+              <td>No</td>
+              <td>Yes (overhangs + anchoring)</td>
+            </tr>
+            <tr>
+              <td>Best for Snap Fits</td>
+              <td>PETG / TPU</td>
+              <td>Tough resin only</td>
+              <td>Excellent (nylon)</td>
+              <td>Not recommended</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout"><div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> Pro Tip: Always Request a Test Coupon</div><p>Before committing a critical-tolerance design to a full production run, always request a test coupon or calibration part from a new service bureau. A simple coupon with representative wall thicknesses, hole diameters, and mating features will reveal any dimensional offsets specific to that machine and material combination, allowing you to adjust your model before the expensive parts are printed. See our guide on <a href="/blog/how-to-prepare-3d-print-file.html">how to prepare a 3D print file</a> for additional pre-submission checks.</p></div>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="blog-faq">
+          <div class="blog-faq-item">
+            <button class="blog-faq-q" aria-expanded="false">What is the minimum wall thickness for FDM printing?<span class="faq-arrow">▾</span></button>
+            <div class="blog-faq-a"><p>The practical minimum wall thickness for FDM printing is 1.2mm — roughly two nozzle widths for a standard 0.4mm nozzle. Walls thinner than this risk being skipped by the slicer or being too fragile to survive support removal. For functional parts that experience any mechanical load, a minimum of 2.0mm is recommended. If you are printing with a larger nozzle (0.6mm or 0.8mm, common in high-speed desktop machines), adjust your minimum wall to 2x the nozzle diameter accordingly.</p></div>
+          </div>
+          <div class="blog-faq-item">
+            <button class="blog-faq-q" aria-expanded="false">How do I design a snap fit that works in 3D printed parts?<span class="faq-arrow">▾</span></button>
+            <div class="blog-faq-a"><p>Designing a reliable snap fit for 3D printing requires choosing the right material and orientation. In FDM, use PETG or TPU rather than PLA — PLA is too brittle and will fracture on the first or second cycle. Orient the snap cantilever so that it flexes in the X-Y plane (parallel to layers), not across layers (Z direction), because Z-axis strength is lower. Design the cantilever thickness to produce a deflection of no more than 60% of the material's yield strain — most FDM plastics can tolerate 2–4% strain. In SLS nylon, snap fits are more forgiving due to nylon's inherent toughness and isotropic properties. SLA snap fits require tough or flexible resin; standard resins will snap on the first cycle.</p></div>
+          </div>
+          <div class="blog-faq-item">
+            <button class="blog-faq-q" aria-expanded="false">Should I add tolerances in CAD or ask the printer to scale my file?<span class="faq-arrow">▾</span></button>
+            <div class="blog-faq-a"><p>Always add tolerances in CAD. Asking a service bureau to scale your file is a blunt instrument that changes all dimensions proportionally — it will fix a hole diameter but simultaneously alter wall thicknesses, boss heights, and every other feature. Proper DFM means modeling your intended clearances, hole compensations, and mating surfaces into the design. If you discover a consistent dimensional offset from a specific printer (e.g., all holes print 0.2mm undersized), apply that compensation as a targeted offset in CAD to just the affected features, not a global scale. Document your offsets per machine so you can reuse them for future jobs with the same service bureau.</p></div>
+          </div>
+        </div>
+
+      </article>
+      <aside class="sidebar">
+        <div class="sidebar-widget">
+          <h3>Related Articles</h3>
+          <ul class="sidebar-links">
+            <li><a href="/blog/how-to-choose-3d-printing-material.html">How to Choose the Right 3D Printing Material</a></li>
+            <li><a href="/blog/3d-printing-tolerances-accuracy.html">3D Printing Tolerances and Accuracy Explained</a></li>
+            <li><a href="/blog/3d-printing-post-processing.html">3D Printing Post-Processing Techniques</a></li>
+            <li><a href="/blog/how-to-prepare-3d-print-file.html">How to Prepare a 3D Print File</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h3>Browse by Technology</h3>
+          <ul class="sidebar-links">
+            <li><a href="/fdm-printing.html">FDM Printing Services</a></li>
+            <li><a href="/sla-resin.html">SLA / Resin Services</a></li>
+            <li><a href="/sls-nylon.html">SLS / Nylon Services</a></li>
+            <li><a href="/metal-printing.html">Metal Printing Services</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget sidebar-cta">
+          <h3>Need a Service Bureau?</h3>
+          <p>Find professional 3D printing services near you — FDM, SLA, SLS, and metal printing all in one directory.</p>
+          <a href="/directory.html" class="btn-cta" style="display:inline-block;margin-top:0.75rem;">Search the Directory</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand-col"><a href="/" class="logo"><span class="logo-sym">◈</span><span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span></a><p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p></div>
+      <div class="footer-col"><h4>Browse</h4><a href="/directory.html">All Services</a><a href="/fdm-printing.html">FDM Printing</a><a href="/sla-resin.html">SLA / Resin</a><a href="/sls-nylon.html">SLS / Nylon</a><a href="/metal-printing.html">Metal Printing</a></div>
+      <div class="footer-col"><h4>Resources</h4><a href="/blog/index.html">Blog</a><a href="/technologies.html">Technologies</a><a href="/faq.html">FAQ</a><a href="/about.html">About</a><a href="/recommended-gear.html">Recommended Gear</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/add-listing.html">Add Your Business</a><a href="/featured-listing.html">Get Featured</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms of Service</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 3DPrintMap. All rights reserved.</span><a href="/sitemap.xml">Sitemap</a></div>
+  </div>
+</footer>
+<script>
+(function(){
+  var ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
+  ham.addEventListener('click',function(){mob.classList.toggle('open');ham.textContent=mob.classList.contains('open')?'✕':'☰';});
+  document.addEventListener('click',function(e){if(!ham.contains(e.target)&&!mob.contains(e.target)){mob.classList.remove('open');ham.textContent='☰';}});
+  document.querySelectorAll('.blog-faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.closest('.blog-faq-item'),isOpen=item.classList.contains('open');
+      document.querySelectorAll('.blog-faq-item.open').forEach(function(el){el.classList.remove('open');el.querySelector('.blog-faq-q').setAttribute('aria-expanded','false');});
+      if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    });
+  });
+})();
+</script>
+<script src="/js/nav.js"></script>
+</body>
+</html>
