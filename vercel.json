@@ -3,6 +3,7 @@
   "outputDirectory": "public",
   "cleanUrls": true,
   "redirects": [
-    { "source": "/sitemap.xml", "destination": "/sitemaps/sitemap.xml", "permanent": false }
+    { "source": "/sitemap.xml", "destination": "/sitemaps/sitemap.xml", "permanent": false },
+    { "source": "/business", "destination": "/directory", "permanent": true }
   ]
 }

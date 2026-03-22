@@ -7,7 +7,7 @@
 
 const fs = require('fs');
 
-const BASE_URL = 'https://3dprintmap.com';
+const BASE_URL = 'https://www.3dprintmap.com';
 const today = new Date().toISOString().split('T')[0];
 
 // Parse BUSINESSES from js/data.js
@@ -28,6 +28,7 @@ const urls = [
   // Core pages
   { loc: `${BASE_URL}/`,              priority: '1.0', changefreq: 'daily' },
   { loc: `${BASE_URL}/directory`,     priority: '0.9', changefreq: 'daily' },
+  { loc: `${BASE_URL}/browse`,        priority: '0.8', changefreq: 'weekly' },
   { loc: `${BASE_URL}/technologies`,  priority: '0.8', changefreq: 'monthly' },
   { loc: `${BASE_URL}/trends`,        priority: '0.8', changefreq: 'monthly' },
   { loc: `${BASE_URL}/faq`,           priority: '0.7', changefreq: 'monthly' },
@@ -87,8 +88,8 @@ const urls = [
   // Individual business pages
   ...businesses.map(b => ({
     loc: `${BASE_URL}/listing/${b.id}`,
-    priority: '0.6',
-    changefreq: 'monthly'
+    priority: '0.7',
+    changefreq: 'weekly'
   }))
 ];
 
