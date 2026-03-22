@@ -328,6 +328,7 @@ function renderPage(b) {
   </div>
 </div>
 
+<div id="related-services"></div>
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-grid">
@@ -353,6 +354,8 @@ function renderPage(b) {
 })();
 </script>
 <script src="/js/nav.js"></script>
+<script src="/js/data-slim.js" defer></script>
+<script src="/js/related.js" defer></script>
 </body>
 </html>`;
 }
