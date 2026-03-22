@@ -22,11 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const totalEl = document.getElementById('totalCount');
   if (totalEl) totalEl.textContent = BUSINESSES.length.toLocaleString() + '+';
 
-  // Enter key on search inputs
-  ['searchQuery', 'searchLocation'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(); });
-  });
+  // Enter key on search inputs (searchLocation is handled by the city combobox IIFE)
+  const searchQueryEl = document.getElementById('searchQuery');
+  if (searchQueryEl) searchQueryEl.addEventListener('keydown', e => { if (e.key === 'Enter') handleSearch(); });
 });
 
 function updateTechCounts() {
@@ -129,3 +127,111 @@ function handleSearch() {
   if (location) params.set('city', location);
   window.location.href = 'directory.html?' + params.toString();
 }
+
+// ── City combobox ─────────────────────────────────────────
+(function () {
+  var input    = document.getElementById('searchLocation');
+  var dropdown = document.getElementById('cityDropdown');
+  if (!input || !dropdown || typeof CITIES === 'undefined') return;
+
+  var activeIdx = -1;
+  var filtered  = [];
+
+  function normalize(s) { return (s || '').toLowerCase().trim(); }
+
+  function render(list) {
+    filtered = list;
+    activeIdx = -1;
+    if (!list.length) { close(); return; }
+    dropdown.innerHTML = list.map(function (c, i) {
+      return '<li role="option" data-i="' + i + '">' +
+        '<span>' + c.name + '</span>' +
+        '<span class="city-state">' + abbrevState(c.state) + '</span>' +
+        '</li>';
+    }).join('');
+    dropdown.classList.add('open');
+    input.setAttribute('aria-expanded', 'true');
+  }
+
+  function close() {
+    dropdown.classList.remove('open');
+    dropdown.innerHTML = '';
+    input.setAttribute('aria-expanded', 'false');
+    activeIdx = -1;
+    filtered = [];
+  }
+
+  function setActive(idx) {
+    var items = dropdown.querySelectorAll('li');
+    items.forEach(function (li) { li.classList.remove('active'); });
+    if (idx >= 0 && idx < items.length) {
+      items[idx].classList.add('active');
+      items[idx].scrollIntoView({ block: 'nearest' });
+    }
+    activeIdx = idx;
+  }
+
+  function selectItem(city) {
+    input.value = city.name + ', ' + abbrevState(city.state);
+    close();
+  }
+
+  var STATE_MAP = {
+    'Alabama':'AL','Alaska':'AK','Arizona':'AZ','Arkansas':'AR','California':'CA',
+    'Colorado':'CO','Connecticut':'CT','Delaware':'DE','Florida':'FL','Georgia':'GA',
+    'Hawaii':'HI','Idaho':'ID','Illinois':'IL','Indiana':'IN','Iowa':'IA',
+    'Kansas':'KS','Kentucky':'KY','Louisiana':'LA','Maine':'ME','Maryland':'MD',
+    'Massachusetts':'MA','Michigan':'MI','Minnesota':'MN','Mississippi':'MS',
+    'Missouri':'MO','Montana':'MT','Nebraska':'NE','Nevada':'NV',
+    'New Hampshire':'NH','New Jersey':'NJ','New Mexico':'NM','New York':'NY',
+    'North Carolina':'NC','North Dakota':'ND','Ohio':'OH','Oklahoma':'OK',
+    'Oregon':'OR','Pennsylvania':'PA','Rhode Island':'RI','South Carolina':'SC',
+    'South Dakota':'SD','Tennessee':'TN','Texas':'TX','Utah':'UT',
+    'Vermont':'VT','Virginia':'VA','Washington':'WA','West Virginia':'WV',
+    'Wisconsin':'WI','Wyoming':'WY'
+  };
+  function abbrevState(s) { return STATE_MAP[s] || s; }
+
+  input.addEventListener('input', function () {
+    var q = normalize(input.value);
+    if (q.length < 1) { close(); return; }
+    var matches = CITIES.filter(function (c) {
+      return normalize(c.name).includes(q) || normalize(c.state).includes(q) ||
+             normalize(abbrevState(c.state)).includes(q);
+    }).slice(0, 10);
+    render(matches);
+  });
+
+  input.addEventListener('keydown', function (e) {
+    var items = dropdown.querySelectorAll('li');
+    if (!dropdown.classList.contains('open')) {
+      if (e.key === 'Enter') handleSearch();
+      return;
+    }
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActive(Math.min(activeIdx + 1, items.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActive(Math.max(activeIdx - 1, 0));
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (activeIdx >= 0 && filtered[activeIdx]) selectItem(filtered[activeIdx]);
+      handleSearch();
+    } else if (e.key === 'Escape') {
+      close();
+    }
+  });
+
+  dropdown.addEventListener('mousedown', function (e) {
+    var li = e.target.closest('li');
+    if (!li) return;
+    e.preventDefault();
+    var idx = parseInt(li.getAttribute('data-i'), 10);
+    if (!isNaN(idx) && filtered[idx]) selectItem(filtered[idx]);
+  });
+
+  input.addEventListener('blur', function () {
+    setTimeout(close, 150);
+  });
+})();

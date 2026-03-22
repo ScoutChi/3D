@@ -1166,6 +1166,41 @@ p  { color: var(--slate); line-height: 1.75; }
 .search-field { flex: 1; padding: .75rem 1.25rem; }
 .search-field label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--slate-lt); }
 .search-field input { border: none; outline: none; width: 100%; font-size: 14.5px; color: var(--navy); background: transparent; margin-top: 2px; }
+
+/* ── City combobox dropdown ──────────────────────────────── */
+.city-combo { position: relative; width: 100%; }
+.city-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -1.25rem;
+  right: -1px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  margin: 0; padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 200;
+}
+.city-dropdown.open { display: block; }
+.city-dropdown li {
+  padding: .55rem 1.25rem;
+  font-size: 13.5px;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+}
+.city-dropdown li span.city-state { font-size: 11px; color: var(--slate-lt); white-space: nowrap; }
+.city-dropdown li:hover,
+.city-dropdown li.active { background: var(--bg-lt); color: var(--orange); }
+.city-dropdown li.active { background: #fff5f0; }
+
 .search-divider { width: 1px; height: 36px; background: var(--border); }
 .search-btn {
   background: var(--orange);
