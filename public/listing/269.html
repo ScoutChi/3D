@@ -29,6 +29,221 @@
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Print Hub","description":"Print Hub — 3D printing services in Glendale.","url":"https://digitalprintingglendale.com/","telephone":"(747) 215-6606","address":{"@type":"PostalAddress","streetAddress":"721 E Broadway","addressLocality":"Glendale","addressRegion":"CA","postalCode":"91205","addressCountry":"US"},"priceRange":"$$","hasMap":"https://www.google.com/maps/search/?api=1&query=Print%20Hub%20721%20E%20Broadway%20Glendale%20California","aggregateRating":{"@type":"AggregateRating","ratingValue":5,"bestRating":"5","worstRating":"1","reviewCount":65}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.3dprintmap.com/"},{"@type":"ListItem","position":2,"name":"Directory","item":"https://www.3dprintmap.com/directory.html"},{"@type":"ListItem","position":3,"name":"Glendale","item":"https://www.3dprintmap.com/directory.html?city=Glendale"},{"@type":"ListItem","position":4,"name":"Print Hub"}]}</script>
+
+  <style>
+  /* ── Listing page redesign — scoped to .lp-* ───────────────── */
+
+  /* Breadcrumb */
+  .lp-breadcrumb { padding: .75rem 0; font-size: 12.5px; color: var(--slate-lt); }
+  .lp-breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; list-style: none; padding: 0; margin: 0; }
+  .lp-breadcrumb a { color: var(--slate); text-decoration: none; transition: color .15s; }
+  .lp-breadcrumb a:hover { color: var(--orange); }
+  .lp-breadcrumb .sep { color: var(--border); }
+  .lp-breadcrumb [aria-current] { color: var(--slate); }
+
+  /* Hero */
+  .lp-hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0 1.75rem;
+  }
+  .lp-hero-inner { display: flex; align-items: flex-start; gap: 1.5rem; }
+  .lp-hero-avatar {
+    flex-shrink: 0;
+    width: 72px; height: 72px;
+    border-radius: var(--r-lg);
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .lp-hero-avatar svg { color: var(--orange); }
+  .lp-hero-content { flex: 1; min-width: 0; }
+  .lp-hero-title-row {
+    display: flex; align-items: center; flex-wrap: wrap; gap: .65rem;
+    margin-bottom: .5rem;
+  }
+  .lp-hero-content h1 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    margin: 0;
+  }
+  .lp-badge-open {
+    font-size: 11px; font-weight: 700; letter-spacing: .03em;
+    padding: .25rem .7rem; border-radius: 999px;
+    background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .lp-badge-closed {
+    font-size: 11px; font-weight: 700; letter-spacing: .03em;
+    padding: .25rem .7rem; border-radius: 999px;
+    background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .lp-hero-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem;
+    font-size: 13.5px; color: var(--slate);
+    margin-bottom: .75rem;
+  }
+  .lp-hero-meta-item { display: flex; align-items: center; gap: .3rem; }
+  .lp-hero-meta-item svg { color: var(--slate-lt); flex-shrink: 0; }
+  .lp-stars { color: #f59e0b; font-size: 13px; letter-spacing: .5px; }
+  .lp-rating-val { font-weight: 700; color: var(--navy); }
+  .lp-rating-cnt { color: var(--slate-lt); }
+  .lp-rating-none { color: var(--slate-lt); font-style: italic; }
+  .lp-price-badge {
+    font-size: 12px; font-weight: 700;
+    padding: .2rem .6rem; border-radius: var(--r-sm);
+    background: var(--bg2); color: var(--slate);
+    border: 1px solid var(--border);
+  }
+  .lp-hero-types { display: flex; flex-wrap: wrap; gap: .35rem; }
+
+  /* Page body layout */
+  .lp-body { padding: 2rem 0 3.5rem; background: var(--bg); }
+  .lp-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* Shared card style */
+  .lp-card {
+    background: var(--white);
+    border: 1px solid #eef0f2;
+    border-radius: var(--r-lg);
+    box-shadow: 0 4px 12px rgba(0,0,0,.03);
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+  .lp-card:last-child { margin-bottom: 0; }
+  .lp-card-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .lp-card-header h2 {
+    font-size: .8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: var(--slate-lt); margin: 0;
+  }
+  .lp-card-header svg { color: var(--orange); flex-shrink: 0; }
+  .lp-card-body { padding: 1.25rem; }
+
+  /* Description */
+  .lp-desc {
+    font-size: 14.5px; color: var(--slate); line-height: 1.75;
+    margin: 0;
+  }
+
+  /* Capabilities */
+  .lp-cap-row {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: .85rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .lp-cap-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .lp-cap-label {
+    flex: 0 0 110px; font-size: 12px; font-weight: 700;
+    color: var(--navy); text-transform: uppercase; letter-spacing: .06em;
+    display: flex; align-items: center; gap: .35rem; padding-top: .1rem;
+  }
+  .lp-cap-label svg { color: var(--orange); flex-shrink: 0; }
+  .lp-cap-pills { display: flex; flex-wrap: wrap; gap: .3rem; flex: 1; }
+  .lp-pill {
+    font-size: 12px; font-weight: 500;
+    padding: .25rem .65rem; border-radius: 999px;
+    background: var(--orange-lt); color: var(--orange-dk);
+    border: 1px solid rgba(249,115,22,.18);
+    white-space: nowrap;
+  }
+  .lp-pill-neutral {
+    font-size: 12px; font-weight: 500;
+    padding: .25rem .65rem; border-radius: 999px;
+    background: var(--bg2); color: var(--slate);
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .lp-pill-muted {
+    font-size: 12px; color: var(--slate-lt);
+    padding: .25rem .65rem; border-radius: 999px;
+    background: transparent; border: 1px dashed var(--border);
+    font-style: italic;
+  }
+
+  /* Social links */
+  .lp-social-btn {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: 13px; font-weight: 600; padding: .35rem .85rem;
+    border-radius: 999px; border: 1.5px solid var(--border);
+    color: var(--navy); text-decoration: none;
+    transition: border-color .15s, color .15s;
+  }
+  .lp-social-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* Contact card */
+  .lp-contact-item {
+    display: flex; align-items: flex-start; gap: .85rem;
+    padding: .85rem 0; border-bottom: 1px solid var(--border);
+  }
+  .lp-contact-item:last-of-type { border-bottom: none; }
+  .lp-contact-icon {
+    flex-shrink: 0; width: 32px; height: 32px;
+    border-radius: var(--r-sm);
+    background: var(--orange-lt);
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .lp-contact-icon svg { color: var(--orange); }
+  .lp-contact-body { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+  .lp-contact-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--slate-lt); }
+  .lp-contact-val { font-size: 13.5px; color: var(--navy); text-decoration: none; word-break: break-word; }
+  a.lp-contact-val:hover { color: var(--orange); text-decoration: underline; }
+  .lp-contact-val span { font-size: 13.5px; }
+
+  /* Hours table */
+  .lp-hours-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .lp-hours-day { color: var(--navy); font-weight: 600; padding: .2rem .5rem .2rem 0; width: 40%; }
+  .lp-hours-time { color: var(--slate); padding: .2rem 0; }
+  .lp-hours-closed { color: var(--slate-lt); font-style: italic; }
+  .lp-hours-na, .lp-hours-raw { font-size: 13px; color: var(--slate); margin: 0; }
+
+  /* Visit website CTA */
+  .lp-website-btn {
+    display: block; width: 100%; text-align: center;
+    margin-top: 1.1rem;
+    padding: .7rem 1rem;
+    background: var(--orange); color: var(--white);
+    border-radius: var(--r-md); font-size: 14px; font-weight: 700;
+    text-decoration: none; letter-spacing: .01em;
+    transition: background .15s, transform .15s;
+  }
+  .lp-website-btn:hover { background: var(--orange-dk); transform: translateY(-1px); }
+
+  /* Sidebar back link */
+  .lp-back-link {
+    display: flex; align-items: center; justify-content: center; gap: .4rem;
+    padding: .6rem 1rem; margin-top: 1rem;
+    font-size: 13px; font-weight: 600; color: var(--slate);
+    border: 1.5px solid var(--border); border-radius: var(--r-md);
+    text-decoration: none; transition: border-color .15s, color .15s;
+  }
+  .lp-back-link:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .lp-grid { grid-template-columns: 1fr; }
+    .lp-sidebar { order: -1; }
+    .lp-hero-avatar { width: 56px; height: 56px; }
+  }
+  @media (max-width: 520px) {
+    .lp-cap-row { flex-direction: column; gap: .5rem; }
+    .lp-cap-label { flex: none; }
+    .lp-hero-inner { flex-direction: column; gap: 1rem; }
+  }
+  </style>
 </head>
 <body>
 
@@ -39,12 +254,12 @@
 <nav class="navbar">
   <div class="nav-inner">
     <a href="/" class="logo">
-      <span class="logo-sym">&#9672;</span>
+      <span class="logo-sym">◈</span>
       <span class="logo-tx"><span class="c-navy">3D</span><span class="c-orange">Print</span><span class="c-navy">Map</span></span>
     </a>
     <ul class="nav-links">
       <li class="nav-has-drop">
-        <button class="nav-link">Browse &#9660;</button>
+        <button class="nav-link">Browse ▾</button>
         <ul class="nav-drop">
           <li><a href="/fdm-printing.html">FDM Printing</a></li>
           <li><a href="/sla-resin.html">SLA / Resin</a></li>
@@ -55,13 +270,14 @@
       </li>
       <li><a href="/blog/index.html" class="nav-link">Blog</a></li>
       <li><a href="/technologies.html" class="nav-link">Technologies</a></li>
+      <li><a href="/trends.html" class="nav-link">Trends</a></li>
       <li><a href="/about.html" class="nav-link">About</a></li>
       <li><a href="/faq.html" class="nav-link">FAQ</a></li>
       <li><a href="/recommended-gear.html" class="nav-link">Gear Guide</a></li>
     </ul>
     <div class="nav-right">
       <a href="/add-listing.html" class="btn-cta">+ Add Business (FREE)</a>
-      <button class="ham" id="ham" aria-label="Open menu">&#9776;</button>
+      <button class="ham" id="ham" aria-label="Open menu">☰</button>
     </div>
   </div>
 </nav>
@@ -76,112 +292,169 @@
   <div class="mob-label">Resources</div>
   <a href="/blog/index.html">Blog</a>
   <a href="/technologies.html">Technologies</a>
+  <a href="/trends.html">Data &amp; Trends</a>
   <a href="/about.html">About</a>
   <a href="/faq.html">FAQ</a>
   <a href="/recommended-gear.html">Gear Guide</a>
   <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
 </div>
 
-<div class="biz-layout">
+<!-- Breadcrumb -->
+<div class="lp-breadcrumb">
   <div class="container">
-
-    <nav class="biz-breadcrumb" aria-label="Breadcrumb">
-      <ol class="breadcrumb-list">
+    <nav aria-label="Breadcrumb">
+      <ol>
         <li><a href="/">Home</a></li>
-        <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+        <li aria-hidden="true" class="sep">&rsaquo;</li>
         <li><a href="/directory.html?state=California">California</a></li>
-        <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+        <li aria-hidden="true" class="sep">&rsaquo;</li>
         <li><a href="/directory.html?city=Glendale">Glendale</a></li>
-        <li aria-hidden="true" class="breadcrumb-sep">&rsaquo;</li>
+        <li aria-hidden="true" class="sep">&rsaquo;</li>
         <li><span aria-current="page">Print Hub</span></li>
       </ol>
     </nav>
+  </div>
+</div>
 
-    <div class="biz-inner">
-
-      <main class="biz-main">
-        <div class="biz-hero" role="img" aria-label="Print Hub — FDM 3D printing service in Glendale">
-          <span class="biz-hero-icon-wrap" aria-hidden="true">
-            <i class="fa-solid fa-cube" style="font-size:56px;color:var(--orange);"></i>
+<!-- Hero -->
+<section class="lp-hero">
+  <div class="container">
+    <div class="lp-hero-inner">
+      <div class="lp-hero-avatar" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <div class="lp-hero-content">
+        <div class="lp-hero-title-row">
+          <h1>Print Hub</h1>
+          <span class="lp-badge-open">● Now Open</span>
+        </div>
+        <div class="lp-hero-meta">
+          <span class="lp-hero-meta-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Glendale, CA
           </span>
+          <span class="lp-hero-meta-item"><span class="lp-stars">★★★★★</span> <span class="lp-rating-val">5</span> <span class="lp-rating-cnt">(65 reviews)</span></span>
+          <span class="lp-price-badge">$$</span>
+        </div>
+        <div class="lp-hero-types"><span class="lp-pill">FDM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Body -->
+<div class="lp-body">
+  <div class="container">
+    <div class="lp-grid">
+
+      <!-- LEFT: Main content -->
+      <main>
+        <!-- About -->
+        <div class="lp-card">
+          <div class="lp-card-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <h2>About</h2>
+          </div>
+          <div class="lp-card-body">
+            <p class="lp-desc">Print Hub — 3D printing services in Glendale.</p>
+          </div>
         </div>
 
-        <div class="biz-header-info">
-          <div class="biz-title-row">
-            <h1>Print Hub</h1>
-            <span class="listing-badge badge-open">Now Open</span>
+        <!-- Capabilities -->
+        <div class="lp-card">
+          <div class="lp-card-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            <h2>Capabilities</h2>
           </div>
-          <div class="biz-meta">
-            <span>&#128205; Glendale, CA</span>
-            <span class="biz-meta-sep">&middot;</span>
-            <span>&#11088; 5 (65 reviews)</span>
-            <span class="biz-meta-sep">&middot;</span>
-            <span>Price: <strong>$$</strong></span>
+          <div class="lp-card-body" style="padding-top:.4rem;padding-bottom:.4rem;">
+            <div class="lp-cap-row">
+              <span class="lp-cap-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></svg>
+                Technology
+              </span>
+              <div class="lp-cap-pills"><span class="lp-pill">FDM</span></div>
+            </div>
+            <div class="lp-cap-row">
+              <span class="lp-cap-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                Materials
+              </span>
+              <div class="lp-cap-pills"><span class="lp-pill-neutral">PLA</span></div>
+            </div>
+            <div class="lp-cap-row">
+              <span class="lp-cap-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Services
+              </span>
+              <div class="lp-cap-pills"><span class="lp-pill-neutral">Prototyping</span></div>
+            </div>
+            <div class="lp-cap-row">
+              <span class="lp-cap-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                Industries
+              </span>
+              <div class="lp-cap-pills"><span class="lp-pill-neutral">Consumer Products</span></div>
+            </div>
           </div>
-          <p class="biz-desc">Print Hub — 3D printing services in Glendale.</p>
-          <div class="listing-tags"><span class="tag-pill">FDM</span></div>
         </div>
 
-        <div class="biz-sections">
-          <div class="biz-section">
-            <h3>Technologies Offered</h3>
-            <div class="tag-list"><span class="tag-pill">FDM</span></div>
+        
+
+        <!-- Recommended gear -->
+        <div class="lp-card">
+          <div class="lp-card-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            <h2>Recommended for Makers</h2>
           </div>
-          <div class="biz-section">
-            <h3>Materials Available</h3>
-            <div class="tag-list"><span class="tag-pill">PLA</span></div>
+          <div class="lp-card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;">
+            <div class="lp-card" style="margin-bottom:0;padding:1rem;display:flex;flex-direction:column;gap:.5rem;border:1px solid var(--border);">
+              <strong style="font-size:13.5px;color:var(--navy);">Bambu Lab A1</strong>
+              <span style="font-size:12px;color:var(--slate);flex:1;">Multi-color, fully automatic calibration, blazing fast FDM printing.</span>
+              <a href="https://amzn.to/4lBrY3C" class="cta-amazon" target="_blank" rel="nofollow sponsored" style="font-size:13px;padding:7px 12px;justify-content:center;">Check Price</a>
+            </div>
+            <div class="lp-card" style="margin-bottom:0;padding:1rem;display:flex;flex-direction:column;gap:.5rem;border:1px solid var(--border);">
+              <strong style="font-size:13.5px;color:var(--navy);">SUNLU Filament Dryer S1 Plus</strong>
+              <span style="font-size:12px;color:var(--slate);flex:1;">Keep your filament moisture-free for better print quality.</span>
+              <a href="https://amzn.to/4uBLXTS" class="cta-amazon" target="_blank" rel="nofollow sponsored" style="font-size:13px;padding:7px 12px;justify-content:center;">Check Price</a>
+            </div>
           </div>
-          <div class="biz-section">
-            <h3>Services</h3>
-            <div class="tag-list"><span class="tag-pill">Prototyping</span></div>
-          </div>
-          <div class="biz-section">
-            <h3>Industries Served</h3>
-            <div class="tag-list"><span class="tag-pill">Consumer Products</span></div>
-          </div>
-          
+          <p style="font-size:10.5px;color:var(--slate-lt);padding:.75rem 1.25rem 1.25rem;margin:0;">As an Amazon Associate we earn from qualifying purchases.</p>
         </div>
       </main>
 
-      <aside class="biz-sidebar" aria-label="Contact information">
-        <div class="biz-contact-card">
-          <h2 class="biz-contact-heading">Contact &amp; Info</h2>
-          <div class="biz-contact-item">
-        <span class="biz-contact-icon"><i class="fa-solid fa-phone"></i></span>
-        <a href="tel:17472156606">(747) 215-6606</a>
-       </div>
-          <div class="biz-contact-item">
-        <span class="biz-contact-icon"><i class="fa-solid fa-globe"></i></span>
-        <a href="https://digitalprintingglendale.com/" target="_blank" rel="noopener">digitalprintingglendale.com</a>
-       </div>
-          <div class="biz-contact-item">
-            <span class="biz-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Print%20Hub%20721%20E%20Broadway%20Glendale%20California" target="_blank" rel="noopener">721 E Broadway, Glendale, CA, 91205</a>
+      <!-- RIGHT: Sidebar -->
+      <aside class="lp-sidebar">
+
+        <!-- Contact card -->
+        <div class="lp-card">
+          <div class="lp-card-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.48 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.46 16Z"/></svg>
+            <h2>Contact &amp; Location</h2>
           </div>
-          <div class="biz-contact-item">
-            <span class="biz-contact-icon"><i class="fa-solid fa-clock"></i></span>
-            <span>Monday: 9 AM–6 PM, Tuesday: 9 AM–6 PM, Wednesday: 9 AM–6 PM, Thursday: 9 AM–6 PM, Friday: 9 AM–6 PM, Saturday: 9 AM–1:30 PM, Sunday: Closed</span>
+          <div class="lp-card-body" style="padding-top:.4rem;padding-bottom:.4rem;">
+            <div class="lp-contact-item"><span class="lp-contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.48 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.63a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.46 16Z"/></svg></span><div class="lp-contact-body"><span class="lp-contact-label">Phone</span><a href="tel:17472156606" class="lp-contact-val">(747) 215-6606</a></div></div>
+            <div class="lp-contact-item"><span class="lp-contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><div class="lp-contact-body"><span class="lp-contact-label">Website</span><a href="https://digitalprintingglendale.com/" class="lp-contact-val" target="_blank" rel="noopener">digitalprintingglendale.com</a></div></div>
+            <div class="lp-contact-item">
+              <span class="lp-contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div class="lp-contact-body">
+                <span class="lp-contact-label">Address</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Print%20Hub%20721%20E%20Broadway%20Glendale%20California" class="lp-contact-val" target="_blank" rel="noopener">721 E Broadway, Glendale, CA, 91205</a>
+              </div>
+            </div>
+            <div class="lp-contact-item" style="border-bottom:none;">
+              <span class="lp-contact-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+              <div class="lp-contact-body" style="width:100%;">
+                <span class="lp-contact-label">Hours</span>
+                <div class="lp-contact-val"><table class="lp-hours-table"><tbody><tr><td class="lp-hours-day">Mon</td><td class="lp-hours-time">9 AM–6 PM</td></tr><tr><td class="lp-hours-day">Tue</td><td class="lp-hours-time">9 AM–6 PM</td></tr><tr><td class="lp-hours-day">Wed</td><td class="lp-hours-time">9 AM–6 PM</td></tr><tr><td class="lp-hours-day">Thu</td><td class="lp-hours-time">9 AM–6 PM</td></tr><tr><td class="lp-hours-day">Fri</td><td class="lp-hours-time">9 AM–6 PM</td></tr><tr><td class="lp-hours-day">Sat</td><td class="lp-hours-time">9 AM–1:30 PM</td></tr><tr><td class="lp-hours-day">Sun</td><td class="lp-hours-time lp-hours-closed">Closed</td></tr></tbody></table></div>
+              </div>
+            </div>
+            <a href="https://digitalprintingglendale.com/" class="lp-website-btn" target="_blank" rel="noopener">Visit Website →</a>
           </div>
-          <a href="https://digitalprintingglendale.com/" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" target="_blank" rel="noopener">Visit Website &rarr;</a>
         </div>
 
-        <div class="amz-widget">
-          <h3>Recommended for Makers</h3>
-          <div class="amz-widget-item">
-            <strong>Bambu Lab A1</strong>
-            <span>Multi-color, fully automatic calibration, blazing fast FDM printing.</span>
-            <a href="https://amzn.to/4lBrY3C" class="cta-amazon" target="_blank" rel="nofollow sponsored">Check Price</a>
-          </div>
-          <div class="amz-widget-item">
-            <strong>SUNLU Filament Dryer S1 Plus</strong>
-            <span>Keep your filament moisture-free for better print quality.</span>
-            <a href="https://amzn.to/4uBLXTS" class="cta-amazon" target="_blank" rel="nofollow sponsored">Check Price</a>
-          </div>
-          <p class="amz-widget-disclosure">As an Amazon Associate we earn from qualifying purchases.</p>
-        </div>
-
-        <a href="/directory.html" class="btn btn-ghost" style="width:100%;justify-content:center;">
-          &larr; Back to Directory
+        <a href="/directory.html" class="lp-back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back to Directory
         </a>
       </aside>
 
@@ -194,7 +467,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-col footer-brand-col">
-        <a href="/" class="logo"><span class="logo-sym">&#9672;</span><span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span></a>
+        <a href="/" class="logo"><span class="logo-sym">◈</span><span class="logo-tx"><span class="c-white">3D</span><span class="c-orange">Print</span><span class="c-white">Map</span></span></a>
         <p>The most comprehensive directory of 3D printing services across the United States. Built for the maker community.</p>
       </div>
       <div class="footer-col"><h4>Browse</h4><a href="/directory.html">All Services</a><a href="/fdm-printing.html">FDM Printing</a><a href="/sla-resin.html">SLA / Resin</a><a href="/sls-nylon.html">SLS / Nylon</a><a href="/metal-printing.html">Metal Printing</a></div>
