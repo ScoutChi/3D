@@ -206,3 +206,49 @@ function clearFilters() {
   if (s) s.value = 'newest';
   applyFilters();
 }
+
+// ── Premium listing card ──────────────────────────────────────────
+function createListingCard(b) {
+  const TYPE_MAP = { fdm: 'FDM', sla: 'SLA', sls: 'SLS', metal: 'Metal', multicolor: 'Multicolor' };
+
+  const typePills = (b.types || []).slice(0, 3).map(t => {
+    const label = TYPE_MAP[t.toLowerCase()] || t;
+    return `<span class="listing-type-pill">${label}</span>`;
+  }).join('');
+
+  const openBadge = b.isOpen
+    ? `<span class="badge-open">● Open Now</span>`
+    : '';
+
+  const locIcon = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`;
+
+  const arrowIcon = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
+  let ratingRow = '';
+  if (b.rating && b.rating >= 1) {
+    const rounded = Math.round(b.rating);
+    const stars = '★'.repeat(Math.min(5, rounded)) + '☆'.repeat(Math.max(0, 5 - rounded));
+    ratingRow = `<div class="listing-rating-row">
+      <span class="listing-stars">${stars}</span>
+      <span>${b.rating.toFixed(1)} · ${b.reviews} review${b.reviews !== 1 ? 's' : ''}</span>
+    </div>`;
+  }
+
+  const priceLabel = b.priceRange
+    ? `<span class="listing-price">${b.priceRange}</span>`
+    : '';
+
+  return `<article class="listing-card">
+    <div class="listing-card-top">
+      <h3><a href="/listing/${b.id}.html">${b.name}</a></h3>
+      ${openBadge}
+    </div>
+    <div class="listing-loc">${locIcon} ${b.city}, ${b.state}</div>
+    ${typePills ? `<div class="listing-types">${typePills}</div>` : ''}
+    ${ratingRow}
+    <div class="listing-card-footer">
+      <a href="/listing/${b.id}.html" class="listing-cta">View Details ${arrowIcon}</a>
+      ${priceLabel}
+    </div>
+  </article>`;
+}

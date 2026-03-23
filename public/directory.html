@@ -26,7 +26,7 @@
       {
         "@type": "CollectionPage",
         "name": "3D Printing Services Directory",
-        "description": "Browse 300+ 3D printing services across the United States — filter by technology, material, service type, and city.",
+        "description": "Browse 1,270+ 3D printing services across the United States — filter by technology, material, service type, and city.",
         "url": "https://www.3dprintmap.com/directory",
         "isPartOf": { "@id": "https://www.3dprintmap.com/#website" },
         "provider": { "@id": "https://www.3dprintmap.com/#organization" }
@@ -42,6 +42,410 @@
   }
   </script>
   <meta name="impact-site-verification" value="026c663a-7157-49d2-bd98-a15166e6b6b5">
+
+  <style>
+  /* ════════════════════════════════════════════════════════════
+     Directory Page — Professional Redesign
+     Uses main.css variables: --orange, --navy, --border, etc.
+  ════════════════════════════════════════════════════════════ */
+
+  /* ── Search header ───────────────────────────────────────── */
+  .dir-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 0;
+  }
+  .dir-header .container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .dir-search {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color .2s, box-shadow .2s;
+    overflow: hidden;
+  }
+  .dir-search:focus-within {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(249,115,22,.1);
+  }
+  .dir-search-icon {
+    display: flex;
+    align-items: center;
+    padding: 0 .6rem 0 1.1rem;
+    color: var(--slate-lt);
+    flex-shrink: 0;
+  }
+  #dirSearchQuery {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: .7rem .5rem;
+    font-size: 14.5px;
+    font-family: inherit;
+    color: var(--navy);
+    background: transparent;
+    min-width: 0;
+  }
+  #dirSearchQuery::placeholder { color: var(--slate-lt); }
+  .dir-search-divider {
+    width: 1px;
+    height: 26px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .dir-location-icon {
+    display: flex;
+    align-items: center;
+    padding: 0 .4rem 0 .8rem;
+    color: var(--slate-lt);
+    flex-shrink: 0;
+  }
+  #dirSearchCity {
+    flex: 0 0 170px;
+    border: none;
+    outline: none;
+    padding: .7rem .5rem .7rem 0;
+    font-size: 14.5px;
+    font-family: inherit;
+    color: var(--navy);
+    background: transparent;
+    min-width: 0;
+  }
+  #dirSearchCity::placeholder { color: var(--slate-lt); }
+  .dir-search-btn {
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: .6rem 1.35rem;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    margin: 4px;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    transition: background .15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .dir-search-btn:hover { background: var(--orange-dk); }
+
+  /* ── Page layout ─────────────────────────────────────────── */
+  .dir-layout { padding: 1.75rem 0 4rem; }
+  .dir-inner {
+    display: grid;
+    grid-template-columns: 252px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* ── Sidebar ─────────────────────────────────────────────── */
+  .dir-sidebar {
+    position: sticky;
+    top: 68px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .sidebar-header {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--slate-lt);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .filter-section {
+    margin-bottom: 1.1rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .filter-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .filter-section h3 {
+    font-size: .75rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    margin-bottom: .55rem;
+  }
+  /* Pill-style filter tags */
+  .filter-options { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .filter-option {
+    display: inline-flex;
+    cursor: pointer;
+    user-select: none;
+  }
+  .filter-option input[type="checkbox"] { display: none; }
+  .filter-pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: .28rem .7rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--border);
+    color: var(--slate);
+    background: var(--white);
+    transition: border-color .15s, background .15s, color .15s;
+    line-height: 1.4;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .filter-option:hover .filter-pill { border-color: var(--orange); color: var(--orange); }
+  .filter-option input:checked ~ .filter-pill {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+    font-weight: 600;
+  }
+  /* Open Now green accent */
+  .filter-option input[value="open"]:checked ~ .filter-pill {
+    background: #16a34a;
+    border-color: #16a34a;
+  }
+  /* Clear button */
+  .btn-clear {
+    display: block;
+    width: 100%;
+    padding: .48rem .75rem;
+    font-size: 12.5px;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--slate);
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    cursor: pointer;
+    margin-top: 1rem;
+    text-align: center;
+    transition: border-color .15s, color .15s;
+  }
+  .btn-clear:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* ── Results header ──────────────────────────────────────── */
+  .dir-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .6rem;
+  }
+  #resultsCount {
+    font-size: 13px;
+    color: var(--slate-lt);
+    font-weight: 500;
+  }
+  #sortBy {
+    font-size: 13px;
+    color: var(--navy);
+    font-family: inherit;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    padding: .35rem .65rem;
+    background: var(--white);
+    cursor: pointer;
+    outline: none;
+    transition: border-color .15s;
+  }
+  #sortBy:focus { border-color: var(--orange); }
+
+  /* ── Listing cards — premium redesign ────────────────────── */
+  .listings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .listing-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    transition: box-shadow .2s, border-color .2s, transform .18s;
+    cursor: pointer;
+  }
+  .listing-card:hover {
+    box-shadow: 0 8px 28px rgba(249,115,22,.13);
+    border-color: rgba(249,115,22,.4);
+    transform: translateY(-2px);
+  }
+  /* Top row: name + open badge */
+  .listing-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: .6rem;
+  }
+  .listing-card h3 {
+    font-size: .97rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    margin: 0;
+  }
+  .listing-card h3 a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .listing-card h3 a:hover { color: var(--orange); }
+  .badge-open {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    padding: .22rem .6rem;
+    border-radius: 999px;
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+    white-space: nowrap;
+    letter-spacing: .02em;
+  }
+  /* Location row */
+  .listing-loc {
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: 12.5px;
+    color: var(--slate-lt);
+    line-height: 1;
+  }
+  .listing-loc svg { flex-shrink: 0; opacity: .7; }
+  /* Type pills */
+  .listing-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;
+  }
+  .listing-type-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: .18rem .6rem;
+    border-radius: 999px;
+    background: var(--orange-lt);
+    color: var(--orange-dk);
+    border: 1px solid rgba(249,115,22,.18);
+    letter-spacing: .01em;
+  }
+  /* Rating */
+  .listing-rating-row {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: 12px;
+    color: var(--slate);
+  }
+  .listing-stars { color: #f59e0b; font-size: 11px; letter-spacing: .5px; }
+  /* Footer row */
+  .listing-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: .65rem;
+    border-top: 1px solid var(--border);
+  }
+  .listing-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+    transition: gap .15s;
+  }
+  .listing-cta:hover { gap: .55rem; }
+  .listing-price {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--slate-lt);
+    background: var(--bg);
+    padding: .2rem .55rem;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--border);
+  }
+
+  /* ── Pagination ──────────────────────────────────────────── */
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .35rem;
+    margin-top: 2rem;
+  }
+  .page-btn {
+    height: 36px;
+    min-width: 36px;
+    padding: 0 .75rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--white);
+    color: var(--navy);
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .page-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .page-btn.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+  }
+
+  /* ── Pro tip ─────────────────────────────────────────────── */
+  .pro-tip-box {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    background: #fffbf5;
+    border: 1px solid rgba(249,115,22,.2);
+    border-left: 3px solid var(--orange);
+    border-radius: var(--r-md);
+    padding: .85rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 13.5px;
+  }
+  .pro-tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .pro-tip-box p { color: var(--navy); margin: 0; line-height: 1.5; }
+  .pro-tip-box a { color: #d97706; font-weight: 700; }
+  .pro-tip-box a:hover { text-decoration: underline; }
+
+  /* ── Responsive ──────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .dir-inner { grid-template-columns: 1fr; }
+    .dir-sidebar { position: static; }
+    .filter-options { flex-direction: row; }
+  }
+  @media (max-width: 680px) {
+    .listings-grid { grid-template-columns: 1fr; }
+    #dirSearchCity { display: none; }
+    .dir-search-divider + .dir-location-icon { display: none; }
+  }
+  @media (max-width: 480px) {
+    .dir-search-divider { display: none; }
+  }
+  </style>
 </head>
 <body>
 
@@ -97,15 +501,22 @@
   <a href="/add-listing.html" class="mob-cta">+ Add Business (FREE)</a>
 </div>
 
-<!-- Search Bar -->
+<!-- Unified Search Bar -->
 <h1 class="visually-hidden">Browse 3D Printing Services</h1>
 <div class="dir-header">
   <div class="container">
     <div class="dir-search">
-      <input type="text" id="dirSearchQuery" placeholder="Search by name, technology, material...">
-      <input type="text" id="dirSearchCity" placeholder="City or State...">
-      <button class="search-btn" onclick="applyFilters()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span class="dir-search-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input type="text" id="dirSearchQuery" placeholder="Technology, material, service name…">
+      <div class="dir-search-divider"></div>
+      <span class="dir-location-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 13-8 13s-8-7-8-13a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      <input type="text" id="dirSearchCity" placeholder="City or State">
+      <button class="dir-search-btn" onclick="applyFilters()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         Search
       </button>
     </div>
@@ -117,72 +528,73 @@
   <div class="container">
     <div class="dir-inner">
 
-      <!-- Sidebar Filters -->
+      <!-- Filter Sidebar -->
       <aside class="dir-sidebar">
+        <div class="sidebar-header">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Filters
+        </div>
 
         <div class="filter-section">
           <h3>Technology</h3>
           <div class="filter-options">
-            <label class="filter-option"><input type="checkbox" name="type" value="fdm"> FDM Printing</label>
-            <label class="filter-option"><input type="checkbox" name="type" value="sla"> SLA / Resin</label>
-            <label class="filter-option"><input type="checkbox" name="type" value="sls"> SLS / Nylon</label>
-            <label class="filter-option"><input type="checkbox" name="type" value="metal"> Metal Printing</label>
-            <label class="filter-option"><input type="checkbox" name="type" value="multicolor"> Multicolor</label>
+            <label class="filter-option"><input type="checkbox" name="type" value="fdm"><span class="filter-pill">FDM</span></label>
+            <label class="filter-option"><input type="checkbox" name="type" value="sla"><span class="filter-pill">SLA / Resin</span></label>
+            <label class="filter-option"><input type="checkbox" name="type" value="sls"><span class="filter-pill">SLS / Nylon</span></label>
+            <label class="filter-option"><input type="checkbox" name="type" value="metal"><span class="filter-pill">Metal</span></label>
+            <label class="filter-option"><input type="checkbox" name="type" value="multicolor"><span class="filter-pill">Multicolor</span></label>
           </div>
         </div>
 
         <div class="filter-section">
           <h3>Service Type</h3>
           <div class="filter-options">
-            <label class="filter-option"><input type="checkbox" name="service" value="prototyping"> Rapid Prototyping</label>
-            <label class="filter-option"><input type="checkbox" name="service" value="production"> Production Runs</label>
-            <label class="filter-option"><input type="checkbox" name="service" value="design"> Design Services</label>
-            <label class="filter-option"><input type="checkbox" name="service" value="finishing"> Post-Processing</label>
-            <label class="filter-option"><input type="checkbox" name="service" value="assembly"> Assembly</label>
+            <label class="filter-option"><input type="checkbox" name="service" value="prototyping"><span class="filter-pill">Prototyping</span></label>
+            <label class="filter-option"><input type="checkbox" name="service" value="production"><span class="filter-pill">Production</span></label>
+            <label class="filter-option"><input type="checkbox" name="service" value="design"><span class="filter-pill">Design</span></label>
+            <label class="filter-option"><input type="checkbox" name="service" value="finishing"><span class="filter-pill">Post-Processing</span></label>
+            <label class="filter-option"><input type="checkbox" name="service" value="assembly"><span class="filter-pill">Assembly</span></label>
           </div>
         </div>
 
         <div class="filter-section">
           <h3>Material</h3>
           <div class="filter-options">
-            <label class="filter-option"><input type="checkbox" name="material" value="pla"> PLA</label>
-            <label class="filter-option"><input type="checkbox" name="material" value="abs"> ABS</label>
-            <label class="filter-option"><input type="checkbox" name="material" value="petg"> PETG</label>
-            <label class="filter-option"><input type="checkbox" name="material" value="resin"> Resin</label>
-            <label class="filter-option"><input type="checkbox" name="material" value="nylon"> Nylon</label>
-            <label class="filter-option"><input type="checkbox" name="material" value="metal"> Metal</label>
-            <label class="filter-option"><input type="checkbox" name="material" value="tpu"> TPU / Flexible</label>
-            <label class="filter-option"><input type="checkbox" name="material" value="carbon"> Carbon Fiber</label>
+            <label class="filter-option"><input type="checkbox" name="material" value="pla"><span class="filter-pill">PLA</span></label>
+            <label class="filter-option"><input type="checkbox" name="material" value="abs"><span class="filter-pill">ABS</span></label>
+            <label class="filter-option"><input type="checkbox" name="material" value="petg"><span class="filter-pill">PETG</span></label>
+            <label class="filter-option"><input type="checkbox" name="material" value="resin"><span class="filter-pill">Resin</span></label>
+            <label class="filter-option"><input type="checkbox" name="material" value="nylon"><span class="filter-pill">Nylon</span></label>
+            <label class="filter-option"><input type="checkbox" name="material" value="metal"><span class="filter-pill">Metal</span></label>
+            <label class="filter-option"><input type="checkbox" name="material" value="tpu"><span class="filter-pill">TPU</span></label>
+            <label class="filter-option"><input type="checkbox" name="material" value="carbon"><span class="filter-pill">Carbon Fiber</span></label>
           </div>
         </div>
 
         <div class="filter-section">
           <h3>Price Range</h3>
           <div class="filter-options">
-            <label class="filter-option"><input type="checkbox" name="price" value="$"> $ Budget</label>
-            <label class="filter-option"><input type="checkbox" name="price" value="$$"> $$ Mid-range</label>
-            <label class="filter-option"><input type="checkbox" name="price" value="$$$"> $$$ Premium</label>
+            <label class="filter-option"><input type="checkbox" name="price" value="$"><span class="filter-pill">$ Budget</span></label>
+            <label class="filter-option"><input type="checkbox" name="price" value="$$"><span class="filter-pill">$$ Mid</span></label>
+            <label class="filter-option"><input type="checkbox" name="price" value="$$$"><span class="filter-pill">$$$ Premium</span></label>
           </div>
         </div>
 
         <div class="filter-section">
-          <h3>Status</h3>
+          <h3>Availability</h3>
           <div class="filter-options">
-            <label class="filter-option"><input type="checkbox" name="status" value="open"> Open Now</label>
+            <label class="filter-option"><input type="checkbox" name="status" value="open"><span class="filter-pill">Open Now</span></label>
           </div>
         </div>
 
-        <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:8px;" onclick="clearFilters()">
-          Clear All Filters
-        </button>
+        <button class="btn-clear" onclick="clearFilters()">Clear All Filters</button>
       </aside>
 
       <!-- Results -->
       <main class="dir-results">
-        <!-- Pro Tip: Material Recommendation -->
         <div class="pro-tip-box">
           <span class="pro-tip-icon">💡</span>
-          <p><strong>Pro Tip:</strong> Printing this yourself? We recommend using high-speed <a href="https://amzn.to/4lKG9mX" target="_blank" rel="nofollow sponsored">Flashforge Rapid PLA</a> for the best results.</p>
+          <p><strong>Pro Tip:</strong> Printing yourself? We recommend <a href="https://amzn.to/4lKG9mX" target="_blank" rel="nofollow sponsored">Flashforge Rapid PLA</a> for fast, reliable results.</p>
         </div>
 
         <div class="dir-results-header">
@@ -194,10 +606,9 @@
             <option value="name">A – Z</option>
           </select>
         </div>
+
         <div class="active-chips" id="activeChips"></div>
-        <div class="listings-grid" id="dirListings">
-          <!-- Populated by JS -->
-        </div>
+        <div class="listings-grid" id="dirListings"></div>
         <div class="pagination" id="pagination"></div>
       </main>
 
