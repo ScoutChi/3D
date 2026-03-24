@@ -1949,3 +1949,32 @@ p  { color: var(--slate); line-height: 1.75; }
   .related-grid { grid-template-columns: 1fr; }
   .city-links-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Responsive images (WebP <picture> pattern) ─────────────── */
+/* Used by pictureImg() in generate-listings.js and blog templates.
+   Always pair with explicit width/height attrs to prevent CLS.    */
+.lp-img,
+.blog-img,
+.site-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--r-md, 8px);
+}
+/* Hero / full-width images */
+.lp-img-hero {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: var(--r-lg, 12px);
+}
+/* Thumbnail variant */
+.lp-img-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--r-sm, 6px);
+  flex-shrink: 0;
+}
+picture { display: contents; }

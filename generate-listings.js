@@ -54,6 +54,40 @@ function stateAbbr(fullName) {
   return MAP[fullName] || fullName;
 }
 
+/**
+ * pictureImg({ src, alt, width, height, cls, lazy })
+ *
+ * Outputs a <picture> element with a WebP source + original fallback.
+ * Usage: place the WebP version at the same path with a .webp extension.
+ *
+ * Example:
+ *   // Files on disk:  /images/hero.webp  AND  /images/hero.jpg
+ *   pictureImg({ src: '/images/hero.jpg', alt: 'Shop interior', width: 800, height: 450 })
+ *
+ * Outputs:
+ *   <picture>
+ *     <source srcset="/images/hero.webp" type="image/webp">
+ *     <img src="/images/hero.jpg" alt="Shop interior" width="800" height="450"
+ *          class="lp-img" loading="lazy" decoding="async">
+ *   </picture>
+ *
+ * Notes:
+ *   - Always provide width + height to prevent layout shift (CLS).
+ *   - Set lazy:false for above-the-fold / hero images (uses loading="eager").
+ *   - Convert originals with: cwebp -q 82 input.jpg -o input.webp
+ *     or in bulk:  for f in *.jpg; do cwebp -q 82 "$f" -o "${f%.jpg}.webp"; done
+ */
+function pictureImg({ src, alt, width, height, cls = 'lp-img', lazy = true }) {
+  const webpSrc = src.replace(/\.(jpe?g|png)$/i, '.webp');
+  const loadAttr = lazy ? 'lazy' : 'eager';
+  const wAttr = width  ? ` width="${width}"`   : '';
+  const hAttr = height ? ` height="${height}"` : '';
+  return `<picture>
+  <source srcset="${esc(webpSrc)}" type="image/webp">
+  <img src="${esc(src)}" alt="${esc(alt)}"${wAttr}${hAttr} class="${esc(cls)}" loading="${loadAttr}" decoding="async">
+</picture>`;
+}
+
 function tags(arr, cls) {
   if (!arr || !arr.length) return `<span class="lp-pill lp-pill-muted">Not specified</span>`;
   return arr.map(t => `<span class="${cls || 'lp-pill'}">${esc(t)}</span>`).join('');
