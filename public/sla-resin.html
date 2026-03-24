@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLA Resin 3D Printing Services Near You | 3DPrintMap</title>
-  <meta name="description" content="Find SLA and resin 3D printing services near you. Browse 300+ SLA print shops offering ultra-high detail resin printing for prototypes, jewelry, and miniatures.">
+  <title>SLA Resin 3D Printing Near You | 3DPrintMap</title>
+  <meta name="description" content="Find SLA resin 3D printing near you. Ultra-detail prototypes, jewelry & dental models from 300+ shops. Browse services and get a quote today.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="SLA Resin 3D Printing Services | 3DPrintMap">
   <meta property="og:description" content="Find SLA and resin 3D printing near you. Ultra-high detail printing for prototypes, dental, jewelry, and miniatures.">
@@ -29,17 +29,38 @@
     "@graph": [
       {
         "@type": "CollectionPage",
-        "name": "SLA Resin 3D Printing Services",
-        "description": "Find SLA and resin 3D printing services near you. Browse 300+ SLA print shops offering ultra-high detail resin printing for prototypes, jewelry, and miniatures.",
+        "@id": "https://www.3dprintmap.com/sla-resin#page",
+        "name": "SLA Resin 3D Printing Services Directory",
+        "description": "Browse 300+ SLA resin 3D printing services across the US — filter by city, material, and use case.",
         "url": "https://www.3dprintmap.com/sla-resin",
         "isPartOf": { "@id": "https://www.3dprintmap.com/#website" },
         "provider": { "@id": "https://www.3dprintmap.com/#organization" }
       },
       {
+        "@type": "Service",
+        "@id": "https://www.3dprintmap.com/sla-resin#service",
+        "name": "SLA Resin 3D Printing",
+        "alternateName": "Stereolithography",
+        "serviceType": "3D Printing",
+        "description": "SLA (Stereolithography) and resin 3D printing delivers ultra-high resolution parts ideal for prototypes, dental models, jewelry casting, miniatures, and medical devices. Services use photopolymer resins cured by UV laser or LCD light.",
+        "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "SLA Resin Printing Applications",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Prototype Resin Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dental Model 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jewelry Casting 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Miniature & Figurine Printing" } }
+          ]
+        }
+      },
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
-          { "@type": "ListItem", "position": 2, "name": "SLA Resin Printing", "item": "https://www.3dprintmap.com/sla-resin" }
+          { "@type": "ListItem", "position": 2, "name": "SLA Resin Printing Services", "item": "https://www.3dprintmap.com/sla-resin" }
         ]
       }
     ]

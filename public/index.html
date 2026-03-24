@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3DPrintMap — Find 3D Printing Services Near You</title>
-  <meta name="description" content="Find 3D printing services near you. Browse 1,270 FDM, SLA, SLS, and metal printing shops, makerspaces, and print farms by city, technology, and material.">
+  <meta name="description" content="Find 3D printing services near you. Browse 1,270+ FDM, SLA, SLS, and metal print shops by city and material. Search free — no signup required.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="3DPrintMap — Find 3D Printing Services Near You">
   <meta property="og:description" content="Find 3D printing services near you. Browse 1,270 FDM, SLA, SLS, and metal 3D printing services across the US.">
@@ -36,13 +36,67 @@
         }
       },
       {
-        "@type": "Organization",
+        "@type": ["Organization", "LocalBusiness"],
         "@id": "https://www.3dprintmap.com/#organization",
         "name": "3DPrintMap",
         "url": "https://www.3dprintmap.com/",
-        "description": "Online directory of 3D printing services, makerspaces, and print farms across the United States.",
+        "description": "The most comprehensive online directory of 3D printing services, makerspaces, and print farms across the United States.",
         "logo": { "@type": "ImageObject", "url": "https://www.3dprintmap.com/logo.svg", "width": 512, "height": 512 },
-        "contactPoint": { "@type": "ContactPoint", "email": "support@3dprintmap.com", "contactType": "customer service" }
+        "contactPoint": { "@type": "ContactPoint", "email": "support@3dprintmap.com", "contactType": "customer service" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "knowsAbout": ["FDM 3D Printing", "SLA Resin Printing", "SLS Nylon Printing", "Metal 3D Printing", "3D Print Services Directory"]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://www.3dprintmap.com/#service-types",
+        "name": "3D Printing Services",
+        "description": "Types of 3D printing services listed on 3DPrintMap",
+        "itemListElement": [
+          {
+            "@type": "ListItem", "position": 1,
+            "item": {
+              "@type": "Service",
+              "name": "FDM 3D Printing",
+              "url": "https://www.3dprintmap.com/fdm-printing",
+              "description": "Fused Deposition Modeling — fast, affordable plastic printing in PLA, PETG, ABS, TPU and engineering filaments.",
+              "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+              "areaServed": { "@type": "Country", "name": "United States" }
+            }
+          },
+          {
+            "@type": "ListItem", "position": 2,
+            "item": {
+              "@type": "Service",
+              "name": "SLA Resin 3D Printing",
+              "url": "https://www.3dprintmap.com/sla-resin",
+              "description": "Stereolithography — ultra-high-detail resin printing for prototypes, jewelry, dental models, and miniatures.",
+              "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+              "areaServed": { "@type": "Country", "name": "United States" }
+            }
+          },
+          {
+            "@type": "ListItem", "position": 3,
+            "item": {
+              "@type": "Service",
+              "name": "SLS Nylon 3D Printing",
+              "url": "https://www.3dprintmap.com/sls-nylon",
+              "description": "Selective Laser Sintering — strong, support-free nylon and composite parts for engineering applications.",
+              "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+              "areaServed": { "@type": "Country", "name": "United States" }
+            }
+          },
+          {
+            "@type": "ListItem", "position": 4,
+            "item": {
+              "@type": "Service",
+              "name": "Metal 3D Printing",
+              "url": "https://www.3dprintmap.com/metal-printing",
+              "description": "DMLS, SLM, and binder jetting in steel, titanium, aluminum, and Inconel for aerospace, medical, and industrial parts.",
+              "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+              "areaServed": { "@type": "Country", "name": "United States" }
+            }
+          }
+        ]
       }
     ]
   }

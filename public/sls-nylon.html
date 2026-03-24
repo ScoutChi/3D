@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLS Nylon 3D Printing Services Near You | 3DPrintMap</title>
-  <meta name="description" content="Find SLS nylon 3D printing services near you. Browse 120+ SLS print bureaus offering strong, support-free nylon and composite parts for engineering applications.">
+  <title>SLS Nylon 3D Printing Near You | 3DPrintMap</title>
+  <meta name="description" content="Find SLS nylon 3D printing near you. Strong, support-free engineering parts from 120+ print bureaus. Browse services and request a quote today.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="SLS Nylon 3D Printing Services | 3DPrintMap">
   <meta property="og:description" content="Find SLS nylon 3D printing near you. Strong, support-free engineering parts in nylon, glass-filled, and composite materials.">
@@ -29,17 +29,38 @@
     "@graph": [
       {
         "@type": "CollectionPage",
-        "name": "SLS Nylon 3D Printing Services",
-        "description": "Find SLS nylon 3D printing services near you. Browse 120+ SLS print bureaus offering strong, support-free nylon and composite parts for engineering applications.",
+        "@id": "https://www.3dprintmap.com/sls-nylon#page",
+        "name": "SLS Nylon 3D Printing Services Directory",
+        "description": "Browse 120+ SLS nylon 3D printing services across the US — strong, support-free engineering parts.",
         "url": "https://www.3dprintmap.com/sls-nylon",
         "isPartOf": { "@id": "https://www.3dprintmap.com/#website" },
         "provider": { "@id": "https://www.3dprintmap.com/#organization" }
       },
       {
+        "@type": "Service",
+        "@id": "https://www.3dprintmap.com/sls-nylon#service",
+        "name": "SLS Nylon 3D Printing",
+        "alternateName": "Selective Laser Sintering",
+        "serviceType": "3D Printing",
+        "description": "SLS (Selective Laser Sintering) produces strong, support-free parts in nylon, glass-filled nylon, and composite materials. Ideal for functional engineering prototypes, end-use parts, complex geometries, and snap-fit assemblies.",
+        "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "SLS Nylon Printing Materials",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nylon PA12 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Glass-Filled Nylon Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Carbon Fiber Composite Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TPU Flexible SLS Printing" } }
+          ]
+        }
+      },
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
-          { "@type": "ListItem", "position": 2, "name": "SLS Nylon Printing", "item": "https://www.3dprintmap.com/sls-nylon" }
+          { "@type": "ListItem", "position": 2, "name": "SLS Nylon Printing Services", "item": "https://www.3dprintmap.com/sls-nylon" }
         ]
       }
     ]

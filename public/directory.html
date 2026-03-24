@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Browse 3D Printing Services — 3DPrintMap</title>
-  <meta name="description" content="Browse and filter 1,270 3D printing services by technology (FDM, SLA, SLS, metal), material, service type, and location across the United States.">
+  <title>3D Printing Services Directory | 3DPrintMap</title>
+  <meta name="description" content="Search 1,270+ 3D printing services by technology, material & city. FDM, SLA, SLS, and metal. Browse free — find a local shop and get your quote today.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Browse 3D Printing Services — 3DPrintMap">
   <meta property="og:description" content="Browse and filter 1,270 3D printing services by technology, material, service type, and location.">
@@ -25,17 +25,38 @@
     "@graph": [
       {
         "@type": "CollectionPage",
+        "@id": "https://www.3dprintmap.com/directory#page",
         "name": "3D Printing Services Directory",
-        "description": "Browse 1,270+ 3D printing services across the United States — filter by technology, material, service type, and city.",
+        "description": "Browse and filter 1,270+ 3D printing services across the United States by technology, material, service type, price, and city.",
         "url": "https://www.3dprintmap.com/directory",
         "isPartOf": { "@id": "https://www.3dprintmap.com/#website" },
         "provider": { "@id": "https://www.3dprintmap.com/#organization" }
       },
       {
+        "@type": "LocalBusiness",
+        "@id": "https://www.3dprintmap.com/directory#directory",
+        "name": "3DPrintMap — 3D Printing Services Directory",
+        "description": "The most comprehensive searchable directory of local 3D printing services, makerspaces, and print farms across the United States.",
+        "url": "https://www.3dprintmap.com/directory",
+        "logo": { "@type": "ImageObject", "url": "https://www.3dprintmap.com/logo.svg" },
+        "contactPoint": { "@type": "ContactPoint", "email": "support@3dprintmap.com", "contactType": "customer service" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "3D Printing Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "FDM 3D Printing", "url": "https://www.3dprintmap.com/fdm-printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SLA Resin 3D Printing", "url": "https://www.3dprintmap.com/sla-resin" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SLS Nylon 3D Printing", "url": "https://www.3dprintmap.com/sls-nylon" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Metal 3D Printing", "url": "https://www.3dprintmap.com/metal-printing" } }
+          ]
+        }
+      },
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
-          { "@type": "ListItem", "position": 2, "name": "All 3D Printing Services", "item": "https://www.3dprintmap.com/directory" }
+          { "@type": "ListItem", "position": 2, "name": "3D Printing Services Directory", "item": "https://www.3dprintmap.com/directory" }
         ]
       }
     ]

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Metal 3D Printing Services Near You | 3DPrintMap</title>
-  <meta name="description" content="Find metal 3D printing services near you. Browse 60+ DMLS, SLM, and binder jetting facilities offering steel, titanium, aluminum, and Inconel printing.">
+  <meta name="description" content="Find metal 3D printing near you. DMLS, SLM & binder jetting in steel, titanium & aluminum. Browse 60+ facilities and get a quote today.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Metal 3D Printing Services | 3DPrintMap">
   <meta property="og:description" content="Find metal 3D printing services near you. DMLS, SLM, and binder jetting in steel, titanium, aluminum, and more.">
@@ -29,17 +29,39 @@
     "@graph": [
       {
         "@type": "CollectionPage",
-        "name": "Metal 3D Printing Services",
-        "description": "Find metal 3D printing services near you. Browse 60+ DMLS, SLM, and binder jetting facilities offering steel, titanium, aluminum, and Inconel printing.",
+        "@id": "https://www.3dprintmap.com/metal-printing#page",
+        "name": "Metal 3D Printing Services Directory",
+        "description": "Browse 60+ metal 3D printing facilities across the US — DMLS, SLM, and binder jetting in steel, titanium, and aluminum.",
         "url": "https://www.3dprintmap.com/metal-printing",
         "isPartOf": { "@id": "https://www.3dprintmap.com/#website" },
         "provider": { "@id": "https://www.3dprintmap.com/#organization" }
       },
       {
+        "@type": "Service",
+        "@id": "https://www.3dprintmap.com/metal-printing#service",
+        "name": "Metal 3D Printing",
+        "alternateName": ["DMLS", "Direct Metal Laser Sintering", "SLM", "Binder Jetting"],
+        "serviceType": "3D Printing",
+        "description": "Metal 3D printing (DMLS, SLM, binder jetting) produces fully dense metal parts in stainless steel, titanium, aluminum, Inconel, and cobalt-chrome. Used for aerospace, medical, tooling, and high-performance engineering applications.",
+        "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Metal 3D Printing Materials",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stainless Steel 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Titanium 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aluminum 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inconel 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cobalt-Chrome 3D Printing" } }
+          ]
+        }
+      },
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Metal Printing", "item": "https://www.3dprintmap.com/metal-printing" }
+          { "@type": "ListItem", "position": 2, "name": "Metal Printing Services", "item": "https://www.3dprintmap.com/metal-printing" }
         ]
       }
     ]

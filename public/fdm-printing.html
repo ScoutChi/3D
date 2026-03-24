@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FDM 3D Printing Services Near You | 3DPrintMap</title>
-  <meta name="description" content="Find FDM 3D printing services near you. Browse 1,002 FDM print shops offering PLA, PETG, ABS, TPU, and engineering filament printing across the US.">
+  <meta name="description" content="Browse 1,000+ FDM 3D print shops near you. PLA, PETG, ABS, TPU & engineering filaments. Find a local service and get a quote today.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="FDM 3D Printing Services | 3DPrintMap">
   <meta property="og:description" content="Find FDM 3D printing services near you. Fast, affordable plastic printing in PLA, PETG, ABS, and more.">
@@ -25,15 +25,39 @@
     "@graph": [
       {
         "@type": "CollectionPage",
-        "name": "FDM 3D Printing Services",
-        "description": "Directory of fdm 3d printing services across the United States.",
-        "url": "https://www.3dprintmap.com/fdm-printing"
+        "@id": "https://www.3dprintmap.com/fdm-printing#page",
+        "name": "FDM 3D Printing Services Directory",
+        "description": "Browse 1,000+ FDM 3D printing services across the US — filter by city, material, and price.",
+        "url": "https://www.3dprintmap.com/fdm-printing",
+        "isPartOf": { "@id": "https://www.3dprintmap.com/#website" },
+        "provider": { "@id": "https://www.3dprintmap.com/#organization" }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.3dprintmap.com/fdm-printing#service",
+        "name": "FDM 3D Printing",
+        "alternateName": "Fused Deposition Modeling",
+        "serviceType": "3D Printing",
+        "description": "FDM (Fused Deposition Modeling) is the most widely available 3D printing technology. Services include printing in PLA, PETG, ABS, TPU, Nylon, and engineering-grade filaments for prototypes, functional parts, and production runs.",
+        "provider": { "@id": "https://www.3dprintmap.com/#organization" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "FDM Printing Materials",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PLA 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PETG 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ABS 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TPU Flexible 3D Printing" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Engineering Filament Printing" } }
+          ]
+        }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.3dprintmap.com/" },
-          { "@type": "ListItem", "position": 2, "name": "FDM Printing", "item": "https://www.3dprintmap.com/fdm-printing" }
+          { "@type": "ListItem", "position": 2, "name": "FDM Printing Services", "item": "https://www.3dprintmap.com/fdm-printing" }
         ]
       }
     ]
