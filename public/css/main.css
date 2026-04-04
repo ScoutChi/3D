@@ -272,6 +272,32 @@ p  { color: var(--slate); line-height: 1.75; }
 }
 .empty-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 
+.empty-guide {
+  grid-column: 1 / -1;
+  max-width: 720px;
+  margin: 2rem auto 0;
+  padding: 2rem 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  text-align: left;
+}
+.empty-guide-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: .75rem;
+  border-bottom: 2px solid var(--orange);
+}
+.empty-guide p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--slate);
+  margin-bottom: 1rem;
+}
+.empty-guide p:last-child { margin-bottom: 0; }
+
 /* ── Buttons ─────────────────────────────────────────────── */
 .btn {
   display: inline-block;
