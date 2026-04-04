@@ -444,6 +444,7 @@ function renderPage(b) {
     .lp-hero-inner { flex-direction: column; gap: 1rem; }
   }
   </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5760440348882923" crossorigin="anonymous"></script>
 </head>
 <body>
 
